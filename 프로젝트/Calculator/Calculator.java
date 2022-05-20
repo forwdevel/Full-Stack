@@ -25,13 +25,19 @@ public class Calculator extends JFrame {
     JPanel showView = new JPanel();
     JPanel btnView = new JPanel();
 
-    JLabel showLa = new JLabel("0", JLabel.RIGHT);
+    JLabel showLa = new JLabel("", JLabel.RIGHT);
+    JLabel onlyNum = new JLabel("0", JLabel.RIGHT);
 
     // Action Listener + key Listener
     Calculator() {
         showLa.setFont(new Font("Consolas", Font.BOLD, 16));
         showLa.setBackground(Color.white);
         showLa.setOpaque(true); // Opacity
+
+        onlyNum.setFont(new Font("Consolas", Font.BOLD, 30));
+        onlyNum.setBackground(Color.white);
+        onlyNum.setForeground(Color.blue);
+        onlyNum.setOpaque(true); // Opacity
 
         btnView.setLayout(new GridLayout(6, 4, 2, 2));
 
@@ -59,12 +65,13 @@ public class Calculator extends JFrame {
                 JButton b = (JButton) e.getSource();
                 String input = b.getText();
 
-                // Result (Clear)
+                // Result (Clear) & Up
                 if (input.equals("=")) {
                     // If entered only operator or anything,
                     if (cnt == 0) {
                         showing = "";
                         showLa.setText("0");
+                        onlyNum.setText("0");
                     }
                     // If did not entered the operator and did entered the only numbers
                     else if (oper.equals("")) {
@@ -72,8 +79,10 @@ public class Calculator extends JFrame {
                         // 공백 나오는 것 방지
                         if (left == "") {
                             showLa.setText("0");
+                            onlyNum.setText("0");
                         } else {
-                            showLa.setText(left);
+                            showLa.setText(removePoint(left));
+                            onlyNum.setText("0");
                         }
                     }
                     // If right is empty
@@ -82,10 +91,13 @@ public class Calculator extends JFrame {
                         // 공백 나오는 것 방지
                         if (left == "") {
                             showLa.setText("0");
+                            onlyNum.setText("0");
                         } else {
-                            showLa.setText(left);
+                            showLa.setText(removePoint(left));
+                            onlyNum.setText("0");
                         }
-                        showLa.setText(left);
+                        showLa.setText(removePoint(left));
+                        onlyNum.setText("0");
                     }
                     // If left, right and oper are not empty
                     else {
@@ -106,16 +118,9 @@ public class Calculator extends JFrame {
                             result = "0";
                         }
 
-                        // 소수점 제거 ".0"
-                        if (result.length() > 2) {
-                            if (result.charAt(result.length() - 2) == '.'
-                                    && result.charAt(result.length() - 1) == '0') {
-                                result = result.substring(0, result.length() - 2);
-                            }
-                        }
-
                         // Print the result
-                        showLa.setText(result);
+                        showLa.setText(removePoint(result));
+                        onlyNum.setText("0");
 
                         // Initalise the values
                         // left 값은 남겨둠
@@ -125,7 +130,7 @@ public class Calculator extends JFrame {
                         oper = "";
                     }
                 }
-                // Entered the operator (Clear)
+                // Entered the operator (Clear) & Up
                 else if (input == "+" || input == "-" || input == "*" || input == "/") {
                     // If oper is empty and left is exist,
                     if (oper.isEmpty() && !left.isEmpty()) {
@@ -135,7 +140,8 @@ public class Calculator extends JFrame {
                             // Change showing
                             showing = left + oper;
                             // Print
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint("0"));
                         }
                         if (input.equals("-")) {
                             // Save operator
@@ -143,7 +149,8 @@ public class Calculator extends JFrame {
                             // Change showing
                             showing = left + oper;
                             // Print
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint("0"));
                         }
                         if (input.equals("/")) {
                             // Save operator
@@ -151,7 +158,8 @@ public class Calculator extends JFrame {
                             // Change showing
                             showing = left + oper;
                             // Print
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint("0"));
                         }
                         if (input.equals("*")) {
                             // Save operator
@@ -159,11 +167,52 @@ public class Calculator extends JFrame {
                             // Change showing
                             showing = left + oper;
                             // Print
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint("0"));
                         }
                     }
+                    // 연산자 여러개 넣고싶을때
+                    else if (!oper.isEmpty() && !left.isEmpty() && !right.isEmpty()) {
+                        if (oper.equals("+")) {
+                            result = "" + (Double.parseDouble(left) + Double.parseDouble(right));
+                            left = result;
+                            showing = left + oper;
+                            right = "";
+                            oper = input;
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(left));
+                        }
+                        if (oper.equals("-")) {
+                            result = "" + (Double.parseDouble(left) - Double.parseDouble(right));
+                            left = result;
+                            showing = left + oper;
+                            right = "";
+                            oper = input;
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(left));
+                        }
+                        if (oper.equals("*")) {
+                            result = "" + (Double.parseDouble(left) * Double.parseDouble(right));
+                            left = result;
+                            showing = left + oper;
+                            right = "";
+                            oper = input;
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(left));
+                        }
+                        if (oper.equals("/")) {
+                            result = "" + (Double.parseDouble(left) / Double.parseDouble(right));
+                            left = result;
+                            showing = left + oper;
+                            right = "";
+                            oper = input;
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(left));
+                        }
+                    }
+
                 }
-                // Entered C or CE (Clear)
+                // Entered C or CE (Clear) & Up
                 else if (input.charAt(0) == 'C') {
                     // Entered C
                     if (input.length() == 1) {
@@ -172,32 +221,36 @@ public class Calculator extends JFrame {
                         left = "";
                         right = "";
                         oper = "";
+                        onlyNum.setText("0");
                         showLa.setText("0");
                     }
                     // Entered CE
                     else if (input.charAt(1) == 'E') {
                         // Initialise only right value
                         right = "";
+                        onlyNum.setText(removePoint("0"));
                         showing = left + oper;
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
                     }
                 }
-                // Entered . (Clear)
+                // Entered . (Clear) & Up
                 else if (input.charAt(0) == '.') {
                     // .이 없을때만 작동
                     if (showing.indexOf(".") == -1) {
                         if (!oper.isEmpty()) {
                             right = right + ".";
                             showing = left + oper + right;
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(right));
                         } else {
                             left = left + ".";
                             showing = left;
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(left));
                         }
                     }
                 }
-                // Entered the number (Clear)
+                // Entered the number (Clear) & Up
                 else if (input.charAt(0) >= '0' && input.charAt(0) <= '9') {
                     // If the operator was already uesd,
                     if (!oper.isEmpty()) {
@@ -206,7 +259,8 @@ public class Calculator extends JFrame {
                         // Change the showing value
                         showing = left + " " + oper + " " + right;
                         // Change the showLa value
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
+                        onlyNum.setText(removePoint(right));
                         // The value saved successfuly
                         cnt++;
                     } else {
@@ -215,50 +269,60 @@ public class Calculator extends JFrame {
                         // Change the showing value
                         showing = left;
                         // Change the showLa value
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
+                        onlyNum.setText(removePoint(left));
                         // The value saved successfuly
                         cnt++;
                     }
                 }
-                // Entered <- (Clear)
+                // Entered <- (Clear) & Up
                 else if (input.equals("<-")) {
                     if (showing.isEmpty()) {
                         showLa.setText("0");
+                        onlyNum.setText("0");
                     } else if (!oper.isEmpty()) {
                         if (!right.isEmpty()) {
                             right = right.substring(0, right.length() - 1);
                             if (!right.isEmpty()) {
                                 showing = left + oper + right;
-                                showLa.setText(showing);
+                                showLa.setText(removePoint(showing));
+                                onlyNum.setText(removePoint(right));
                             } else {
                                 showing = left + oper;
-                                showLa.setText(showing);
+                                showLa.setText(removePoint(showing));
+                                onlyNum.setText("0");
                             }
                         } else {
-                            showing = left + oper;
-                            showLa.setText(showing);
+                            showing = left;
+                            oper = "";
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText("0");
                         }
                     } else {
                         if (!left.isEmpty()) {
                             left = left.substring(0, left.length() - 1);
                             if (!left.isEmpty()) {
                                 showing = left;
-                                showLa.setText(showing);
+                                showLa.setText(removePoint(showing));
+                                onlyNum.setText(removePoint(showing));
                             } else {
                                 showLa.setText("0");
+                                onlyNum.setText("0");
                             }
                         } else {
                             showLa.setText("0");
+                            onlyNum.setText("0");
                         }
                     }
                 }
-                // Entered sqrt(x) (Clear)
+                // Entered sqrt(x) (Clear) & Up
                 else if (input.equals("sqrt(x)")) {
                     // 좌변만 있을때만 작동
                     if (oper.isEmpty()) {
                         left = "" + (Math.sqrt(Double.parseDouble(left)));
                         showing = left;
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
+                        onlyNum.setText("0");
                     }
                 }
                 // Entered x*x (Clear)
@@ -267,7 +331,8 @@ public class Calculator extends JFrame {
                     if (oper.isEmpty()) {
                         left = "" + (Double.parseDouble(left) * Double.parseDouble(left));
                         showing = left;
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
+                        onlyNum.setText(removePoint("0"));
                     }
                 }
                 // Entered reverse (Clear)
@@ -279,9 +344,11 @@ public class Calculator extends JFrame {
                                 left = "";
                                 showing = "";
                                 showLa.setText("0");
+                                onlyNum.setText("0");
                             } else {
                                 showing = left;
-                                showLa.setText(showing);
+                                showLa.setText(removePoint(showing));
+                                onlyNum.setText(removePoint("0"));
                             }
                         }
                     } else {
@@ -293,21 +360,32 @@ public class Calculator extends JFrame {
                             } else {
                                 showing = left + oper + right;
                             }
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText("0");
                         }
                     }
                 }
                 // Entered +/- (Clear)
                 else if (input.equals("+/-")) {
                     if (oper.isEmpty()) {
-                        left = "" + Double.parseDouble(left) * -1;
+                        if (left.indexOf(".") == -1) {
+                            left = "" + Integer.parseInt(left) * -1;
+                        } else {
+                            left = "" + Double.parseDouble(left) * -1;
+                        }
                         showing = left;
-                        showLa.setText(showing);
+                        showLa.setText(removePoint(showing));
+                        onlyNum.setText(removePoint(showing));
                     } else {
                         if (!right.isEmpty()) {
-                            right = "" + Double.parseDouble(right) * -1;
+                            if (right.indexOf(".") == -1) {
+                                right = "" + Integer.parseInt(right) * -1;
+                            } else {
+                                right = "" + Double.parseDouble(right) * -1;
+                            }
                             showing = left + oper + right;
-                            showLa.setText(showing);
+                            showLa.setText(removePoint(showing));
+                            onlyNum.setText(removePoint(right));
                         }
                     }
                 }
@@ -323,7 +401,8 @@ public class Calculator extends JFrame {
                             right = "";
                             showing = "";
                             oper = "";
-                            showLa.setText(result);
+                            showLa.setText(removePoint(result));
+                            onlyNum.setText("0");
                         } else if (oper.equals("-")) {
                             result = "" + (Double.parseDouble(left)
                                     - (Double.parseDouble(left) * (Double.parseDouble(right) / 100)));
@@ -332,6 +411,7 @@ public class Calculator extends JFrame {
                             showing = "";
                             oper = "";
                             showLa.setText(result);
+                            onlyNum.setText("0");
                         } else if (oper.equals("/")) {
                             result = "" + (Double.parseDouble(left)
                                     / (Double.parseDouble(left) * (Double.parseDouble(right) / 100)));
@@ -340,6 +420,7 @@ public class Calculator extends JFrame {
                             showing = "";
                             oper = "";
                             showLa.setText(result);
+                            onlyNum.setText("0");
                         } else if (oper.equals("*")) {
                             result = "" + (Double.parseDouble(left)
                                     * (Double.parseDouble(left) * (Double.parseDouble(right) / 100)));
@@ -347,7 +428,8 @@ public class Calculator extends JFrame {
                             right = "";
                             showing = "";
                             oper = "";
-                            showLa.setText(result);
+                            showLa.setText(removePoint(result));
+                            onlyNum.setText("0");
                         }
                     }
                 }
@@ -362,13 +444,25 @@ public class Calculator extends JFrame {
         // Set Layout
         showView.setLayout(new BorderLayout());
 
-        add(showLa, BorderLayout.CENTER);
+        add(onlyNum, BorderLayout.CENTER);
+        add(showLa, BorderLayout.NORTH);
         add(btnView, BorderLayout.SOUTH);
 
         setBounds(100, 100, 400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-    }// add()
+    }
+
+    public String removePoint(String str) {
+        // 필요없는 소수점 제거
+        if (str.length() > 2) {
+            if (str.charAt(str.length() - 2) == '.'
+                    && str.charAt(str.length() - 1) == '0') {
+                str = str.substring(0, str.length() - 2);
+            }
+        }
+        return str;
+    }
 
     public static void main(String[] args) {
         new Calculator();
