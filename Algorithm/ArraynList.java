@@ -1,12 +1,15 @@
-// 배열
-// 구조가 간단해서 코테에서 많이 사용
-// 데이터에 접근하는 경우가 많을 때
+// Array
+// Because of its simple structure,
+// it is often used in coding tests.
+// Used when accessing data frequently
 
-// 리스트
-// 인덱스가 없어서 순차적으로 접근해야 함 => 느림
-// 데이터 삽입이나 삭제에 대한 연산속도 빠름
-// 크기가 변하기 쉬운 데이터 다룰 때 적합
-// 포인터가 필요해서, 구조가 배열보다 복잡
-// 코테에서 쓰는 경우는 드뭄
-// ArrayList는 자바에서 지원해줌
-// 기업 코데 레벨에서는 안 나옴
+// List
+// There is no index,
+// so access must be sequentially => Slow
+// Operation speed for data insertion or deletion is fast.
+// Suitable for handling variable size data
+// Needs a pointer,
+// so the structure is more complex than an array.
+// Rarely used in coding tests.
+// Java supports the ArrayList class.
+// It is not asked at the corporate coding test level

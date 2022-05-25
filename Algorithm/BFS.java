@@ -1,19 +1,31 @@
-// 너비 우선 탐색
+// Breath-First Search(BFS)
 
-// 그래프 완전 탐색방법 중 하나
-// 시작노드에서 출발해 가장 가까운 노드를 먼저 방문하면서 탐색
+//----------------------------------------------------------------
 
-// 선입 선출 방식으로 큐로 구현
-// 시간복잡도: 노드 수 + 에지 수
+// One of the full graph search methods
 
-// 목표 노드에 도착하는 경로가 여러개일 때, 최단 경로 보장
+// Start form the start node and search
+// by visiting the nearest node first.
 
-// 1. 시작할 노드를 정한 후 사용할 자료구조 초기화 (배열 필요)
-// 원본그래프 => 인접리스트 => 방문배열 => 큐 자료구조에 시작점 더하기
+//---------------------------------------------------------------
 
-// 2. 큐에서 노드를 꺼낸 후 꺼낸 노드의 인접 노드를 다시 큐에 삽입하기
-// 큐에서 노드를 꺼내면서 인접 노드를 큐에 삽입
-// => 인접 리스트 => 대상 노드의 인접 노드를 큐에 삽입
-// => 노드를 삽입하며 방문 배열 체크
+// Implemented as a queue in a first-in-first-out method
 
-// 3. 큐 자료구조에 값이 없을 때까지 반복하기
+// Time comlexity: number of nodes + number of edges
+
+// Guaranteed shortest path when multiple paths arrive
+// at the target node
+
+//---------------------------------------------------------------
+
+// 1. Determine the node to start and initialize 
+// the data structure to be used (array required)
+// Origianl Graph => Adjacency List => Visited Array
+// => Add the starting point to the queue data structure
+
+// 2. Dequeue a node from the queue and insert
+// the node adjacent to the removed node back into the queue.
+// => Adjacency list => enqueue the target node's neighbor
+// => Check the visit array by inserting a node
+
+// 3. Repeat until there is no value in the queue data structure

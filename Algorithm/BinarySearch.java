@@ -1,23 +1,30 @@
-package Algorithm;
+// Binary Search
 
-// 데이터가 정렬되어 있는 상태에서 원하는 값을 찾아내는 알고리즘
+//------------------------------------------------------------------------------
 
-// 가장 일반적으로 사용
-// 많은 코테에서 요구하는 영역
-// 구현 및 원리가 간단
+// Algorithm to find the desired value in the state that the data is sorted.
 
-// 대상 데이터의 중앙값과 찾고자 하는 값을 비교해 절반씩 줄이면서 대상을 찾음
+//------------------------------------------------------------------------------
 
-// 기능: 타깃 데이터 탐색
-// 특징: 중앙값 비교를 통한 대상 축소 방식
-// 시간 복잡도: logN
+// The most commonly used.
+// Area required by many coding tests.
+// Simple implementation and principle.
+// Compare the median value of the target data with the value you want to find
+// and find the target while reducing it by half.
 
-// 탐색과정
+//------------------------------------------------------------------------------
+
+
+// Function: Explore target data
+// Features: Target reduction method through median comparison
+// Time Complexity: logN
+
+//------------------------------------------------------------------------------
+
+// Search Process
 // 1. 현재 데이터 셋의 중앙값 선택 (홀수일 때, 2로 나눈 몫의 +1)
 // 2. 중앙값 > 타깃 데이터일 때 중앙값 기준으로 왼쪽 데이터 셋 선택
 // 3. 중앙값 < 타깃 데이터일 때 중앙값 기준으로 오른쪽 데이터셋 선택
 // 4. 과정 1~3을 반복하다가, 중앙값 == 타깃 데이터일 때 탐색 종료
 
-public class BinarySearch {
 
-}
