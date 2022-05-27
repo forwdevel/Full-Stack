@@ -22,9 +22,7 @@
 //------------------------------------------------------------------------------
 
 // Search Process
-// 1. 현재 데이터 셋의 중앙값 선택 (홀수일 때, 2로 나눈 몫의 +1)
-// 2. 중앙값 > 타깃 데이터일 때 중앙값 기준으로 왼쪽 데이터 셋 선택
-// 3. 중앙값 < 타깃 데이터일 때 중앙값 기준으로 오른쪽 데이터셋 선택
-// 4. 과정 1~3을 반복하다가, 중앙값 == 타깃 데이터일 때 탐색 종료
-
-
+// 1. Select the median value of the current dataset. (If odd, quotient devided by 2, +1)
+// 2. In case of median > target data, select left data set as the median.
+// 3. In case of median < target data, select right data set as the median.
+// 4. Repeat steps 1 to 3, and search ends when median == target data.
