@@ -1,25 +1,25 @@
 package ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import java.awt.Font;
-import javax.swing.SwingConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
+
+import daovo.StudentVo;
 
 public class Student_Enroll_Interest extends JFrame {
 
@@ -36,23 +36,23 @@ public class Student_Enroll_Interest extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Student_Enroll_Interest frame = new Student_Enroll_Interest();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Student_Enroll_Interest frame = new Student_Enroll_Interest();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Student_Enroll_Interest() {
+	public Student_Enroll_Interest(StudentVo vo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -69,19 +69,19 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_year.setColumns(10);
 		
 		JComboBox lec_semester = new JComboBox();
-		lec_semester.setModel(new DefaultComboBoxModel(new String[] {"2", "\uACA8\uC6B8\uACC4\uC808", "1", "\uC5EC\uB984\uACC4\uC808"}));
+		lec_semester.setModel(new DefaultComboBoxModel(new String[] {"2", "겨울계절", "1", "여름계절"}));
 		lec_semester.setBounds(165, 48, 75, 30);
 		lec_semester.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		lec_semester.setToolTipText("");
 		contentPane.add(lec_semester);
 		
-		JLabel fixed_1 = new JLabel("\uD559\uC810");
+		JLabel fixed_1 = new JLabel("학점");
 		fixed_1.setBounds(94, 98, 57, 15);
 		fixed_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		contentPane.add(fixed_1);
 		
-		JLabel fixed_2 = new JLabel("\uD559\uC218\uBC88\uD638");
+		JLabel fixed_2 = new JLabel("학수번호");
 		fixed_2.setBounds(94, 130, 57, 15);
 		fixed_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_2.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -99,7 +99,7 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_id.setColumns(10);
 		contentPane.add(lec_id);
 		
-		JLabel fixed_3 = new JLabel("\uBD84\uBC18");
+		JLabel fixed_3 = new JLabel("분반");
 		fixed_3.setBounds(280, 98, 57, 15);
 		fixed_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -112,7 +112,7 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_div.setColumns(10);
 		contentPane.add(lec_div);
 		
-		JLabel fixed_4 = new JLabel("\uB2F4\uB2F9\uAD50\uC218");
+		JLabel fixed_4 = new JLabel("담당교수");
 		fixed_4.setBounds(280, 58, 57, 15);
 		fixed_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -124,7 +124,7 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_pro.setColumns(10);
 		contentPane.add(lec_pro);
 		
-		JLabel fixed_5 = new JLabel("\uAD50\uACFC\uBAA9\uBA85");
+		JLabel fixed_5 = new JLabel("교과목명");
 		fixed_5.setBounds(280, 130, 57, 15);
 		fixed_5.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_5.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -136,7 +136,7 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_name.setColumns(10);
 		contentPane.add(lec_name);
 		
-		JLabel fixed_6 = new JLabel("\uC774\uC218\uAD6C\uBD84");
+		JLabel fixed_6 = new JLabel("이수구분");
 		fixed_6.setBounds(487, 58, 57, 15);
 		fixed_6.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_6.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -160,11 +160,11 @@ public class Student_Enroll_Interest extends JFrame {
 		lec_major.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		contentPane.add(lec_major);
 		
-		JButton inquiry_btn = new JButton("\uC870\uD68C");
+		JButton inquiry_btn = new JButton("조회");
 		inquiry_btn.setBounds(740, 122, 67, 30);
 		contentPane.add(inquiry_btn);
 		
-		JButton reset_btn = new JButton("\uCD08\uAE30\uD654");
+		JButton reset_btn = new JButton("초기화");
 		reset_btn.setBounds(810, 122, 75, 30);
 		contentPane.add(reset_btn);
 		
@@ -178,14 +178,16 @@ public class Student_Enroll_Interest extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\uD559\uC218\uBC88\uD638", "\uAD50\uACFC\uBAA9\uBA85", "\uC774\uC218\uAD6C\uBD84", "\uD559\uC810", "\uAD50\uC218\uBA85", "\uAC15\uC758\uC2E4", "\uD604\uC7AC\uC2E0\uCCAD\uC778\uC6D0", "\uC778\uC6D0\uC81C\uD55C"
+				"학수번호", "교과목명", "이수구분", "학점", "교수명", "강의실", "현재신청인원", "인원제한"
 			}
 		));
 		inquiry_table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JButton back_btn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		JButton back_btn = new JButton("뒤로가기");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Student_Enroll_Main(vo);
 			}
 		});
 		back_btn.setBounds(437, 517, 97, 23);
@@ -200,21 +202,23 @@ public class Student_Enroll_Interest extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\uD559\uC218\uBC88\uD638", "\uAD50\uACFC\uBAA9\uBA85", "\uC774\uC218\uAD6C\uBD84", "\uD559\uC810", "\uAD50\uC218\uBA85", "\uAC15\uC758\uC2E4", "\uD604\uC7AC\uC2E0\uCCAD\uC778\uC6D0", "\uC778\uC6D0\uC81C\uD55C"
+				"학수번호", "교과목명", "이수구분", "학점", "교수명", "강의실", "현재신청인원", "인원제한"
 			}
 		));
 		interest_table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		interest_table_pane.setViewportView(interest_table);
 		
-		JLabel fixed_7 = new JLabel("\uD604 \uAD00\uC2EC\uB4F1\uB85D \uACFC\uBAA9");
+		JLabel fixed_7 = new JLabel("현 관심등록 과목");
 		fixed_7.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		fixed_7.setBounds(84, 188, 108, 15);
 		contentPane.add(fixed_7);
 		
-		JLabel fixed_8 = new JLabel("\u203B \uBCF8 \uAE30\uB2A5\uC740 \uC218\uAC15\uC2E0\uCCAD\uC744 \uC704\uD55C \uC2DC\uC2A4\uD15C\uC77C \uBFD0, \uC2E4\uC81C \uC218\uAC15\uC2E0\uCCAD\uC744 \uC9C4\uD589\uD574\uC8FC\uC154\uC57C \uD569\uB2C8\uB2E4.");
+		JLabel fixed_8 = new JLabel("※ 본 기능은 수강신청을 위한 시스템일 뿐, 실제 수강신청을 진행해주셔야 합니다.");
 		fixed_8.setFont(new Font("맑은 고딕", Font.PLAIN, 10));
 		fixed_8.setHorizontalAlignment(SwingConstants.LEFT);
 		fixed_8.setBounds(197, 190, 386, 15);
 		contentPane.add(fixed_8);
+		
+		setVisible(true);
 	}
 }

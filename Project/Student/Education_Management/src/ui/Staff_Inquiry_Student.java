@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,12 +25,9 @@ public class Staff_Inquiry_Student extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
+	private JButton remove_btn;
+	private JButton back_btn;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +41,6 @@ public class Staff_Inquiry_Student extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Staff_Inquiry_Student() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
@@ -53,11 +50,11 @@ public class Staff_Inquiry_Student extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("\uD559\uC0DD \uC870\uD68C");
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 24));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(353, 32, 227, 33);
-		contentPane.add(lblNewLabel);
+		JLabel fixed_1 = new JLabel("학생 조회");
+		fixed_1.setFont(new Font("맑은 고딕", Font.BOLD, 24));
+		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
+		fixed_1.setBounds(353, 32, 227, 33);
+		contentPane.add(fixed_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(156, 85, 655, 386);
@@ -69,16 +66,22 @@ public class Staff_Inquiry_Student extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\uD559\uBC88", "\uC774\uB984", "\uB2E8\uACFC", "\uC804\uACF5", "\uD559\uB144", "\uC785\uD559\uB144\uB3C4", "\uC120\uD0DD"
+				"학번", "이름", "단과", "전공", "학년", "입학년도", "선택"
 			}
 		));
 		
-		btnNewButton = new JButton("\uC0AD\uC81C");
-		btnNewButton.setBounds(309, 504, 97, 23);
-		contentPane.add(btnNewButton);
+		remove_btn = new JButton("삭제");
+		remove_btn.setBounds(309, 504, 97, 23);
+		contentPane.add(remove_btn);
 		
-		btnNewButton_1 = new JButton("\uB4A4\uB85C\uAC00\uAE30");
-		btnNewButton_1.setBounds(557, 504, 97, 23);
-		contentPane.add(btnNewButton_1);
+		back_btn = new JButton("뒤로가기");
+		back_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Staff_Main();
+			}
+		});
+		back_btn.setBounds(557, 504, 97, 23);
+		contentPane.add(back_btn);
 	}
 }

@@ -8,38 +8,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import daovo.StudentVo;
+
 import javax.swing.JButton;
 
-public class Student_grade extends JFrame {
-
+public class Student_Grade extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Student_grade frame = new Student_grade();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Student_grade() {
+	
+	public Student_Grade(StudentVo vo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -48,13 +36,14 @@ public class Student_grade extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("2022\uB144 2\uD559\uAE30");
+		JLabel fixed_1 = new JLabel("2022년 2학기");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setFont(new Font("맑은 고딕", Font.BOLD, 24));
 		fixed_1.setBounds(333, 46, 296, 40);
 		contentPane.add(fixed_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
 		scrollPane.setBounds(235, 131, 514, 316);
 		contentPane.add(scrollPane);
 		
@@ -63,14 +52,31 @@ public class Student_grade extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\uD559\uC218\uBC88\uD638", "\uACFC\uBAA9\uBA85", "\uC774\uC218\uAD6C\uBD84", "\uD559\uC810", "\uC131\uC801"
+				"학수번호", "과목명", "이수구분", "학점", "성적"
 			}
 		));
+		table.setBackground(Color.white);
 		scrollPane.setViewportView(table);
 		
-		JButton back_btn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		JButton back_btn = new JButton("뒤로가기");
+		// ActionListener
+		back_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Student_Main(vo.getId(), vo.getPw());
+			}
+		});
 		back_btn.setBounds(446, 492, 97, 23);
 		contentPane.add(back_btn);
+		
+		if(table.getRowCount() == 0) {
+			System.out.println("table is null");
+			setVisible(false);
+			JOptionPane.showMessageDialog(null, "성적 공시기간이 아닙니다.");
+			new Student_Main(vo.getId(), vo.getPw());
+		} else {
+			setVisible(true);
+		}
 	}
 
 }

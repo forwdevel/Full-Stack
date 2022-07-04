@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class MemberDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521/xe";
-	String user = "c##green";
-	String password = "green1234";
+	String url = "jdbc:oracle:thin:@112.154.60.127:1521/xe";
+	String user = "c##user";
+	String password = "oma0731";
 	
 	private Connection con;
 	private Statement stmt;
@@ -20,7 +20,7 @@ public class MemberDao {
 			connDB();
 			
 			String query = "SELECT * FROM MEMBER ";
-			query += "where id = '" + p.getId() + "' and pw = '" + p.getPw() + "'";
+			query += "where id = " + p.getId() + " and pw = '" + p.getPw() + "'";
 			System.out.println("SQL : " + query);
 			rs = stmt.executeQuery(query);
 			rs.last();
@@ -30,17 +30,20 @@ public class MemberDao {
 				System.out.println(":: Not Found ::");
 			} else {
 				String roll = rs.getString("roll");
-				if(roll.equalsIgnoreCase("staff")) {
+				if(roll.equalsIgnoreCase("교직원")) {
 					//staff
 					// 'LogIn' to 'Staff_Main'
+					System.out.println("교직원");
 					return 1;
-				} else if(roll.equalsIgnoreCase("student")) {
+				} else if(roll.equalsIgnoreCase("학생")) {
 					//student
 					// 'LogIn' to 'Student_Main'
+					System.out.println("학생");
 					return  2;
-				} else if (roll.equalsIgnoreCase("professor")) {
+				} else if (roll.equalsIgnoreCase("교수")) {
 					//professor
 					// 'LogIn' to 'Professor_Main'
+					System.out.println("교수");
 					return 3;
 				}
 				// Not Found

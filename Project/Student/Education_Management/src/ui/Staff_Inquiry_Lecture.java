@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +28,6 @@ public class Staff_Inquiry_Lecture extends JFrame {
 	private JButton remove_btn;
 	private JButton back_btn;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +41,6 @@ public class Staff_Inquiry_Lecture extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Staff_Inquiry_Lecture() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
@@ -53,7 +50,7 @@ public class Staff_Inquiry_Lecture extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixded_1 = new JLabel("\uACFC\uBAA9 \uC870\uD68C");
+		JLabel fixded_1 = new JLabel("과목 조회");
 		fixded_1.setFont(new Font("맑은 고딕", Font.BOLD, 24));
 		fixded_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixded_1.setBounds(353, 32, 227, 33);
@@ -69,15 +66,21 @@ public class Staff_Inquiry_Lecture extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\uD559\uC218\uBC88\uD638", "\uACFC\uBAA9\uBA85", "\uBD84\uBC18", "\uB2E8\uACFC", "\uC804\uACF5", "\uAC15\uC758\uC2E4", "\uC120\uD0DD"
+				"학수번호", "과목명", "분반", "단과", "전공", "강의실", "선택"
 			}
 		));
 		
-		remove_btn = new JButton("\uC0AD\uC81C");
+		remove_btn = new JButton("삭제");
 		remove_btn.setBounds(309, 504, 97, 23);
 		contentPane.add(remove_btn);
 		
-		back_btn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		back_btn = new JButton("뒤로가기");
+		back_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Staff_Main();
+			}
+		});
 		back_btn.setBounds(557, 504, 97, 23);
 		contentPane.add(back_btn);
 	}

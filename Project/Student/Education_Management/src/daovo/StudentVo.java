@@ -2,6 +2,7 @@ package daovo;
 
 public class StudentVo {
 	private int id;
+	private String pw;
 	private String name;
 	private String college;
 	private String major;
@@ -13,7 +14,7 @@ public class StudentVo {
 		
 	}
 
-	public StudentVo(int id, String name, String college, String major, int grade, int enroll, int credit) {
+	public StudentVo(int id, String pw, String name, String college, String major, int grade, int enroll, int credit) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,6 +23,7 @@ public class StudentVo {
 		this.grade = grade;
 		this.enroll = enroll;
 		this.credit = credit;
+		this.pw = pw;
 	}
 
 	public int getId() {
@@ -51,3 +53,8 @@ public class StudentVo {
 	public int getCredit() {
 		return credit;
 	}
+	
+	public String getPw() {
+		return pw;
+	}
+}

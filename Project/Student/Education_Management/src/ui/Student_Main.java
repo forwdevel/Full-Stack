@@ -22,25 +22,6 @@ public class Student_Main extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Student_Main frame = new Student_Main();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Student_Main(int id_txt, String pw_txt) {
 		StudentDao dao = new StudentDao();
 		StudentVo vo = dao.stu(id_txt, pw_txt);
@@ -50,20 +31,13 @@ public class Student_Main extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(Color.white);
-		Dimension frameSize = contentPane.getSize();
-		Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((windowSize.width - frameSize.width) / 2, (windowSize.height - frameSize.height) / 2);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel stu_name = new JLabel(vo.getName());
-		stu_name.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 32));
-		stu_name.setBounds(26, 22, 110, 69);
-		contentPane.add(stu_name);
-		
 		JLabel fixed_1 = new JLabel("\uD559\uC0DD,");
+		fixed_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 32));
-		fixed_1.setBounds(134, 22, 110, 69);
+		fixed_1.setBounds(179, 22, 110, 69);
 		contentPane.add(fixed_1);
 		
 		JLabel fixed_6 = new JLabel("\uD559\uBC88");
@@ -107,17 +81,6 @@ public class Student_Main extends JFrame {
 		fixed_3.setBounds(178, 353, 36, 43);
 		contentPane.add(fixed_3);
 		
-		JButton lecture_register = new JButton("\uC218\uAC15 \uC2E0\uCCAD");
-		lecture_register.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		lecture_register.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
-		lecture_register.setForeground(SystemColor.textHighlightText);
-		lecture_register.setBackground(SystemColor.textHighlight);
-		lecture_register.setBounds(56, 457, 110, 43);
-		contentPane.add(lecture_register);
-		
 		JLabel fixed_4 = new JLabel("\uC77C\uC815");
 		fixed_4.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -130,7 +93,34 @@ public class Student_Main extends JFrame {
 		fixed_5.setBounds(667, 288, 110, 43);
 		contentPane.add(fixed_5);
 		
-		JButton grade_inquiry = new JButton("\uC131\uC801 \uC870\uD68C");
+		JLabel stu_name = new JLabel(vo.getName());
+		stu_name.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 32));
+		stu_name.setBounds(26, 22, 154, 69);
+		contentPane.add(stu_name);
+		
+		JButton lecture_register = new JButton("¼ö°­ ½ÅÃ»");
+		// ActionListener
+		lecture_register.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Student_Enroll_Main(vo);
+			}
+		});
+		lecture_register.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		lecture_register.setForeground(SystemColor.textHighlightText);
+		lecture_register.setBackground(SystemColor.textHighlight);
+		lecture_register.setBounds(56, 457, 110, 43);
+		contentPane.add(lecture_register);
+		
+		JButton grade_inquiry = new JButton("¼ºÀû Á¶È¸");
+		// ActionListener
+		grade_inquiry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Student_Grade(vo);
+			}
+			
+		});
 		grade_inquiry.setForeground(Color.WHITE);
 		grade_inquiry.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		grade_inquiry.setBackground(SystemColor.textHighlight);
@@ -172,5 +162,7 @@ public class Student_Main extends JFrame {
 		credit.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		credit.setBounds(178, 312, 36, 43);
 		contentPane.add(credit);
+		
+		setVisible(true);
 	}
 }
