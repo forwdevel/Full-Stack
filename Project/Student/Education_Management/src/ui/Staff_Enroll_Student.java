@@ -18,34 +18,21 @@ import javax.swing.border.EmptyBorder;
 
 import daovo.EtcDao;
 import daovo.StudentDao;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+//
+//	complete
+//
 
 public class Staff_Enroll_Student extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField stu_id;
 	private JTextField stu_name;
 	private JTextField college;
 	private JTextField major;
+	private JTextField enroll;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Staff_Enroll_Student frame = new Staff_Enroll_Student();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Staff_Enroll_Student() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
@@ -55,47 +42,29 @@ public class Staff_Enroll_Student extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel fixed_1 = new JLabel("ÇĞ»ı µî·Ï");
+		JLabel fixed_1 = new JLabel("í•™ìƒ ë“±ë¡");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 36));
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 36));
 		fixed_1.setBounds(393, 66, 167, 49);
 		contentPane.add(fixed_1);
 
-		JLabel fixed_2 = new JLabel("ÇĞ¹ø");
-		fixed_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
-		fixed_2.setBounds(341, 208, 57, 23);
-		contentPane.add(fixed_2);
-
-		JLabel fixed_3 = new JLabel("ÀÌ¸§");
+		JLabel fixed_3 = new JLabel("í•™ìƒëª…");
 		fixed_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
+		fixed_3.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 18));
 		fixed_3.setBounds(341, 257, 57, 23);
 		contentPane.add(fixed_3);
 
-		JLabel fixed_5 = new JLabel("´Ü°ú");
+		JLabel fixed_5 = new JLabel("ë‹¨ê³¼");
 		fixed_5.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_5.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
+		fixed_5.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 18));
 		fixed_5.setBounds(341, 308, 57, 23);
 		contentPane.add(fixed_5);
 
-		JLabel fixed_6 = new JLabel("Àü°ø");
+		JLabel fixed_6 = new JLabel("ì „ê³µ");
 		fixed_6.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_6.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
+		fixed_6.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 18));
 		fixed_6.setBounds(341, 358, 57, 23);
 		contentPane.add(fixed_6);
-
-		JComboBox enroll_year = new JComboBox();
-		enroll_year.setBackground(Color.WHITE);
-		enroll_year.setModel(new DefaultComboBoxModel(new String[] { "ÀÔÇĞ³âµµ", "2022", "2021", "2020", "2019", "2018",
-				"2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010" }));
-		enroll_year.setBounds(514, 169, 75, 23);
-		contentPane.add(enroll_year);
-
-		stu_id = new JTextField();
-		stu_id.setBounds(410, 208, 179, 27);
-		stu_id.setColumns(10);
-		contentPane.add(stu_id);
 
 		stu_name = new JTextField();
 		stu_name.setColumns(10);
@@ -112,39 +81,22 @@ public class Staff_Enroll_Student extends JFrame {
 		major.setBounds(410, 358, 179, 27);
 		contentPane.add(major);
 
-		JButton enter_btn = new JButton("µî·Ï");
+		JButton enter_btn = new JButton("ë“±ë¡");
 		enter_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = 0;
-				int enroll = 0;
-				if (stu_id.getText().length() == 0) {
-					new Alert("ÇĞ¹øÀ» ÀÔ·ÂÇÏ½Ã¿À.");
+				if (enroll.getText().length() == 0) {
+					new Alert("ì…í•™ë…„ë„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					return;
 				} else if (stu_name.getText().length() == 0) {
-					new Alert("ÇĞ»ı¸íÀ» ÀÔ·ÂÇÏ½Ã¿À.");
+					new Alert("í•™ìƒëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					return;
 				} else if (college.getText().length() == 0) {
-					new Alert("´Ü°ú¸¦ ÀÔ·ÂÇÏ½Ã¿À.");
+					new Alert("ë‹¨ê³¼ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					return;
 				} else if (major.getText().length() == 0) {
-					new Alert("Àü°øÀ» ÀÔ·ÂÇÏ½Ã¿À.");
+					new Alert("ì „ê³µì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					return;
 				} else {
-					// id check
-					// 1. check format
-					try {
-						id = Integer.parseInt(stu_id.getText());
-					} catch (NumberFormatException e1) {
-						new Alert("ÇĞ¹øÀº ¼ıÀÚ¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.");
-						return; // Close Listener
-					}
-					// 2. check length
-					if (stu_id.getText().length() != 10) {
-						new Alert("ÇĞ»ıÀÇ ÇĞ¹øÀº 10ÀÚ¸®ÀÔ´Ï´Ù.");
-						stu_id.setText("");
-						return;
-					}
-
 					// major & college check
 					if (new EtcDao().inquiry(college.getText(), major.getText()) == -1) {
 						// not exist college
@@ -156,26 +108,12 @@ public class Staff_Enroll_Student extends JFrame {
 						return;
 					}
 
-					// enroll check
-					if (enroll_year.getSelectedIndex() == -1) {
-						// Doesn't selected anyone
-						new Alert("ÀÔÇĞ³âµµ¸¦ ¼±ÅÃÇÏ¼¼¿ä.");
-						return;
-					} else {
-						try {
-							enroll = Integer.valueOf((String) enroll_year.getSelectedItem());
-						} catch (Exception e2) {
-							e2.printStackTrace();
-							return;
-						}
-					}
-
-					boolean b = new StudentDao().enroll_stu(enroll, id, stu_name.getText(), college.getText(),
+					boolean b = new StudentDao().enroll_stu(Integer.parseInt(enroll.getText()), stu_name.getText(), college.getText(),
 							major.getText());
 
 					if (b) {
 						setVisible(false);
-						new Alert("µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.");
+						new Alert("ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						new Staff_Main();
 					}
 
@@ -185,7 +123,7 @@ public class Staff_Enroll_Student extends JFrame {
 		enter_btn.setBounds(386, 451, 65, 23);
 		contentPane.add(enter_btn);
 
-		JButton cancel_btn = new JButton("Ãë¼Ò");
+		JButton cancel_btn = new JButton("ì·¨ì†Œ");
 		cancel_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -194,5 +132,18 @@ public class Staff_Enroll_Student extends JFrame {
 		});
 		cancel_btn.setBounds(495, 451, 65, 23);
 		contentPane.add(cancel_btn);
+		
+		enroll = new JTextField();
+		enroll.setColumns(10);
+		enroll.setBounds(410, 209, 179, 27);
+		contentPane.add(enroll);
+		
+		JLabel fixed_3_1 = new JLabel("ì…í•™ë…„ë„");
+		fixed_3_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		fixed_3_1.setFont(new Font("Dialog", Font.BOLD, 18));
+		fixed_3_1.setBounds(299, 209, 99, 23);
+		contentPane.add(fixed_3_1);
+		
+		setVisible(true);
 	}
 }

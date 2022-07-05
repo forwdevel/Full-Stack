@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,113 +45,120 @@ public class Student_Enroll_Register extends JFrame {
 		
 		lec_year = new JTextField();
 		lec_year.setBounds(84, 48, 67, 30);
-		lec_year.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_year.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_year.setText("2022");
 		contentPane.add(lec_year);
 		lec_year.setColumns(10);
 		
 		JComboBox semester = new JComboBox();
-		semester.setModel(new DefaultComboBoxModel(new String[] {"2", "°Ü¿ï°èÀı", "1", "¿©¸§°èÀı"}));
+		semester.setModel(new DefaultComboBoxModel(new String[] {"2", "ï¿½Ü¿ï¿½ï¿½ï¿½ï¿½", "1", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"}));
 		semester.setBounds(165, 48, 75, 30);
-		semester.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		semester.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		semester.setToolTipText("");
 		contentPane.add(semester);
 		
-		JLabel fixed_7 = new JLabel("Çö °ü½Éµî·Ï ¹× ¼ö°­½ÅÃ» °ú¸ñ");
-		fixed_7.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		JLabel fixed_7 = new JLabel("ï¿½ï¿½ ï¿½ï¿½ï¿½Éµï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½");
+		fixed_7.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		fixed_7.setBounds(84, 188, 188, 15);
 		contentPane.add(fixed_7);
 		
-		JLabel fixed_1 = new JLabel("ÇĞÁ¡");
+		JLabel fixed_1 = new JLabel("ï¿½ï¿½ï¿½ï¿½");
 		fixed_1.setBounds(94, 98, 57, 15);
 		fixed_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_1);
 		
-		JLabel fixed_2 = new JLabel("ÇĞ¼ö¹øÈ£");
+		JLabel fixed_2 = new JLabel("ï¿½Ğ¼ï¿½ï¿½ï¿½È£");
 		fixed_2.setBounds(94, 130, 57, 15);
 		fixed_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_2);
 		
 		lec_credit = new JTextField();
 		lec_credit.setBounds(165, 88, 75, 30);
-		lec_credit.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_credit.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_credit.setColumns(10);
 		contentPane.add(lec_credit);
 		
 		lec_id = new JTextField();
 		lec_id.setBounds(165, 122, 75, 30);
-		lec_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_id.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_id.setColumns(10);
 		contentPane.add(lec_id);
 		
-		JLabel fixed_3 = new JLabel("ºĞ¹İ");
+		JLabel fixed_3 = new JLabel("ï¿½Ğ¹ï¿½");
 		fixed_3.setBounds(280, 98, 57, 15);
 		fixed_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_3.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_3);
 		
 		lec_div = new JTextField();
 		lec_div.setBounds(349, 88, 75, 30);
 		lec_div.setEnabled(false);
-		lec_div.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_div.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_div.setColumns(10);
 		contentPane.add(lec_div);
 		
 		JLabel fixed_4 = new JLabel("\uB2F4\uB2F9\uAD50\uC218");
 		fixed_4.setBounds(280, 58, 57, 15);
 		fixed_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_4.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_4);
 		
 		lec_pro = new JTextField();
 		lec_pro.setBounds(349, 48, 75, 30);
-		lec_pro.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_pro.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_pro.setColumns(10);
 		contentPane.add(lec_pro);
 		
-		JLabel fixed_5 = new JLabel("±³°ú¸ñ¸í");
+		JLabel fixed_5 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		fixed_5.setBounds(280, 130, 57, 15);
 		fixed_5.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_5.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_5.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_5);
 		
 		lec_name = new JTextField();
 		lec_name.setBounds(349, 122, 386, 30);
-		lec_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_name.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		lec_name.setColumns(10);
 		contentPane.add(lec_name);
 		
-		fixed_6 = new JLabel("ÀÌ¼ö±¸ºĞ");
+		fixed_6 = new JLabel("ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 		fixed_6.setBounds(487, 58, 57, 15);
 		fixed_6.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_6.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		fixed_6.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		contentPane.add(fixed_6);
 		
 		JComboBox lec_com = new JComboBox();
 		lec_com.setBounds(556, 48, 106, 30);
 		lec_com.setToolTipText("");
-		lec_com.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		lec_com.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		contentPane.add(lec_com);
 		
 		JComboBox college = new JComboBox();
 		college.setBounds(668, 48, 106, 30);
 		college.setToolTipText("");
-		college.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		college.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		contentPane.add(college);
 		
 		JComboBox major = new JComboBox();
 		major.setBounds(779, 48, 106, 30);
 		major.setToolTipText("");
-		major.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		major.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		contentPane.add(major);
 		
-		JButton inquiry_btn = new JButton("Á¶È¸");
+		JButton inquiry_btn = new JButton("ì¡°íšŒ");
+		inquiry_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(lec_credit.getText().equals("") || lec_pro.getText().equals("") || lec_id.getText().equals("") || lec_name.getText().equals("") ||) {
+					
+				}
+			}
+		});
 		inquiry_btn.setBounds(740, 122, 67, 30);
 		contentPane.add(inquiry_btn);
 		
-		JButton reset_btn = new JButton("ÃÊ±âÈ­");
+		JButton reset_btn = new JButton("ì´ˆê¸°í™”");
 		reset_btn.setBounds(810, 122, 75, 30);
 		contentPane.add(reset_btn);
 		
@@ -166,7 +172,7 @@ public class Student_Enroll_Register extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ÇĞ¼ö¹øÈ£", "±³°ú¸ñ¸í", "ÀÌ¼ö±¸ºĞ", "ÇĞÁ¡", "±³¼ö¸í", "°­ÀÇ½Ç", "ÇöÀç½ÅÃ»ÀÎ¿ø", "ÀÎ¿øÁ¦ÇÑ"
+					"í•™ìˆ˜ë²ˆí˜¸", "ì´ìˆ˜êµ¬ë¶„", "ê³¼ëª©ëª…", "êµìˆ˜ëª…", "í•™ì ", "ê°•ì˜ì‹¤", "ì¸ì›ì œí•œ", "í˜„ì¬ì¸ì›"
 			}
 		));
 		inquiry_table.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -190,7 +196,7 @@ public class Student_Enroll_Register extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ÇĞ¼ö¹øÈ£", "±³°ú¸ñ¸í", "ÀÌ¼ö±¸ºĞ", "ÇĞÁ¡", "±³¼ö¸í", "°­ÀÇ½Ç", "ÇöÀç½ÅÃ»ÀÎ¿ø", "ÀÎ¿øÁ¦ÇÑ"
+				"í•™ìˆ˜ë²ˆí˜¸", "ì´ìˆ˜êµ¬ë¶„", "ê³¼ëª©ëª…", "êµìˆ˜ëª…", "í•™ì ", "ê°•ì˜ì‹¤", "ì¸ì›ì œí•œ", "í˜„ì¬ì¸ì›"
 			}
 		));
 		enroll_table.setBorder(new LineBorder(new Color(0, 0, 0)));

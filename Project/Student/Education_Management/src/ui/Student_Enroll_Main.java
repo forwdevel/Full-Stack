@@ -28,59 +28,47 @@ public class Student_Enroll_Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("ÀÏÁ¤");
+		JLabel fixed_1 = new JLabel("ì¼ì •");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 20));
 		fixed_1.setBounds(129, 94, 84, 33);
 		contentPane.add(fixed_1);
 		
-		JLabel fixed_2 = new JLabel("¼ö°­½ÅÃ» ½Ã½ºÅÛ");
+		JLabel fixed_2 = new JLabel("ìˆ˜ê°•ì‹ ì²­ ì‹œìŠ¤í…œ");
 		fixed_2.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 24));
+		fixed_2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		fixed_2.setBounds(357, 42, 237, 64);
 		contentPane.add(fixed_2);
 		
-		JLabel fixed_3 = new JLabel("°øÁö»çÇ×");
+		JLabel fixed_3 = new JLabel("ê³µì§€ì‚¬í•­");
 		fixed_3.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		fixed_3.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 20));
 		fixed_3.setBounds(115, 368, 114, 33);
 		contentPane.add(fixed_3);
 		
-		JButton enroll_btn = new JButton("¼ö°­½ÅÃ» ¹× Á¶È¸");
+		JButton enroll_btn = new JButton("ìˆ˜ê°•ì‹ ì²­ ì¡°íšŒ ë° ë“±ë¡");
 		enroll_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Student_Enroll_Register(vo);
 			}
 		});
-		enroll_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		enroll_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 16));
 		enroll_btn.setBounds(645, 210, 252, 47);
 		contentPane.add(enroll_btn);
 		
-		JButton interest_btn = new JButton("°ü½É°ú¸ñ µî·Ï ¹× Á¶È¸");
+		JButton interest_btn = new JButton("ê´€ì‹¬ê³¼ëª© ì¡°íšŒ ë° ë“±ë¡");
 		interest_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Student_Enroll_Interest(vo);
 			}
 		});
-		interest_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		interest_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 16));
 		interest_btn.setBounds(645, 348, 252, 47);
 		contentPane.add(interest_btn);
 		
-		JLabel fixed_4 = new JLabel("¼ö°­½ÅÃ»");
-		fixed_4.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		fixed_4.setBounds(732, 159, 74, 15);
-		contentPane.add(fixed_4);
-		
-		JLabel fixed_5 = new JLabel("°ü½É°ú¸ñ");
-		fixed_5.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_5.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		fixed_5.setBounds(732, 311, 74, 15);
-		contentPane.add(fixed_5);
-		
-		JButton back_btn = new JButton("µÚ·Î°¡±â");
+		JButton back_btn = new JButton("ë’¤ë¡œê°€ê¸°");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

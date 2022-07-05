@@ -33,6 +33,11 @@ public class LogIn extends JFrame {
 	private JButton logIn_btn;
 	private JButton exit_btn;
 
+	Color c1 = new Color(95,113,97); 	// Dark Green
+	Color c2 = new Color(109,139,116);	// Ash Green
+	Color c3 = new Color(239,234,216);	// light meal
+	Color c4 = new Color(208,201,192);	// dark meal
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,63 +55,68 @@ public class LogIn extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
-		contentPane.setForeground(new Color(70, 130, 180));
+		contentPane.setForeground(c3);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setBackground(new Color(70, 130, 180));
+		contentPane.setBackground(c2);
 		setContentPane(contentPane);
 
-		final Font h1 = new Font("�޸յձ�������", Font.BOLD, 40);
-		final Font h2 = new Font("�޸յձ�������", Font.BOLD, 30);
-		final Font h3 = new Font("�޸յձ�������", Font.BOLD, 20);
+		final Font h1 = new Font("휴먼둥근헤드라인", Font.BOLD, 40);
+		final Font h2 = new Font("휴먼둥근헤드라인", Font.BOLD, 30);
+		final Font h3 = new Font("휴먼둥근헤드라인", Font.BOLD, 20);
 
 		getContentPane().setLayout(null);
 		contentPane.setLayout(null);
 
 		pw = new JPasswordField();
-		pw.setBounds(399, 300, 224, 41);
+		pw.setFont(new Font("굴림", Font.PLAIN, 30));
+		pw.setBounds(420, 311, 224, 41);
 		pw.setBorder(null);
 		pw.setColumns(10);
+		pw.setBackground(c2);
+		pw.setForeground(c3);
 		getContentPane().add(pw);
 
 		id = new JTextField();
 		id.setFont(h3);
 		id.setColumns(10);
-		id.setBounds(399, 234, 224, 41);
+		id.setBounds(420, 248, 224, 41);
 		id.setBorder(null);
+		id.setBackground(c2);
+		id.setForeground(c3);
 		getContentPane().add(id);
 
-		JLabel fixed_1 = new JLabel("�л���� �ý���");
-		fixed_1.setForeground(new Color(255, 255, 255));
+		JLabel fixed_1 = new JLabel("학사관리시스템");
+		fixed_1.setForeground(c3);
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setBounds(333, 131, 311, 75);
-		fixed_1.setFont(new Font("�޸յձ�������", Font.PLAIN, 40));
+		fixed_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
 		getContentPane().add(fixed_1);
 
 		fixed_2 = new JLabel("No.");
-		fixed_2.setForeground(new Color(255, 255, 255));
+		fixed_2.setForeground(c3);
 		fixed_2.setBounds(333, 247, 57, 28);
 		fixed_2.setHorizontalAlignment(JLabel.RIGHT);
 		fixed_2.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		getContentPane().add(fixed_2);
 
 		fixed_3 = new JLabel("PW");
-		fixed_3.setForeground(new Color(255, 255, 255));
+		fixed_3.setForeground(c3);
 		fixed_3.setBounds(330, 313, 57, 28);
 		fixed_3.setHorizontalAlignment(JLabel.RIGHT);
 		fixed_3.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		getContentPane().add(fixed_3);
 
-		logIn_btn = new JButton("�α���");
+		logIn_btn = new JButton("로그인");
 		logIn_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// staff , professor, student
 				MemberDao dao = new MemberDao();
 				if (id.getText().equals("")) {
 					// Null Id
-					new Alert("���̵� �Է��ϼ���.");
+					new Alert("아이디를 입력해주세요.");
 				} else if (pw.getText().equals("")) {
 					// Null pw
-					new Alert("��й�ȣ�� �Է��ϼ���.");
+					new Alert("비밀번호를 입력해주세요.");
 				} else {
 					// System Log
 					System.out.println(pw.getText());
@@ -120,7 +130,7 @@ public class LogIn extends JFrame {
 					setVisible(false);
 					if (b == 0) {
 						System.out.println("b==0");
-						new Alert("���̵� �� ��й�ȣ�� ��ġ���� �ʽ��ϴ�.");
+						new Alert("존재하지 않는 정보입니다.");
 					}
 					// Open new window
 					else if (b == 1) {
@@ -134,22 +144,22 @@ public class LogIn extends JFrame {
 			}
 		});
 
-		logIn_btn.setFont(new Font("�޸յձ�������", Font.PLAIN, 16));
-		logIn_btn.setForeground(SystemColor.textHighlight);
-		logIn_btn.setBackground(new Color(255, 255, 255));
+		logIn_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		logIn_btn.setForeground(c1);
+		logIn_btn.setBackground(c3);
 		logIn_btn.setBorder(null);
 		logIn_btn.setBounds(330, 399, 97, 41);
 		contentPane.add(logIn_btn);
 
-		exit_btn = new JButton("����");
+		exit_btn = new JButton("종료");
 		exit_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		exit_btn.setFont(new Font("�޸յձ�������", Font.PLAIN, 16));
-		exit_btn.setBackground(SystemColor.controlDkShadow);
-		exit_btn.setForeground(SystemColor.window);
+		exit_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		exit_btn.setBackground(c1);
+		exit_btn.setForeground(c3);
 		exit_btn.setBorder(null);
 		exit_btn.setBounds(560, 399, 97, 41);
 		contentPane.add(exit_btn);

@@ -16,6 +16,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import daovo.ProfessorDao;
+
+//
+//	complete
+//
+
 public class Staff_Inquiry_Professor extends JFrame {
 
 	private JPanel contentPane;
@@ -45,8 +51,8 @@ public class Staff_Inquiry_Professor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("±³¼ö Á¶È¸");
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 24));
+		JLabel fixed_1 = new JLabel("êµìˆ˜ ì¡°íšŒ");
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setBounds(353, 32, 227, 33);
 		contentPane.add(fixed_1);
@@ -58,18 +64,24 @@ public class Staff_Inquiry_Professor extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			new ProfessorDao().allProfessor(),
 			new String[] {
-				"±³¼ö¹øÈ£", "ÀÌ¸§", "´Ü°ú", "Àü°ø", "ÀÓ¿ë³âµµ", "¼±ÅÃ"
+				"êµìˆ˜ë²ˆí˜¸", "êµìˆ˜ëª…", "ë‹¨ê³¼", "ì „ê³µ"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
 		
-		remove_btn = new JButton("»èÁ¦");
+		remove_btn = new JButton("ì‚­ì œ");
 		remove_btn.setBounds(309, 504, 97, 23);
 		contentPane.add(remove_btn);
 		
-		back_btn = new JButton("µÚ·Î°¡±â");
+		back_btn = new JButton("ë’¤ë¡œê°€ê¸°");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -78,5 +90,7 @@ public class Staff_Inquiry_Professor extends JFrame {
 		});
 		back_btn.setBounds(557, 504, 97, 23);
 		contentPane.add(back_btn);
+		
+		setVisible(true);
 	}
 }

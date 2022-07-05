@@ -23,11 +23,11 @@ import daovo.StudentVo;
 
 import javax.swing.JButton;
 
-public class Student_Grade extends JFrame {
+public class Student_grade extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	
-	public Student_Grade(StudentVo vo) {
+	public Student_grade(StudentVo vo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -36,15 +36,15 @@ public class Student_Grade extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("2022³â 2ÇĞ±â");
-		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 24));
+		JLabel fixed_1 = new JLabel("2022ë…„ ì—¬ë¦„ê³„ì ˆ");
 		fixed_1.setBounds(333, 46, 296, 40);
+		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		contentPane.add(fixed_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(Color.WHITE);
 		scrollPane.setBounds(235, 131, 514, 316);
+		scrollPane.setBackground(Color.WHITE);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -52,13 +52,14 @@ public class Student_Grade extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ÇĞ¼ö¹øÈ£", "°ú¸ñ¸í", "ÀÌ¼ö±¸ºĞ", "ÇĞÁ¡", "¼ºÀû"
+				"í•™ìˆ˜ë²ˆí˜¸", "ê³¼ëª©ëª…", "êµìˆ˜ëª…", "í•™ì ", "ì„±ì "
 			}
 		));
 		table.setBackground(Color.white);
 		scrollPane.setViewportView(table);
 		
-		JButton back_btn = new JButton("µÚ·Î°¡±â");
+		JButton back_btn = new JButton("ë’¤ë¡œê°€ê¸°");
+		back_btn.setBounds(446, 492, 97, 23);
 		// ActionListener
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -66,17 +67,15 @@ public class Student_Grade extends JFrame {
 				new Student_Main(vo.getId(), vo.getPw());
 			}
 		});
-		back_btn.setBounds(446, 492, 97, 23);
 		contentPane.add(back_btn);
 		
-		if(table.getRowCount() == 0) {
+		if(table.getComponentCount() == 0) {
 			System.out.println("table is null");
 			setVisible(false);
-			JOptionPane.showMessageDialog(null, "¼ºÀû °ø½Ã±â°£ÀÌ ¾Æ´Õ´Ï´Ù.");
+			new Alert("ì„±ì ê³µì‹œê¸°ê°„ì´ ì•„ë‹™ë‹ˆë‹¤.");
 			new Student_Main(vo.getId(), vo.getPw());
 		} else {
 			setVisible(true);
 		}
 	}
-
 }

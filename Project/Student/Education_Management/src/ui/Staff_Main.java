@@ -47,25 +47,25 @@ public class Staff_Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("±³Á÷¿ø ½Ã½ºÅÛ");
+		JLabel fixed_1 = new JLabel("êµì§ì› ì‹œìŠ¤í…œ");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 36));
+		fixed_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 36));
 		fixed_1.setBounds(272, 56, 397, 49);
 		contentPane.add(fixed_1);
 		
-		JButton enter_stu_btn = new JButton("ÇĞ»ı µî·Ï");
+		JButton enter_stu_btn = new JButton("í•™ìƒ ë“±ë¡");
 		enter_stu_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				new Staff_Enroll_Student();
+				setVisible(false);
 			}
 		});
-		enter_stu_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		enter_stu_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		enter_stu_btn.setBounds(361, 211, 214, 23);
 		contentPane.add(enter_stu_btn);
 		
-		JButton enter_pro_btn = new JButton("±³¼ö µî·Ï");
-		enter_pro_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		JButton enter_pro_btn = new JButton("êµìˆ˜ ë“±ë¡");
+		enter_pro_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		enter_pro_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -75,46 +75,46 @@ public class Staff_Main extends JFrame {
 		enter_pro_btn.setBounds(361, 256, 214, 23);
 		contentPane.add(enter_pro_btn);
 		
-		JButton inquiry_stu_btn = new JButton("ÇĞ»ı Á¶È¸");
+		JButton inquiry_stu_btn = new JButton("í•™ìƒ ì¡°íšŒ");
 		inquiry_stu_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Staff_Inquiry_Student();
 			}
 		});
-		inquiry_stu_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		inquiry_stu_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		inquiry_stu_btn.setForeground(SystemColor.window);
 		inquiry_stu_btn.setBackground(SystemColor.controlShadow);
 		inquiry_stu_btn.setBounds(361, 304, 214, 23);
 		contentPane.add(inquiry_stu_btn);
 		
-		JButton inquiry_pro_btn = new JButton("±³¼ö Á¶È¸");
+		JButton inquiry_pro_btn = new JButton("êµìˆ˜ ì¡°íšŒ");
 		inquiry_pro_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Staff_Inquiry_Professor();
 			}
 		});
-		inquiry_pro_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		inquiry_pro_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		inquiry_pro_btn.setForeground(SystemColor.window);
 		inquiry_pro_btn.setBackground(SystemColor.controlShadow);
 		inquiry_pro_btn.setBounds(361, 351, 214, 23);
 		contentPane.add(inquiry_pro_btn);
 		
-		JButton inquiry_lec_btn = new JButton("°ú¸ñ Á¶È¸");
+		JButton inquiry_lec_btn = new JButton("ê³¼ëª© ì¡°íšŒ");
 		inquiry_lec_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Staff_Inquiry_Lecture();
 			}
 		});
-		inquiry_lec_btn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		inquiry_lec_btn.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		inquiry_lec_btn.setForeground(SystemColor.window);
 		inquiry_lec_btn.setBackground(SystemColor.controlShadow);
 		inquiry_lec_btn.setBounds(361, 397, 214, 23);
 		contentPane.add(inquiry_lec_btn);
 		
-		JButton back_btn = new JButton("µÚ·Î°¡±â");
+		JButton back_btn = new JButton("ë’¤ë¡œê°€ê¸°");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -123,6 +123,7 @@ public class Staff_Main extends JFrame {
 		});
 		back_btn.setBounds(420, 489, 97, 23);
 		contentPane.add(back_btn);
+		setVisible(true);
 	}
 
 }
