@@ -29,7 +29,7 @@ public class EtcDao {
 			rs.last();
 			
 			if(rs.getRow() == 0) {
-				new Alert("Á¸ÀçÇÏÁö ¾Ê´Â ´Ü°úÀÔ´Ï´Ù.");
+				new Alert("ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ë‹¨ê³¼ìž…ë‹ˆë‹¤.");
 				return -1;
 			} else {
 				query = "select * from major where college = '" + college + "' and major = '"+major+"'";
@@ -39,7 +39,7 @@ public class EtcDao {
 				rs.last();
 				
 				if(rs.getRow() == 0) {
-					new Alert("Á¸ÀçÇÏÁö ¾Ê´Â Àü°øÀÔ´Ï´Ù.");
+					new Alert("ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ì „ê³µìž…ë‹ˆë‹¤.");
 					return -2;
 				}
 			}
@@ -49,6 +49,62 @@ public class EtcDao {
 		}
 		
 		return 0;
+	}
+	
+	// Return major
+	public String returnMajor(String major) {
+		String result = "";
+		try {
+			connDB();
+			
+			String query = "select * from major where major = '" + major + "'";
+			System.out.println("returnMajor SQL : " +query);
+			rs = stmt.executeQuery(query);
+			rs.last();
+			
+			System.out.println("getRow() : " + rs.getRow());
+			
+			if(rs.getRow() != 0) {
+				result = rs.getString("id");
+				System.out.println("result : " + result);
+			}
+		}catch (Exception e) {
+			
+		}
+		return result;
+	}
+	
+	public Object[][] interestInquery(String query) {
+		try {
+			connDB();
+			rs = stmt.executeQuery(query);
+			rs.last();
+			int n = rs.getRow();
+			System.out.println("row : " + n);
+			int i = 0;
+			
+			Object[][] object = new Object[n][8];
+			
+			rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				object[i][0] = rs.getString("id");
+				object[i][1] = rs.getString("com");
+				object[i][2] = rs.getString("name");
+				object[i][3] = rs.getString("professor");
+				object[i][4] = rs.getInt("credit");
+				object[i][5] = rs.getString("room");
+				object[i][6] = rs.getString("limit");
+				object[i][7] = rs.getString("current");
+				i++;
+			}
+			
+			return object;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Object[][] temp = {};
+		return temp;
 	}
 	
 	public void connDB() {

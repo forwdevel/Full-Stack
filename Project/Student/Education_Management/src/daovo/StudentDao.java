@@ -51,30 +51,82 @@ public class StudentDao {
 		return new StudentVo();
 	}
 	
-	public boolean enroll_stu(int enroll, int id, String name, String college, String major) {
-		// ¡§ªÛ¿€µø
+	public boolean enroll_stu(int enroll, String name, String college, String major) {
 		try {
 			connDB();
+			String id = "" + enroll;
 			
-			String query = "insert into student values ("
+			String query = "select * from student where major = '" +major + "' and enroll = " + enroll;
+			rs = stmt.executeQuery(query);
+			rs.last();
+			System.out.println("inqury SQL : " + query);
+			System.out.println("row : " + rs.getRow());
+			
+			id += new EtcDao().returnMajor(major);
+			
+			if((rs.getRow() + 1) < 10) {
+				id += "00" + (rs.getRow()+1);
+			} else if((rs.getRow() + 1) < 100) {
+				id += "0" + (rs.getRow()+1);
+			} else if ((rs.getRow() + 1) < 1000) {
+				id += (rs.getRow() + 1);
+			} else {
+				new Alert("Ï†ÑÍ≥µÎãπ 999Î™ÖÍπåÏßÄ ÏûÖÎ†•Ïù¥ Í∞ÄÎä•Ìï©ÎãàÎã§.");
+				return false;
+			}
+			
+			query = "insert into student values ("
 					+ id + ", '" + name +"', '" + college + "', '" + major + "', " + 1 + ", " + enroll + ", " + 0 + ", '1234')";
 			
 			System.out.println("Query : " + query);
 			rs = stmt.executeQuery(query);
 			
 			query = "insert into member values ("
-					+ id + ", '" + name + "', '«–ª˝', '1234')";
+					+ id + ", '" + name + "', 'ÌïôÏÉù', '1234')";
 
 			System.out.println("Query : " + query);
 			rs = stmt.executeQuery(query);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			new Alert("«ÿ¥Á «–π¯¿« «–ª˝¿Ã ¿ÃπÃ ¡∏¿Á«’¥œ¥Ÿ.");
+			new Alert("Ìï¥Îãπ ÌïôÎ≤àÏùò ÌïôÏÉùÏù¥ Ïù¥ÎØ∏ Ï°¥Ïû¨Ìï©ÎãàÎã§.");
 			return false;
 		}
 		
 		return true;
+	}
+	
+	public Object[][] allStudent() {
+		try {
+			connDB();
+			
+			String query = "select * from student";
+			rs = stmt.executeQuery(query);
+			rs.last();
+			
+			int n = rs.getRow();
+			int i = 0;
+			
+			Object[][] object = new Object[n][6];
+
+			rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				object[i][0] = rs.getString("id");
+				object[i][1] = rs.getString("name");
+				object[i][2] = rs.getString("college");
+				object[i][3] = rs.getString("major");
+				object[i][4] = rs.getInt("grade");
+				object[i][5] = rs.getInt("enroll");
+				i++;
+			}
+			
+			return object;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Object[][] temp = {};
+		return temp;
 	}
 	
 	public void connDB() {

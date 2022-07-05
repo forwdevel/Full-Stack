@@ -8,6 +8,12 @@ public class StaffVo {
 	public StaffVo() {
 		
 	}
+	
+	public StaffVo(int id, String name, int enroll) {
+		this.id = id;
+		this.name = name;
+		this.enroll = enroll;
+	}
 
 	public int getId() {
 		return id;

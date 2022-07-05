@@ -49,26 +49,79 @@ public class ProfessorDao {
 		return new ProfessorVo();
 	}
 	
-	public boolean enroll_pro(int id, String name, String college, String major, int enroll) {
+	public boolean enroll_pro(String name, String college, String major, int enroll) {
 		try {
+			String id = "";
 			connDB();
 			
-			String query = "insert into professor values("+id + ", '"+name+"', '" + college + "', '"+major+"'," + enroll +",'1234')";
+			String query = "select * from professor where major = '" + major +"'";
+			rs = stmt.executeQuery(query);
+			rs.last();
+			System.out.println("inquiry SQL : " + query);
+			System.out.println(major + "'s professor : " + rs.getRow());
+			
+			id = new EtcDao().returnMajor(major);
+			
+			if((rs.getRow() + 1) < 10) {
+				id += "0" + (rs.getRow() + 1);
+			} else if (rs.getRow() < 100){
+				id += (rs.getRow() + 1);
+			} else {
+				new Alert("ì „ê³µë‹¹ 99ëª…ê¹Œì§€ ìž…ë ¥ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+				return false;
+			}
+			
+			query = "insert into professor values("+id + ", '"+name+"', '" + college + "', '"+major+"'," + enroll +",'1234')";
+			
 			rs = stmt.executeQuery(query);
 			System.out.println("Insert Into Professor SQL : "+query);
 			
-			query = "insert into member values(" + id + ", '" + name +"', '"+ college + "', '"+ major +"', "+ enroll+ ", '1234')";
+			query = "insert into member values(" + id + ", '" + name +"', 'êµìˆ˜', '1234')";
+			
 			rs = stmt.executeQuery(query);
 			System.out.println("Insert Into Member SQL : "+query);
+		
 		} catch(Exception e) {
-			new Alert("ÇØ´ç ±³¹øÀÇ ±³¼ö°¡ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù.");
+			new Alert("í•´ë‹¹ êµë²ˆì˜ êµìˆ˜ê°€ ì´ë¯¸ ì¡´ìž¬í•©ë‹ˆë‹¤.");
 			e.printStackTrace();
 			return false;
 		}
 		
 		return true;
 	}
-	
+
+	public Object[][] allProfessor() {
+		try {
+			connDB();
+			
+			String query = "select * from professor";
+			System.out.println("\nSQL : " + query);
+			rs = stmt.executeQuery(query);
+			rs.last();
+			
+			int n = rs.getRow();
+			int i = 0;
+			
+			Object[][] object = new Object[n][4];
+			
+			rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				object[i][0] = rs.getString("id");
+				object[i][1] = rs.getString("name");
+				object[i][2] = rs.getString("college");
+				object[i][3] = rs.getString("major");
+				i++;
+			}
+			
+			return object;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		Object[][] temp = {};
+		return temp;
+	}
 	
 	public void connDB() {
 		try {
@@ -76,7 +129,7 @@ public class ProfessorDao {
 			System.out.println("jdbc driver loading success.");
 			con = DriverManager.getConnection(url, user, password);
 			System.out.println("oracle connection success.");
-			stmt = con.createStatement();
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			System.out.println("statement create success.");
 		} catch(Exception e) {
 			e.printStackTrace();

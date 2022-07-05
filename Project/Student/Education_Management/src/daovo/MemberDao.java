@@ -30,20 +30,20 @@ public class MemberDao {
 				System.out.println(":: Not Found ::");
 			} else {
 				String roll = rs.getString("roll");
-				if(roll.equalsIgnoreCase("±³Á÷¿ø")) {
+				if(roll.equalsIgnoreCase("êµì§ì›")) {
 					//staff
 					// 'LogIn' to 'Staff_Main'
-					System.out.println("±³Á÷¿ø");
+					System.out.println("roll : êµì§ì›");
 					return 1;
-				} else if(roll.equalsIgnoreCase("ÇĞ»ı")) {
+				} else if(roll.equalsIgnoreCase("í•™ìƒ")) {
 					//student
 					// 'LogIn' to 'Student_Main'
-					System.out.println("ÇĞ»ı");
+					System.out.println("roll : í•™ìƒ");
 					return  2;
-				} else if (roll.equalsIgnoreCase("±³¼ö")) {
+				} else if (roll.equalsIgnoreCase("êµìˆ˜")) {
 					//professor
 					// 'LogIn' to 'Professor_Main'
-					System.out.println("±³¼ö");
+					System.out.println("roll : êµìˆ˜");
 					return 3;
 				}
 				// Not Found
