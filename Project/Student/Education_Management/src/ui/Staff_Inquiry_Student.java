@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import daovo.StudentDao;
 
 //
-//	complete
+//	테이블 값 수정
 //
 
 public class Staff_Inquiry_Student extends JFrame {
@@ -29,32 +28,25 @@ public class Staff_Inquiry_Student extends JFrame {
 	private JButton remove_btn;
 	private JButton back_btn;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Staff_Inquiry_Student frame = new Staff_Inquiry_Student();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	Color c1 = new Color(95,113,97); 	// Dark Green
+	Color c2 = new Color(109,139,116);	// Ash Green
+	Color c3 = new Color(239,234,216);	// light meal
+	Color c4 = new Color(208,201,192);	// dark meal
 
 	public Staff_Inquiry_Student() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setBackground(Color.white);
+		contentPane.setBackground(c2);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel fixed_1 = new JLabel("학생 조회");
-		fixed_1.setFont(new Font("���� ���", Font.BOLD, 24));
+		fixed_1.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setBounds(353, 32, 227, 33);
+		fixed_1.setForeground(c3);
 		contentPane.add(fixed_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -62,14 +54,10 @@ public class Staff_Inquiry_Student extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.setBackground(c3);
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"2021008001", "\uD14C\uC2A4\uD2B82", "\uACFC\uD559\uAE30\uC220\uB300\uD559", "\uC804\uC790\uBC0F\uC815\uBCF4\uACF5\uD559\uACFC", new Integer(1), new Integer(2021)},
-				{"2022008002", "\uD14C\uC2A4\uD2B8", "\uACFC\uD559\uAE30\uC220\uB300\uD559", "\uC804\uC790\uBC0F\uC815\uBCF4\uACF5\uD559\uACFC", new Integer(1), new Integer(2022)},
-				{"2016001001", "\uAE40\uCCA0\uC218", "\uC2A4\uB9C8\uD2B8\uB3C4\uC2DC\uD559\uBD80", "\uC2A4\uB9C8\uD2B8\uB3C4\uC2DC\uD559\uBD80", new Integer(1), new Integer(2016)},
-				{"2022008001", "\uD14C\uC2A4\uD2B8", "\uACFC\uD559\uAE30\uC220\uB300\uD559", "\uC804\uC790\uBC0F\uC815\uBCF4\uACF5\uD559\uACFC", new Integer(1), new Integer(2022)},
-			},
+			new StudentDao().allStudent(),
 			new String[] {
 				"\uD559\uBC88", "\uD559\uC0DD\uBA85", "\uB2E8\uACFC", "\uC804\uACF5", "\uD559\uB144", "\uC785\uD559\uB144\uB3C4"
 			}
@@ -87,18 +75,18 @@ public class Staff_Inquiry_Student extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(15);
 		table.getColumnModel().getColumn(5).setPreferredWidth(50);
 		
-		remove_btn = new JButton("삭제");
-		remove_btn.setBounds(309, 504, 97, 23);
-		contentPane.add(remove_btn);
-		
 		back_btn = new JButton("뒤로가기");
+		back_btn.setBackground(c1);
+		back_btn.setForeground(c3);
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Staff_Main();
 			}
 		});
-		back_btn.setBounds(557, 504, 97, 23);
+		back_btn.setBounds(421, 505, 97, 23);
 		contentPane.add(back_btn);
+		
+		setVisible(true);
 	}
 }

@@ -14,42 +14,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
+//
+//	complete
+//
+
 @SuppressWarnings("serial")
 public class Staff_Main extends JFrame {
 
+	Color c1 = new Color(95,113,97); 	// Dark Green
+	Color c2 = new Color(109,139,116);	// Ash Green
+	Color c3 = new Color(239,234,216);	// light meal
+	Color c4 = new Color(208,201,192);	// dark meal
+
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Staff_Main frame = new Staff_Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Staff_Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setBackground(Color.white);
+		contentPane.setBackground(c2);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel fixed_1 = new JLabel("교직원 시스템");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setFont(new Font("���� ���", Font.BOLD, 36));
+		fixed_1.setForeground(c3);
 		fixed_1.setBounds(272, 56, 397, 49);
 		contentPane.add(fixed_1);
 		
@@ -62,6 +53,9 @@ public class Staff_Main extends JFrame {
 		});
 		enter_stu_btn.setFont(new Font("���� ���", Font.BOLD, 14));
 		enter_stu_btn.setBounds(361, 211, 214, 23);
+		enter_stu_btn.setBackground(c3);
+		enter_stu_btn.setForeground(c1);
+		enter_stu_btn.setBorder(null);
 		contentPane.add(enter_stu_btn);
 		
 		JButton enter_pro_btn = new JButton("교수 등록");
@@ -73,6 +67,9 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		enter_pro_btn.setBounds(361, 256, 214, 23);
+		enter_pro_btn.setBackground(c3);
+		enter_pro_btn.setForeground(c1);
+		enter_pro_btn.setBorder(null);
 		contentPane.add(enter_pro_btn);
 		
 		JButton inquiry_stu_btn = new JButton("학생 조회");
@@ -83,8 +80,9 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		inquiry_stu_btn.setFont(new Font("���� ���", Font.BOLD, 14));
-		inquiry_stu_btn.setForeground(SystemColor.window);
-		inquiry_stu_btn.setBackground(SystemColor.controlShadow);
+		inquiry_stu_btn.setBackground(c1);
+		inquiry_stu_btn.setForeground(c3);
+		inquiry_stu_btn.setBorder(null);
 		inquiry_stu_btn.setBounds(361, 304, 214, 23);
 		contentPane.add(inquiry_stu_btn);
 		
@@ -96,8 +94,9 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		inquiry_pro_btn.setFont(new Font("���� ���", Font.BOLD, 14));
-		inquiry_pro_btn.setForeground(SystemColor.window);
-		inquiry_pro_btn.setBackground(SystemColor.controlShadow);
+		inquiry_pro_btn.setBackground(c1);
+		inquiry_pro_btn.setForeground(c3);
+		inquiry_pro_btn.setBorder(null);
 		inquiry_pro_btn.setBounds(361, 351, 214, 23);
 		contentPane.add(inquiry_pro_btn);
 		
@@ -109,8 +108,9 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		inquiry_lec_btn.setFont(new Font("���� ���", Font.BOLD, 14));
-		inquiry_lec_btn.setForeground(SystemColor.window);
-		inquiry_lec_btn.setBackground(SystemColor.controlShadow);
+		inquiry_lec_btn.setBackground(c1);
+		inquiry_lec_btn.setForeground(c3);
+		inquiry_lec_btn.setBorder(null);
 		inquiry_lec_btn.setBounds(361, 397, 214, 23);
 		contentPane.add(inquiry_lec_btn);
 		
@@ -122,6 +122,9 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		back_btn.setBounds(420, 489, 97, 23);
+		back_btn.setBackground(c1);
+		back_btn.setForeground(c3);
+		back_btn.setBorder(null);
 		contentPane.add(back_btn);
 		setVisible(true);
 	}

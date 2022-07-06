@@ -26,20 +26,23 @@ import javax.swing.JButton;
 public class Student_grade extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
+	private Object[][] object;
 	
 	public Student_grade(StudentVo vo) {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(Color.white);
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setContentPane(contentPane);
+
 		
 		JLabel fixed_1 = new JLabel("2022년 여름계절");
 		fixed_1.setBounds(333, 46, 296, 40);
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("���� ���", Font.BOLD, 24));
+		fixed_1.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
 		contentPane.add(fixed_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -69,11 +72,11 @@ public class Student_grade extends JFrame {
 		});
 		contentPane.add(back_btn);
 		
-		if(table.getComponentCount() == 0) {
+		if(object == null) {
 			System.out.println("table is null");
 			setVisible(false);
+			new Student_Main(vo.getId());
 			new Alert("성적공시기간이 아닙니다.");
-			new Student_Main(vo.getId(), vo.getPw());
 		} else {
 			setVisible(true);
 		}

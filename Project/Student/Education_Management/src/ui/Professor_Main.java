@@ -22,9 +22,7 @@ import javax.swing.UIManager;
 @SuppressWarnings("serial")
 public class Professor_Main extends JFrame {
 	private JPanel contentPane;
-	public Professor_Main(int id_txt, String pw_txt) {
-		ProfessorDao dao = new ProfessorDao();
-		ProfessorVo vo = dao.pro(id_txt, pw_txt);
+	public Professor_Main(ProfessorVo vo) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);

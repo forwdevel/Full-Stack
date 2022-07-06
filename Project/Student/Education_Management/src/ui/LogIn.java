@@ -1,27 +1,32 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import daovo.MemberDao;
 import daovo.MemberVo;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import daovo.ProfessorDao;
+import daovo.ProfessorVo;
+import daovo.StudentDao;
+import daovo.StudentVo;
+
+//
+//	complete
+//
 
 @SuppressWarnings("serial")
 public class LogIn extends JFrame {
@@ -52,6 +57,7 @@ public class LogIn extends JFrame {
 	}
 
 	public LogIn() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -68,18 +74,64 @@ public class LogIn extends JFrame {
 		contentPane.setLayout(null);
 
 		pw = new JPasswordField();
+		pw.setHorizontalAlignment(SwingConstants.CENTER);
 		pw.setFont(new Font("굴림", Font.PLAIN, 30));
-		pw.setBounds(420, 311, 224, 41);
+		pw.setBounds(402, 310, 224, 41);
 		pw.setBorder(null);
 		pw.setColumns(10);
 		pw.setBackground(c2);
 		pw.setForeground(c3);
+		pw.addKeyListener(new KeyListener() {
+			public void keyTyped(KeyEvent e) {}
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == 10) {
+					// staff , professor, student
+					MemberDao dao = new MemberDao();
+					if (id.getText().equals("")) {
+						// Null Id
+						new Alert("아이디를 입력해주세요.");
+					} else if (pw.getText().equals("")) {
+						// Null pw
+						new Alert("비밀번호를 입력해주세요.");
+					} else {
+						// System Log
+						System.out.println(pw.getText());
+						System.out.println(id.getText());
+
+						// Check roll
+						MemberVo vo = new MemberVo(id.getText(), pw.getText());
+						int b = dao.list(vo);
+
+						// Close window
+						if (b == 0) {
+							System.out.println("b==0");
+							new Alert("존재하지 않는 정보입니다.");
+						}
+						// Open new window
+						else if (b == 1) {
+							setVisible(false);
+							new Staff_Main();
+						} else if (b == 2) {
+							setVisible(false);
+							StudentVo vo1 = new StudentDao().stu(id.getText());
+							new Student_Main(vo1);
+						} else if (b == 3) {
+							setVisible(false);
+							ProfessorVo vo1 = new ProfessorDao().pro(id.getText());
+							new Professor_Main(vo1);
+						}
+					}
+				}
+			}
+			public void keyReleased(KeyEvent e) {}
+		});
 		getContentPane().add(pw);
 
 		id = new JTextField();
+		id.setHorizontalAlignment(SwingConstants.CENTER);
 		id.setFont(h3);
 		id.setColumns(10);
-		id.setBounds(420, 248, 224, 41);
+		id.setBounds(402, 247, 224, 41);
 		id.setBorder(null);
 		id.setBackground(c2);
 		id.setForeground(c3);
@@ -123,22 +175,26 @@ public class LogIn extends JFrame {
 					System.out.println(id.getText());
 
 					// Check roll
-					MemberVo vo = new MemberVo(Integer.parseInt(id.getText()), pw.getText());
+					MemberVo vo = new MemberVo(id.getText(), pw.getText());
 					int b = dao.list(vo);
 
 					// Close window
-					setVisible(false);
 					if (b == 0) {
 						System.out.println("b==0");
 						new Alert("존재하지 않는 정보입니다.");
 					}
 					// Open new window
 					else if (b == 1) {
+						setVisible(false);
 						new Staff_Main();
 					} else if (b == 2) {
-						new Student_Main(Integer.parseInt(id.getText()), pw.getText());
+						setVisible(false);
+						StudentVo vo1 = new StudentDao().stu(id.getText());
+						new Student_Main(vo1);
 					} else if (b == 3) {
-						new Professor_Main(Integer.parseInt(id.getText()), pw.getText());
+						setVisible(false);
+						ProfessorVo vo1 = new ProfessorDao().pro(id.getText());
+						new Professor_Main(vo1);
 					}
 				}
 			}
@@ -166,5 +222,4 @@ public class LogIn extends JFrame {
 
 		setVisible(true);
 	}
-
 }
