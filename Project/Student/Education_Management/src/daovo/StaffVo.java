@@ -1,7 +1,7 @@
 package daovo;
 
 public class StaffVo {
-	private int id;
+	private String id;
 	private String name;
 	private int enroll;
 	
@@ -9,13 +9,13 @@ public class StaffVo {
 		
 	}
 	
-	public StaffVo(int id, String name, int enroll) {
+	public StaffVo(String id, String name, int enroll) {
 		this.id = id;
 		this.name = name;
 		this.enroll = enroll;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

@@ -1,7 +1,7 @@
 package daovo;
 
 public class ProfessorVo {
-	private int id;
+	private String id;
 	private String name;
 	private String college;
 	private String major;
@@ -11,7 +11,7 @@ public class ProfessorVo {
 		
 	}
 
-	public ProfessorVo(int id, String name, String college, String major, int enroll) {
+	public ProfessorVo(String id, String name, String college, String major, int enroll) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -20,7 +20,7 @@ public class ProfessorVo {
 		this.enroll = enroll;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

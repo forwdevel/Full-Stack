@@ -1,7 +1,7 @@
 package daovo;
 
 public class MemberVo {
-	private int id;
+	private String id;
 	private String name;
 	private String pw;
 	private String roll;
@@ -10,12 +10,12 @@ public class MemberVo {
 		
 	}
 	
-	public MemberVo(int id, String pw) {
+	public MemberVo(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

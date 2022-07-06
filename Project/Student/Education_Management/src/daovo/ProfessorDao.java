@@ -17,12 +17,12 @@ public class ProfessorDao {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public ProfessorVo pro(int id_txt, String pw_txt) {
+	public ProfessorVo pro(String id_txt) {
 		try {
 			connDB();
 			
 			String query = "SELECT * FROM PROFESSOR";
-			query += "where id = '" + id_txt + " and pw = '" + pw_txt + "'";
+			query += "where id = '" + id_txt+"'";
 			
 			rs = stmt.executeQuery(query);
 			rs.last();
@@ -33,7 +33,7 @@ public class ProfessorDao {
 				// Empty
 				System.out.println(":: Not Found ::");
 			} else {
-				int id = rs.getInt("id");
+				String id = rs.getString("id");
 				String name = rs.getString("name");
 				String college = rs.getString("college");
 				String major = rs.getString("major");
@@ -71,12 +71,12 @@ public class ProfessorDao {
 				return false;
 			}
 			
-			query = "insert into professor values("+id + ", '"+name+"', '" + college + "', '"+major+"'," + enroll +",'1234')";
+			query = "insert into professor values('"+id + "', '"+name+"', '" + college + "', '"+major+"'," + enroll +")";
 			
 			rs = stmt.executeQuery(query);
 			System.out.println("Insert Into Professor SQL : "+query);
 			
-			query = "insert into member values(" + id + ", '" + name +"', '교수', '1234')";
+			query = "insert into member values('" + id + "', '" + name +"', '교수', '1234')";
 			
 			rs = stmt.executeQuery(query);
 			System.out.println("Insert Into Member SQL : "+query);

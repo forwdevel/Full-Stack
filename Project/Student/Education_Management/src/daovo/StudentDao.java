@@ -17,12 +17,12 @@ public class StudentDao {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public StudentVo stu(int id_txt, String pw_txt) {
+	public StudentVo stu(String id_txt) {
 		try {
 			connDB();
 			
 			String query = "SELECT * FROM student ";
-			query += "where id = " + id_txt + " and pw = '" + pw_txt + "'";
+			query += "where id = '" + id_txt + "'";
 			
 			rs = stmt.executeQuery(query);
 			System.out.println(query);
@@ -32,16 +32,15 @@ public class StudentDao {
 			if(rs.getRow() == 0) {
 				System.out.println("0 row selected.....");
 			} else {
-				int id = rs.getInt("id");
+				String id = rs.getString("id");
 				String name = rs.getString("name");
 				String college = rs.getString("college");
 				String major= rs.getString("major");
 				int grade = rs.getInt("grade");
 				int enroll = rs.getInt("enroll");
 				int credit = rs.getInt("credit");
-				String pw = rs.getString("pw");
 				
-				StudentVo data = new StudentVo(id, pw, name, college, major, grade, enroll, credit);
+				StudentVo data = new StudentVo(id, name, college, major, grade, enroll, credit);
 				return data;
 			}
 		} catch(Exception e) {
@@ -76,7 +75,7 @@ public class StudentDao {
 			}
 			
 			query = "insert into student values ("
-					+ id + ", '" + name +"', '" + college + "', '" + major + "', " + 1 + ", " + enroll + ", " + 0 + ", '1234')";
+					+ id + ", '" + name +"', '" + college + "', '" + major + "', " + 1 + ", " + enroll + ", " + 0 + ")";
 			
 			System.out.println("Query : " + query);
 			rs = stmt.executeQuery(query);
