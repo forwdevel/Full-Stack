@@ -110,7 +110,7 @@ public class EtcDao {
 	}
 	
 	// regist selected lecture to interest
-	public void registerInterest(String stu_id, String lec_id, int isInterest) {
+	public void registerInterest(String stu_id, String lec_id) {
 		try {
 			connDB();
 			
@@ -125,9 +125,25 @@ public class EtcDao {
 				return;
 			}
 			
-			query = "insert into \"REGISTER\" values ('"+stu_id+"','"+lec_id+"',1, '')";
-			System.out.println("insert : " + query);
+			query = "select * from lecture where id = '" + lec_id + "'";
 			rs = stmt.executeQuery(query);
+			rs.last();
+			System.out.println("sql : " + query);
+			
+			if(rs.getString("\"limit\"") != null && rs.getString("\"limit\"").equals(rs.getInt("\"current\""))) {
+				new Alert("수강인원이 다 찼습니다.");
+			} else {
+				query = "update lecture set \"CURRENT\" = " + (rs.getInt("\"CURRENT\"") + 1) + " where id = '" + lec_id + "'";
+				System.out.println("increase : " + query);
+				rs = stmt.executeQuery(query);
+				
+				
+				query = "insert into \"REGISTER\" values ('"+stu_id+"','"+lec_id+"', '')";
+				System.out.println("insert : " + query);
+				rs = stmt.executeQuery(query);
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -162,8 +178,6 @@ public class EtcDao {
 				object[i][3] = rs.getString("professor");
 				object[i][4] = rs.getString("credit");
 				object[i][5] = rs.getString("room");
-				object[i][6] = rs.getString("limit");
-				object[i][7] = rs.getString("current");
 			}
 			return object;
 			
@@ -182,6 +196,16 @@ public class EtcDao {
 			
 			String query = "delete from register where id = '" + stu_id + "' and lec = '" + lec_id + "'";
 			rs = stmt.executeQuery(query);
+			System.out.println("removeInterest query 1 : " + query);
+			
+			query = "select * from lecture where id = '" + lec_id + "'";
+			rs = stmt.executeQuery(query);
+			System.out.println("removeInterest query 2 : " + query);
+			rs.last();
+			
+			query = "update lecture set \"CURRENT\" = " + (rs.getInt("\"CURRENT\"") - 1) + " where id = '" + lec_id + "'";
+			System.out.println("removeInterest query 3 : " + query);
+			rs = stmt.executeQuery(query);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,11 +216,35 @@ public class EtcDao {
 	// return grade
 	// have to implement
 	public Object[][] returnGrade(String stu_id) {
+		try {
+			String query = "select * from reigster where id = '" + stu_id + "'";
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			rs.last();
+			int n = rs.getRow();
+			int i = 0;
+			
+			Object[][] object = new Object[n][3];
+			
+			rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				object[i][0] = rs.getString("lec");
+				object[i][1] = rs.getString("lecname");
+				object[i][2] = rs.getString("grade");
+				i++;
+			}
+			
+			return object;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		Object[][] object = {};
 		return object;
 	}
 	
-	//change password
+	// change password
 	public void changePassword(String id, String pw) {
 		try {
 			connDB();
@@ -210,6 +258,7 @@ public class EtcDao {
 		}
 	}
 	
+	// return all lecture
 	public Object[][] allLecture() {
 		try {
 			connDB();
@@ -242,6 +291,92 @@ public class EtcDao {
 		return temp;
 	}
 	
+	// set enter to "scheduler"
+	public void setEnter(boolean b) {
+		try {
+			connDB();
+			
+			int n = 0;
+			
+			if (b) {
+				n = 1;
+			}
+			
+			String query = "update scheduler set enter = " + n;
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// get enter to "scheduler"
+	public boolean getEnter() {
+		boolean b = false;
+		try {
+			connDB();
+			
+			String query = "select * from scheduler";
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			rs.last();
+
+			int n = rs.getInt("enter");
+			
+			if(n == 1) {
+				b = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	}
+	
+	// set inquiry to "scheduler"
+	public void setInquiry(boolean b) {
+		try {
+			connDB();
+			
+			int n = 0;
+			
+			if (b) {
+				n = 1;
+			}
+			
+			String query = "update scheduler set inquiry = " + n;
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// get inquiry to "scheduler"
+	public boolean getInquiry() {
+		boolean b = false;
+		try {
+			connDB();
+			
+			String query = "select * from scheduler";
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			rs.last();
+
+			int n = rs.getInt("inquiry");
+			
+			if(n == 1) {
+				b = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	}
+
 	// connect to DB
 	public void connDB() {
 		try {

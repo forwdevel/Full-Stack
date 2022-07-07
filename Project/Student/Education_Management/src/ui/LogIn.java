@@ -66,16 +66,12 @@ public class LogIn extends JFrame {
 		contentPane.setBackground(c2);
 		setContentPane(contentPane);
 
-		final Font h1 = new Font("휴먼둥근헤드라인", Font.BOLD, 40);
-		final Font h2 = new Font("휴먼둥근헤드라인", Font.BOLD, 30);
-		final Font h3 = new Font("휴먼둥근헤드라인", Font.BOLD, 20);
-
 		getContentPane().setLayout(null);
 		contentPane.setLayout(null);
 
 		pw = new JPasswordField();
 		pw.setHorizontalAlignment(SwingConstants.CENTER);
-		pw.setFont(new Font("굴림", Font.PLAIN, 30));
+		pw.setFont(new Font("휴먼엑스포", Font.PLAIN, 30));
 		pw.setBounds(402, 310, 224, 41);
 		pw.setBorder(null);
 		pw.setColumns(10);
@@ -110,7 +106,7 @@ public class LogIn extends JFrame {
 						// Open new window
 						else if (b == 1) {
 							setVisible(false);
-							new Staff_Main();
+							new Staff_Main(id.getText());
 						} else if (b == 2) {
 							setVisible(false);
 							StudentVo vo1 = new StudentDao().stu(id.getText());
@@ -129,7 +125,7 @@ public class LogIn extends JFrame {
 
 		id = new JTextField();
 		id.setHorizontalAlignment(SwingConstants.CENTER);
-		id.setFont(h3);
+		id.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
 		id.setColumns(10);
 		id.setBounds(402, 247, 224, 41);
 		id.setBorder(null);
@@ -141,21 +137,21 @@ public class LogIn extends JFrame {
 		fixed_1.setForeground(c3);
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setBounds(333, 131, 311, 75);
-		fixed_1.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 40));
+		fixed_1.setFont(new Font("휴먼엑스포", Font.PLAIN, 40));
 		getContentPane().add(fixed_1);
 
 		fixed_2 = new JLabel("No.");
 		fixed_2.setForeground(c3);
 		fixed_2.setBounds(333, 247, 57, 28);
 		fixed_2.setHorizontalAlignment(JLabel.RIGHT);
-		fixed_2.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		fixed_2.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
 		getContentPane().add(fixed_2);
 
 		fixed_3 = new JLabel("PW");
 		fixed_3.setForeground(c3);
 		fixed_3.setBounds(330, 313, 57, 28);
 		fixed_3.setHorizontalAlignment(JLabel.RIGHT);
-		fixed_3.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		fixed_3.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
 		getContentPane().add(fixed_3);
 
 		logIn_btn = new JButton("로그인");
@@ -186,7 +182,7 @@ public class LogIn extends JFrame {
 					// Open new window
 					else if (b == 1) {
 						setVisible(false);
-						new Staff_Main();
+						new Staff_Main(id.getText());
 					} else if (b == 2) {
 						setVisible(false);
 						StudentVo vo1 = new StudentDao().stu(id.getText());
@@ -200,7 +196,7 @@ public class LogIn extends JFrame {
 			}
 		});
 
-		logIn_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		logIn_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		logIn_btn.setForeground(c1);
 		logIn_btn.setBackground(c3);
 		logIn_btn.setBorder(null);
@@ -213,7 +209,7 @@ public class LogIn extends JFrame {
 				System.exit(0);
 			}
 		});
-		exit_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		exit_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		exit_btn.setBackground(c1);
 		exit_btn.setForeground(c3);
 		exit_btn.setBorder(null);

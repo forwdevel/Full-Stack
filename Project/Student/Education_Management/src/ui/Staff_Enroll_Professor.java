@@ -40,7 +40,7 @@ public class Staff_Enroll_Professor extends JFrame {
 	private JTextField college;
 	private JTextField major;
 
-	public Staff_Enroll_Professor() {
+	public Staff_Enroll_Professor(String id_login) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -142,7 +142,7 @@ public class Staff_Enroll_Professor extends JFrame {
 						if (b) {
 							setVisible(false);
 							new Alert("등록하였습니다.");
-							new Staff_Main();
+							new Staff_Main(id_login);
 						}
 					}
 				}
@@ -207,7 +207,7 @@ public class Staff_Enroll_Professor extends JFrame {
 
 						if (b) {
 							setVisible(false);
-							new Staff_Main();
+							new Staff_Main(id_login);
 							new Alert("등록하였습니다.");
 						}
 					}
@@ -274,7 +274,7 @@ public class Staff_Enroll_Professor extends JFrame {
 						if (b) {
 							setVisible(false);
 							new Alert("등록하였습니다.");
-							new Staff_Main();
+							new Staff_Main(id_login);
 						}
 					}
 				}
@@ -340,7 +340,7 @@ public class Staff_Enroll_Professor extends JFrame {
 						if (b) {
 							setVisible(false);
 							new Alert("등록하였습니다.");
-							new Staff_Main();
+							new Staff_Main(id_login);
 						}
 					}
 				}
@@ -399,7 +399,7 @@ public class Staff_Enroll_Professor extends JFrame {
 					if (b) {
 						setVisible(false);
 						new Alert("등록하였습니다.");
-						new Staff_Main();
+						new Staff_Main(id_login);
 					}
 				}
 			}
@@ -414,7 +414,7 @@ public class Staff_Enroll_Professor extends JFrame {
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Staff_Main();
+				new Staff_Main(id_login);
 			}
 		});
 		back_btn.setBounds(495, 440, 94, 37);

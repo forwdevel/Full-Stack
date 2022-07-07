@@ -34,7 +34,7 @@ public class Staff_Inquiry_Professor extends JFrame {
 	Color c3 = new Color(239,234,216);	// light meal
 	Color c4 = new Color(208,201,192);	// dark meal
 
-	public Staff_Inquiry_Professor() {
+	public Staff_Inquiry_Professor(String id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
 		contentPane = new JPanel();
@@ -75,7 +75,7 @@ public class Staff_Inquiry_Professor extends JFrame {
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Staff_Main();
+				new Staff_Main(id);
 			}
 		});
 		back_btn.setBounds(421, 503, 97, 23);

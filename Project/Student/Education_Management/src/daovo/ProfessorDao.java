@@ -22,7 +22,8 @@ public class ProfessorDao {
 			connDB();
 			
 			String query = "SELECT * FROM PROFESSOR";
-			query += "where id = '" + id_txt+"'";
+			query += " where id = '" + id_txt+"'";
+			System.out.println(query);
 			
 			rs = stmt.executeQuery(query);
 			rs.last();
@@ -94,7 +95,7 @@ public class ProfessorDao {
 		try {
 			connDB();
 			
-			String query = "select * from professor";
+			String query = "select * from professor order by id";
 			System.out.println("\nSQL : " + query);
 			rs = stmt.executeQuery(query);
 			rs.last();

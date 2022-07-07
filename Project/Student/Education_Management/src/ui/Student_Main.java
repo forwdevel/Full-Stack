@@ -1,10 +1,7 @@
 package ui;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,9 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import daovo.StudentDao;
+import daovo.EtcDao;
 import daovo.StudentVo;
 
+@SuppressWarnings("serial")
 public class Student_Main extends JFrame {
 
 	private JPanel contentPane;
@@ -95,15 +93,15 @@ public class Student_Main extends JFrame {
 		
 		JLabel fixed_4 = new JLabel("일정");
 		fixed_4.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_4.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
-		fixed_4.setBounds(696, 20, 56, 43);
+		fixed_4.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
+		fixed_4.setBounds(697, 22, 80, 43);
 		fixed_4.setForeground(c1);
 		contentPane.add(fixed_4);
 		
 		JLabel fixed_5 = new JLabel("공지사항");
 		fixed_5.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_5.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
-		fixed_5.setBounds(667, 288, 110, 43);
+		fixed_5.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
+		fixed_5.setBounds(684, 288, 110, 43);
 		fixed_5.setForeground(c1);
 		contentPane.add(fixed_5);
 		
@@ -117,14 +115,19 @@ public class Student_Main extends JFrame {
 		// ActionListener
 		lecture_register.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new Student_Enroll_Main(vo);
+				boolean b = new EtcDao().getEnter();
+				if(b) {
+					setVisible(false);
+					new Student_Enroll_Register(vo);
+					return;
+				}
+				new Alert("수강신청기간이 아닙니다.");
 			}
 		});
 		lecture_register.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
 		lecture_register.setForeground(SystemColor.textHighlightText);
 		lecture_register.setBackground(SystemColor.textHighlight);
-		lecture_register.setBounds(38, 454, 110, 43);
+		lecture_register.setBounds(38, 431, 110, 43);
 		lecture_register.setForeground(c3);
 		lecture_register.setBackground(c1);
 		lecture_register.setBorder(null);
@@ -134,15 +137,20 @@ public class Student_Main extends JFrame {
 		// ActionListener
 		grade_inquiry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new Student_grade(vo);
+				boolean b = new EtcDao().getInquiry();
+				if(b) {
+					setVisible(false);
+					new Student_grade(vo);		
+					return;
+				}
+				new Alert("수강조회기간이 아닙니다.");
 			}
 			
 		});
 		grade_inquiry.setForeground(Color.WHITE);
 		grade_inquiry.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
 		grade_inquiry.setBackground(SystemColor.textHighlight);
-		grade_inquiry.setBounds(179, 454, 110, 43);
+		grade_inquiry.setBounds(179, 431, 110, 43);
 		grade_inquiry.setForeground(c3);
 		grade_inquiry.setBackground(c1);
 		grade_inquiry.setBorder(null);
@@ -196,12 +204,58 @@ public class Student_Main extends JFrame {
 		change_pw_btn.setBorder(null);
 		change_pw_btn.setBackground(c4);
 		change_pw_btn.setForeground(c2);
-		change_pw_btn.setBounds(38, 507, 251, 26);
+		change_pw_btn.setBounds(38, 484, 251, 26);
 		change_pw_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new ChangePassword(vo.getId());
 			}
 		});
 		contentPane.add(change_pw_btn);
+		
+		boolean enter = new EtcDao().getEnter();
+		boolean inquiry = new EtcDao().getInquiry();
+		
+		JLabel enterNoticeLabel = new JLabel("New label");
+		if(enter) {
+			enterNoticeLabel.setText("수강신청 기간입니다.");
+		} else {
+			enterNoticeLabel.setText("수강신청 기간이 아닙니다.");
+		}
+		enterNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
+		enterNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		enterNoticeLabel.setBounds(595, 75, 286, 26);
+		contentPane.add(enterNoticeLabel);
+		
+		JLabel inquiryNoticeLabel = new JLabel("New label");
+		if(inquiry) {
+			inquiryNoticeLabel.setText("수강조회 기간입니다.");
+		} else {
+			inquiryNoticeLabel.setText("수강조회 기간이 아닙니다.");
+		}
+		inquiryNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		inquiryNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
+		inquiryNoticeLabel.setBounds(595, 117, 286, 26);
+		contentPane.add(inquiryNoticeLabel);
+		
+		JLabel Notice_1 = new JLabel("주기적으로 비밀번호를 변경해주세요.");
+		Notice_1.setHorizontalAlignment(SwingConstants.CENTER);
+		Notice_1.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
+		Notice_1.setBounds(595, 343, 286, 26);
+		contentPane.add(Notice_1);
+		
+		JButton logOut_btn = new JButton("로그아웃");
+		logOut_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new LogIn();
+			}
+		});
+		logOut_btn.setBounds(855, 525, 97, 26);
+		logOut_btn.setBackground(c4);
+		logOut_btn.setForeground(c1);
+		logOut_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
+		logOut_btn.setBorder(null);
+		contentPane.add(logOut_btn);
 		
 		setVisible(true);
 	}

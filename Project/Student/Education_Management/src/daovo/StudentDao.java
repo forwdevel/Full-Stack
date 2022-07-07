@@ -99,7 +99,7 @@ public class StudentDao {
 		try {
 			connDB();
 			
-			String query = "select * from student";
+			String query = "select * from student order by id";
 			rs = stmt.executeQuery(query);
 			rs.last();
 			

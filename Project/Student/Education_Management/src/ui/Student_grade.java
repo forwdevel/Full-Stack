@@ -1,14 +1,11 @@
 package ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -23,6 +20,7 @@ import daovo.StudentVo;
 
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class Student_grade extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
@@ -67,7 +65,7 @@ public class Student_grade extends JFrame {
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Student_Main(vo.getId(), vo.getPw());
+				new Student_Main(vo);
 			}
 		});
 		contentPane.add(back_btn);
@@ -75,7 +73,7 @@ public class Student_grade extends JFrame {
 		if(object == null) {
 			System.out.println("table is null");
 			setVisible(false);
-			new Student_Main(vo.getId());
+			new Student_Main(vo);
 			new Alert("성적공시기간이 아닙니다.");
 		} else {
 			setVisible(true);
