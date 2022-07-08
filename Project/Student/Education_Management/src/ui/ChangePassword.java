@@ -53,14 +53,14 @@ public class ChangePassword extends JFrame {
 		pwConfirm.setForeground(c3);
 		contentPane.add(pwConfirm);
 		
-		JLabel LabelPw = new JLabel("New label");
+		JLabel LabelPw = new JLabel("비밀번호");
 		LabelPw.setHorizontalAlignment(SwingConstants.RIGHT);
 		LabelPw.setBounds(51, 97, 109, 31);
 		LabelPw.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		LabelPw.setForeground(c3);
 		contentPane.add(LabelPw);
 		
-		JLabel LabelPwConfirm = new JLabel("New label");
+		JLabel LabelPwConfirm = new JLabel("비밀번호 확인");
 		LabelPwConfirm.setHorizontalAlignment(SwingConstants.RIGHT);
 		LabelPwConfirm.setBounds(51, 138, 109, 31);
 		LabelPwConfirm.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));

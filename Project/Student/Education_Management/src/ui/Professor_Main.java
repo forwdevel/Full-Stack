@@ -79,18 +79,26 @@ public class Professor_Main extends JFrame {
 		enter_grade_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		enter_grade_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Professor_Enter_Grade(vo);
 			}
 		});
 		enter_grade_btn.setBorder(null);
-		enter_grade_btn.setBounds(27, 372, 124, 43);
+		enter_grade_btn.setBounds(164, 394, 124, 43);
 		contentPane.add(enter_grade_btn);
 		
 		JButton enter_lecture_btn = new JButton("강의 등록");
 		enter_lecture_btn.setBackground(c1);
 		enter_lecture_btn.setForeground(c3);
 		enter_lecture_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
-		enter_lecture_btn.setBounds(27, 442, 124, 43);
+		enter_lecture_btn.setBounds(27, 394, 124, 43);
 		enter_lecture_btn.setBorder(null);
+		enter_lecture_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Professor_Enter_Lecture(vo);
+			}
+		});
 		contentPane.add(enter_lecture_btn);
 		
 		JLabel fixed_8 = new JLabel("일정");
@@ -107,14 +115,14 @@ public class Professor_Main extends JFrame {
 		fixed_7.setForeground(c1);
 		contentPane.add(fixed_7);
 		
-		JLabel pro_id = new JLabel("");
+		JLabel pro_id = new JLabel("" + vo.getId());
 		pro_id.setForeground(c2);
 		pro_id.setHorizontalAlignment(SwingConstants.TRAILING);
 		pro_id.setFont(new Font("휴먼엑스포", Font.PLAIN, 18));
 		pro_id.setBounds(108, 124, 172, 27);
 		contentPane.add(pro_id);
 		
-		JLabel pro_enroll = new JLabel("");
+		JLabel pro_enroll = new JLabel(""+vo.getEnroll());
 		pro_enroll.setForeground(c2);
 		pro_enroll.setHorizontalAlignment(SwingConstants.TRAILING);
 		pro_enroll.setFont(new Font("휴먼엑스포", Font.PLAIN, 18));
@@ -180,7 +188,19 @@ public class Professor_Main extends JFrame {
 		logOut_btn.setBorder(null);
 		contentPane.add(logOut_btn);
 		
+		JButton change_pw_btn = new JButton("비밀번호 변경");
+		change_pw_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ChangePassword(vo.getId());
+			}
+		});
+		change_pw_btn.setForeground(c1);
+		change_pw_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
+		change_pw_btn.setBorder(null);
+		change_pw_btn.setBackground(c4);
+		change_pw_btn.setBounds(27, 447, 261, 27);
+		contentPane.add(change_pw_btn);
+		
 		setVisible(true);
 	}
-
 }

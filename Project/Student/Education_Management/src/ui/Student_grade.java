@@ -23,8 +23,8 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class Student_grade extends JFrame {
 	private JPanel contentPane;
-	private JTable table;
 	private Object[][] object;
+	private JTable table;
 	
 	public Student_grade(StudentVo vo) {
 		
