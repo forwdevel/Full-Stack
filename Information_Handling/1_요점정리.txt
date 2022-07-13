@@ -1,0 +1,717 @@
+SDLC (Software Development Life Cycle)
+1 ) Waterfall Model
+- 고전적 생명 주기 모형
+- 선형 순차적 모형
+- 단계별 정의 및 산출물이 명확
+- 중간에 변경이 용이하지 않음
+- 타당성 검토 -> 계획 -> 요구분석 -> 설계 -> 구현(코딩) -> 테스트(검사) -> 유지보수
+
+2) Prototype Model
+- 원형 모형
+- 견본으로 결과물 예축
+- 인터페이스 중점
+- 중간에 변경 용이
+
+3) Spiral Model
+- waterfall + prototype + 위험 분석 기능
+- 요구사항 추가 가능
+- 유지보수 필요 없음
+- 계획 및 정의 -> 위험분석 -> 공학적 개발 -> 고객평가
+
+4)Agile Model
+- 변화에 유연
+- 일정 주기 반복
+- 개인과의 소통 중심
+- xp, scrum, kanban, crystal, lean
+
+
+
+스크럼기법
+
+- 팀원 스스로가 팀 구성
+- 모든것을 스스로
+- 2~4주의 스프린트
+
+1) 제품 책임자 (PO; Product Owner)
+- 백로그를 작성하는 주체
+- 우선순위 지정, 의견 종합
+
+2) 스크럼 마스터 (SM; Scrum Master)
+- 회의 주관
+- 팀원 통제 X
+
+3) 개발팀 (DT; Development Team)
+- PO, SM 제외한 모든 팀원
+- 최대 7~8명
+
+4) 개발 프로세스
+- 계획 회의 -> 스프린트 -> 일일 스크럼 -> 스크럼 검토회의 -> 스프린트 회고
+
+
+
+XP 기법
+
+1) 핵심 가치
+- 용기, 단순성, 의사소통, 피드백, 존중
+
+2) 기본원리
+-전체 팀, 소규모 릴리즈, 테스트 주도 개발, 계속적인 통합, 공동 소유권, 짝 프로그래밍, 디자인 개선, 리펙토링
+
+
+
+개발 기술 환경 파악
+
+1) 운영체제 (OS; Operating System)
+- 하드웨어가 아닌 소프트웨어
+- 가용성, 성능, 기술지원, 구축비용, 주변기기 (고려사항)
+
+2) 미들웨어 (Middleware)
+- 운영체제와 프로그램 사이
+- 추가적 서비스 제공 소프트웨어
+
+3) 데이터베이스 관리 시스템 (DBMS; DataBase Management System)
+- 사용자와 DB사이
+- 정보 생성, DB 관리 소프트웨어
+- DB 구성, 접근 방법, 유지관리에 대한 모든 책임
+- JDBC(Java DataBase Connectivity, 자바), ODBC(Open DataBase Connectivity, 응용프로그램)
+- Oracle, MySQL, SQLite, MongoDB, Redis 등등
+- 가용성, 성능, 기술지원, 구축비용, 상호호환성
+
+4) 웹 어플리케이션 서버(WAS; Web Application Server)
+- 웹 서버(정적)와 반대
+- 미들웨어 (동적)
+- 데이터 접근, 세선관리, 트랜잭션 관리 위한 라이브러리 제공
+- Tomcat, JEUS, WebLogic, JBoss, Jetty, Resin 등등
+- 가용성, 성능, 기술지원, 구축비용 (고려사항)
+
+5) 오픈소스 (Open Source)
+- 무료 소스코드 공개
+- 라이선스 종류, 사용자 수, 지속 가능성 (고려사항)
+
+
+
+요구사항 정의
+
+1) 기능 요구사항
+- 기능, 입력, 출력, 저장, 수행 등등
+
+2) 비기능 요구사항
+- 성능, 품질, 제약사항, 호환성, 보안 등등
+
+3) 요구사항 개발 프로세스
+- 도출/추출 -> 분석 -> 명세 -> 확인/검증
+
+4) 요구사항 분석 기법
+요구사항 검포, 프로토타이핑, 모델 검증, 인수 테스트(알파, 베타)
+
+
+
+UML(Unified Modeling Language)
+
+1) UML의 구성 요소
+- 사물, 관계, 다이어그램
+
+2)사물(Things)
+- 구조, 행동, 그룹, 주해
+
+3) 관계(Relationships)
+- 연관(-), 집합(◇), 포함(◆), 일반화(ㅡ▷), 의존(-->), 실체화(--▷) 
+
+4) 구조적, 정적 다이어그램
+- 다이어그램 : 클래스, 객체, 컴포넌트, 배치, 복합체 구조, 패키지
+- 구현단계 : 컴포넌트, 배치
+
+5) 행위, 동적 다이어그램
+- 유스케이스, 시퀀스, 커뮤니케이션, 상태, 활동, 상호작용 개요, 타이밍
+
+
+
+사용자 인터페이스 (UI; User Interface)
+
+1) UI의 구분
+- CLI(Command Line Interface) : 텍스트 형태
+- GUI(Graphical User Interface) : 그래픽 환경
+- NUI(Natural User Interface) : 말이나 행동
+- VUI(Voice User Interface) : 음성
+- OUI(Organic User Interface) : 상호작용
+
+2) UI의 기본 원칙
+- 직관성, 유효성, 학습성, 유연성
+
+3) 웹의 3요소
+- 웹 표준(Web Standards)
+- 웹 접근성(Web Accessibility)
+- 웹 호환성(Cross Browsing)
+
+4) UI 설계 도구
+- Wireframe : 공유
+- Story Board : 지침서, 산출물 (디스크립션)
+- Prototype : 동적 모형 (인터렉션)
+- Mockup : 정적인 모형
+-Use Case : 사용자 측면 요구사항 (유스케이스 명세서)
+
+5) UI 프로토타입
+- 장점 : 이해 쉬움, 설득 쉬움, 개발 쉬움, 사전 오류 발견
+- 단점 : 작업시간 증가, 자원소모, 중요 작업 생략 가능성
+- HTML / CSS
+
+6) UI 시나리오 문서요건
+- 이해성 (Understandable)
+- 완전성 (Complete)
+- 일관성 (Consistent)
+- 가독성 (Readable)
+- 수정 용이성 (Modifiable)
+- 추적 용이성 (Traceable)
+
+7) 기타
+- HCI (Human Computer Interaction or Interface)
+- UX (User Experience)
+- - 주관성(Subjectivity), 정확성(Contextuality), 총체성 (Holistic)
+- 감성 공학
+- - 1류 : 인간의 감성
+- - 2류 : 심리적 기능
+- - 3류 : 공학적 및 수학적 모델, 객관적
+
+
+
+품질 요구사항
+
+1) 국제 제품 품질 표준
+
+- ISO/IEC 9126
+- - 기능성 (Functionality)
+- - - 적절성, 정확성, 항호 운용성, 보안성, 호환성
+- - 신뢰성 (Reliability)
+- - - 성숙성, 결함 허용성, 회복성
+- - 사용성 (Usability)
+- - - 이해성, 학습성, 운용성, 친밀성
+- - 효율성 (Efficient)
+- - - 시간 효율성, 자원 효율성
+- - 유지 보수성 (Maintainability)
+- - - 분석성, 변경성, 안정성, 시험성
+- - 이식성 (Portability)
+- - - 적용성, 설치성, 대체성, 공존성
+
+- ISO/IEC 12119
+
+- ISO/IEC 14598
+- - 반복성 (Repeatability)
+- - 재현성 (Reproducibility)
+- - 공정성 (Impartiability)
+- - 객관성 (Objectivity)
+
+- ISO/IEC 25000 : SQuaRE (위의 3개를 통합)
+
+2) 국제 프로세스 품질 표준
+- ISO/IEC 9001
+- ISO/IEC 12207 :  기본 프로세스, 조직 프로세스, 지원 프로세스
+- ISO/IEC 15504 (SPICE) : 불완전 -> 수행 -> 관리 -> 확립 -> 예측 -> 최적화
+- CMMI (Capability Maturity Model Integration) : 성숙도 평가, 능력도 평가
+
+
+
+소프트웨어 아키텍처
+- 비기능적 요구사항
+- 기능적 요구사항 구현 방법 찾기
+
+1) 모듈화 (Modularity)
+- 모듈단위로 나눠 재사용성 향상
+- 모듈 多 : 통합 비용 적음, 각 개발비용 큼
+- 모듈 小 : 통합 비용 큼
+
+2) 추상화 (Abstraction)
+- 포괄적 개념 설계 -> 차례로 구체화
+- 과정 추상화
+- 데이터 추상화
+- 제어 추상화
+
+3) 단계적 분해 (Stepwise Refinement)
+- Niklaus Wirth
+- 하향식 설계
+- 추상화 반복에 의해 세분화
+- 절차적 구체화
+- 상세한 내역은 가능한 한 미루기
+
+4) 정보 은닉 (Information Hiding)
+- 정보 감추기
+- 독립적 모듈 수항 가능
+- 변경시 영향 X => 수정, 시험, 유지보수 용이
+
+
+
+아키텍처 패턴
+
+1) 레이어 패턴 (Layers Pattern)
+- 계층으로 구분하여 구성
+
+2) 클라이언트-서버 패턴 (Client-Server Pattern)
+- 하나의 서버, 다수의 클라이언트
+- 동기화 빼고는 독립적
+
+3) 파이프-필터 패턴(Pipe-Filter Pattern)
+- 필터로 캡슐화 => 파이프로 데이터 전송
+
+4) 모델-뷰-컨트롤러 패턴(Model-View-Controller Pattern)
+- 3개로 구조화
+- Model : 데이터 보관
+- View : 표시
+- Controller : 입력처리
+- 영향 X
+- 대화형 어플리케이션에 적합
+
+5) 마스터-슬레이브 패턴 (Master-Slave Pattern)
+- 마스터->슬레이프->마스터
+- ex) Fault Tolerance System, 병렬 컴퓨팅 시스템
+
+6) Broker Pattern
+- 컴포넌트와 사용자 연결
+- ex) 분산 환경 시스템
+
+7) Peer-To-Peer Pattern
+- 클라이언트도 가능, 서버도 가능
+
+8) Event-Bus Pattern
+- 구독한 리스너들이 메시지를 받아 이벤트 처리
+- 소스, 리스너, 채널, 버스
+
+9) Blackboard Pattern
+- 해결책이 명확하지 않은 문제 처리
+- ex) 음성인식, 차량 식별, 신호 해석
+
+10) Interpreter Pattern
+- 해석할 때
+
+
+
+Object-Oriented
+
+1) Object
+- 독립적으로 식별 가능
+- 일정 기억장소 가짐
+- 객체가 반응할수 있는 메시지의 집합 = 행위(연산, Method)
+
+2) Class
+- 여러개의 유사한 객체 묶어서 하나의 공통된 특성 표현
+- 데이터 추상화하는 단위
+
+3) Instance
+- 각각 객체
+- 클래스로부터 새로운 객체 생성하는 것 : Instantiation
+
+4) Method
+- 연산
+
+5) Message
+- 지시하기 위한 방법
+
+6) Encapsulation
+- 데이터와 함수를 하나로 묶는 것
+- 정보 은닉 측면과 가장 밀접
+- 파급 효과가 적음
+- 재사용 용이, 인터페이스 단순
+- 결합도 ↓ / 응집도 ↑
+
+7) Inheritance
+- (재사용)Reuse을 높이는 중요한 개념
+- 상위 클래스의 모든 것을 하위 클래스가 물려받음
+
+8) Multiple Inheritance
+- 한 클래스가 두개 이상의 상위 클래스로부터 상속받는 것
+
+9) Polymorphism
+- 고유 방법으로 응답
+
+
+
+결합도(Coupling)
+- 낮을수록 좋음
+- 모듈간 연관관계
+- 높을수록 하나 고칠수록 영향이 큼
+
+(Bad -> Good)
+1) Content Coupling
+직접 참조
+
+2) Common Coupling
+공유되는 공통 데이터 영역
+
+3) External Coupling
+외부의 다른모듈이 참조할 때 (순차적)
+
+4) Control Coupling
+논리적 흐름 제어
+
+5) Stamp Coupling
+자료 구조가 전달될 때
+
+6) Data Coupling
+매개 변수나 인수로 데이터를 넘겨주고 호출받은 모듈이 데이터 처리결과를 돌려주는 결합도
+
+
+
+응집도 (Cohesion)
+- 모듈 내부 요소들의 관련 정도
+- 높을 수록 좋음
+
+(Bad -> Good)
+1) 우연적 응집도 (Concidental Cohesion)
+- 서로 관련 없는 요소로만 구성
+
+2) 논리적 응집도 (Logical Cohesion)
+- 특정 형태로 분류
+
+3) 시간적 응집도 (Temporal Cohesion)
+- 특정시간에 처리될 경우
+
+4) 절차적 응집도 (Procedural Cohesion)
+- 순차적으로 수행할 경우
+
+5) 통신적(교환적) 응집도 (Communication Cohesion)
+- 동일한 입출력 사용하여 다른 구성요소들이 모였을 경우
+
+6) 순차적 응집도 (Sequential Cohesion)
+- 출력값을 다음 활동의 입력 데이터로 사용할 경우
+
+7) 기능적 응집도 (Functional Cohesion)
+- 모든 기능 요소들이 수행될 경우
+
+
+
+공통 모듈
+
+1) 정확성 (Correctness)
+2) 명확성 (Clarity)
+3) 완전성 (Completeness)
+4) 일관성 (Consistency)
+5) 추적성 (Traceability)
+6) 재사용(Reuse) 규모에 따른 분류
+
+
+
+코드
+
+1) 순차코드(Sequence Code)
+- 일련 번호 코드, 순서 코드
+- 차례대로 일련번호 부여
+- ex) 1, 2, 3, 4, ...
+
+2) 블록코드(Block Code)
+- 구분코드
+- 블록으로 구분
+- ex) 1001~1100: 총무부, 1101~1200: 영업부
+
+3) 10진 코드(Decimal Code)
+- 도서 분류식 코드
+- 10진 분할
+- ex) 1000: 공학, 1100: 소프트웨어 공학, 1110: 소프트웨어 설계
+
+4) 그룹 분류 코드(Group Classification Code)
+- 대분류, 중분류, 소분류 구분
+- 각 그룹 안에서 일련번호 부여
+- ex) 1-01-001: 본사-총부무-인사계, 2-01-001: 지사-총무부-인사계
+
+5) 연상 코드(Mnemonic Code)
+- 기호 코드
+- 관계 있는 숫자나 기호 이용
+- ex) TV-40: 40인치 TV, L-15-220: 15W 220V 램프
+
+6) 표의 숫자 코드(Significant Digit Code)
+- 유효 숫자 코드
+- 물리적 수치를 그대로 코드에 적용
+- ex) 120-720-1500: 120X720X1500인 강판
+
+7) 합성 코드(Combined Code)
+- 2개 이상의 코드를 조합하여 만드는 방법
+- ex) 연상 코드 + 숫자 코드 -> KE-711: 대한항공 711기, AC-253: 에어캐나다 253기
+
+8) 코드 부여 체계
+- 이름만으로 개체의 용도와 적용 범위를 알 수 있도록 코드를 부여
+- 유일한 코드 부여, 식별 용이
+- ex) PJC-COM-003 : 전체 시스템 단위의 3번째 공통 모듈
+- ex) PY3-MOD-010 : PY3라는 단위 시스템의 10번째 모듈
+
+
+
+디자인 패턴
+- 아키텍처 패턴(상위수준 설계) > 디자인 패턴(하위수준 설계)
+- 아키텍처 : 전체 시스템 구조 설계
+
+1) Creational Pattern
+- 추상 팩토리(Abstract Factory) : 서로 연관, 의존 객체 추상적 표현
+- 빌더(Builder) : 객체 생성과정, 표현 방법 분리 -> 동일 객체, 다른 결과
+- 팩토리 메소드(Factory Method) : 서브클래스가 결정
+- 프로토타입(Prototype) : 복제
+- 싱글톤(Singleton) : 동시에 참조할 수 없음
+
+2) Structure Pattern
+- Adapter : 호환성 없는 클래스
+- Bridge : 구현부에서 추상층 분리
+- Composite : 복합, 단일 객체
+- Decorator : 동적으로 확장
+- Facade : 기능을 간편하게 사용
+- Flyweight : 메모리 절약
+- Proxy : 객체 연결, 인터페이스 역할
+
+3) Behavioral Pattern
+- Chain of Responsibility : 다음 객체로 넘어가는 패턴
+- Command : 각종 명령어 분리
+- Interpreter : 문법 표현 정의
+- Iterator : 동일한 인터페이스 사용
+- Mediator : 서로의 존재를 모르는 상태에서도 협력할 수 있도록
+- Memento : 상태를 돌릴 수 있는 기능 제공
+- Observer : 관찰대상의 변화를 탐지
+- State : 상태에 따라 동일한 동작을 다르게 처리
+- Strategy : 영향을 받지 않는 독립적인 알고리즘
+- Templete Method : 공통된 내용을 상위 클래스에 정의
+- Visitor : 방문해서 처리
+
+
+
+
+인터페이스 요구사항 검증
+
+1) Requirements Verification
+- 계획 -> 검토 -> 베이스라인
+
+2) 검증 방법
+- 동료 검토 (Peer Review)
+--- 작성자가 내용을 직접 설명
+- 워크 스루 (Walk Through)
+--- 사전검토 후, 짧은 검토회의
+- 인스펙션 (Inspection)
+--- 작성자 제외, 전문가들이 확인
+
+3) 검증 주요 항목
+- 기능성 (Functionality)
+- 완전성 (Completeness)
+- 일관성 (Consistency)
+- 명확성 (Unambiguity)
+- 검증 가능성 (Verifiability)
+- 추적 가능성 (Traceability)
+- 변경 용이성 (Easily Changeable)
+
+
+
+
+인터페이스
+
+1) 인터페이스 식별
+- 요구사항 명세서, 요구사항 목록 기반으로 인터페이스 목록 작성
+
+2) 인터페이스 시스템 식별
+- 송신 시스템과 수신 시스템으로 구분하여 작성
+
+3) 언터페이스 표준 항목
+- 시스템 공통부 : 시스템 연동 시 필요한 공통 정보
+- ex) 인터페이스 ID, 전송 시스템 정보, 서비스 코드 정보, 응답 결과 정보, 장애 정보
+- 거래 공통부 : 연동 후, 송수신 되는 데이터 처리에 필요한 정보
+- ex) 직원 정보, 승인자 정보, 기기 정보, 매체 정보
+
+
+
+인터페이스 방법 명세화
+1) 시스템 연계 기술
+- 직접 연계 방식
+-- DB Link : 수신 시스템에서 DB Link 생성
+--- ex) 테이블명@DB Link명
+-- DB Connection : 수신 시스템 WAS, DB Connection Pool
+ 생성
+--- ex) 송신 시스템의 Data Source = DB Connection Pool
+-- API/Open API : 애플리케이션 프로그래밍 인터페이스 프로그램
+-- JDBC
+-- Hyper Link
+-- 연계 솔루션 : EAI 서버와 송, 수신 시스템에 설치
+
+- 간접 연계 방식
+-- Socket : 통신을 위한 소켓 생성하여 포트 할당
+-- Web Service
+--- WSDL(Web Services Description Language)
+--- UDDI(Universal Description, Discovery and Integration)
+--- SOAP(Simple Object Access Protocol)
+--- ESB(Enterprise Service Bus)
+
+2) 인터페이스 통신 유형
+- 단방향 : 응답 X
+- Sync : 응답 올 때까지 대기(Request-Reply) - ex) 은행업무
+- Async : 거래 요청 후 다른 작업을 수행하다 응답이 오면 처리 - ex) 채점
+- 동기와 비동기는 양방향
+
+3) 인터페이스 처리 유형
+- 실시간 방식 : 요청한 내용을 바로 처리
+- 지연 처리 방식 : 비용 많이 발생
+- 배치 방식 : 대량의 데이터 처리
+
+4) 인터페이스 발생 주기
+
+
+
+미들웨어 솔루션 명세
+
+1) DB(Database)
+- 미들웨어, 2-Tier 아키텍처
+- ex) ODBC(마이크로소프트), IDAPI(볼랜드), Glue(오라클)
+
+2) RPC(Remote Procedure Call)
+- 원격 프로시저 호출
+- 원격 프로시저를 로컬프로시저처럼 호출
+- ex) Entera(이큐브시스템스), ONC/RPC(OSF)
+
+3) MOM(Message Oriented Middleware)
+- 메시지 기반의 비동기 메시지 전달
+- ex) MQ(IBM), Message Q(오라클), JMS(JCP)
+
+4) TP-Monitor(Transaction Processing Monitor)
+- 트랜잭션 처리 모니터
+- 항공기나 철도 예약 업무
+- 사용자 수가 증가해도 빠른 응답속도를 유지해야하는 업무에 사용
+- ex) tuxedo(오라클), tmax(티맥스소프트)
+
+5) Legacyware(레거시웨어)
+- 새로운 업데이트 된 기능을 덧붙일 때
+
+6) ORB(Object Request Broker)
+- 객체 요청 브로커
+- CORBA; Common Object Request Broker Architecture
+- ex) Orbix(Micro Focus), CORBA(OMG)
+
+7) WAS(Web Application Server)
+- 동적 컨텐츠 처리
+- 웹환경 구현
+- ex) Web Logic(오라클), WebSphere(IBM), JEUS, Tomcat
+
+
+
+
+기타
+
+1) 플랫폼의 유형
+
+- 싱글 사이드 플랫폼 : 소비자와 공급자 연결
+-- ex) 아이튠즈, 안드로이드 마켓
+
+- 투 사이드 플랫폼 : 모두에게 개방
+-- ex) 소개팅 앱
+
+- 멀티 사이드 플랫폼 : 그룹 연결 중개
+-- ex) 페이스북, 인스타그램
+
+
+2) 플랫폼 성능 특성 분석 기법
+- 사용자 인터뷰, 성능 테스트, 산출물 점검
+
+
+3) OSI 7 계층(Layer)
+
+- 응용 계층(Application Layer, 7) : 사용자와 네트워크 간
+-- ex) HTTP, FTP, TELENT, SMTP/SNTP, DNS
+
+- 표현 계층(Presentation Layer, 6) : 코드변환, 암/복호화
+-- ex) JPEG, MPEG
+
+- 세션 계층(Session Layer, 5) : 연결 접속(유지), 동기제어, 동기점(대화)
+-- ex) SSH, TLS
+
+- 전송 계층 (Transport Layer, 4) : 종단간(End to End), 신뢰성
+-- ex) TCP/UDP, RTCP -> Segment
+
+- 네트워크 계층 (Network Layer, 3) : 경로(라우팅) 제공
+-- ex) IP,ICMP, IGMP, RIP, OSPF -> Packet
+
+- 데이터 링크 계층 (Data Link Layer, 2) : 인접 시스템 간
+-- ex) HDLC, PPP, LLC, Ethernet(이더넷) -> 프레임(Frame)
+
+- 물리 계층 (Physical Layer, 1) : 전기적, 기능적, 절차적
+
+4) LEAN
+- 낭비제거, 품질 내재화, 지식 창출, 늦은 확정, 빠른 인도, 사람 존중, 전체 최적화
+
+5) CASE(Computer-Aided Software Engineering) 도구의 분류
+- 상위 CASE : 다이어그램
+-- ex) 모순 검사, 오류 검증, 자료 흐름도
+- 중위 CASE : 화면 출력
+- 하위 CASE : 소스 코드 생성
+
+6) UI 컨셉션 내부 수행 활동
+- 정보 구조 설계 -> 와이어 프레임 스케치 -> 스토리보드 설계
+
+7) UI 설계 프로세스
+- 문제 정의 -> 사용자 모델 정의 -> 작업 분석 -> 컴퓨터 오브젝트 및 기능 정의 -> 사용자 인터페이스 정의 -> 디자인 평가
+
+8) 소프트웨어 설계 유형
+- 자료 구조 설계, 아키텍처 설계, 인터페이스 설계, 프로시저 설계
+
+9) 소프트웨어 아키텍처 4+1뷰
+- 유스케이스 뷰, 논리 뷰, 프로세스 뷰, 구현 뷰, 배포 뷰
+
+10) 럼바우의 객체 지향 분석  / 객체 모델링 기법(OMT)
+- 객체 모델링: 객체 다이어그램
+- 동적 모델링: 상태도
+- 기능 모델링: 자료 흐름도
+
+11) 요구사항 관리 프로세스
+- 요구사항 협상 -> 요구사항 기준선 -> 요구사항 변경관리 -> 요구사항 확인 및 검증
+
+12) 인터페이스 정의서 작성
+- 인터페이스 ID, 최대 처리 횟수, 데이터 크기(평균/최대), 시스템 정보, 데이터 정보
+
+13) 자료 흐름도 (DFD; Data Flow Diagram)
+- 프로세스(Process)
+- 자료 흐름(Flow)
+- 자료 저장소(Data Store)
+- 단말(Terminator)
+
+14) UML 스테레오 표현 기호 : << >>
+
+15) 자료 사전 기호
+= : 정의
++ : 연결
+() : 생략
+[] : 선택
+{} : 반복
+** : 설명
+
+16) 부분-전체(part-whole) 또는 부분(is-a-part-of)
+- 집단화(Aggregation) : 서로 관련이 있는 여러 개의 객체를 묶어 상위 객체를 넘나드는 것
+
+17) HIPO(Hierarchy Input Process Output)
+- 하향식 소프트웨어 개발
+- 이해 쉬움
+- ex) 가시적 도표, 총체적 도표, 세부적 도표
+
+18) 객체지향 분석 방법론
+- Coad & Yourdon : E-R 다이어그램을 사용하여 객체의 행위를 모델링
+- Booch : 미시적(Micro) 개발 프로세스와 거시적(Macro) 개발 프로세스
+- Jacobson : 유스케이스 강조
+- Wirfs-Brocks : 분석과 설계 간의 구분 없음
+
+19) UML 시퀀스 다이어그램 구성 항복
+- Life line, Activation, Message
+
+20) 객체지향 설계 원칙
+- SRP(Single Responsibility Principle) : 단일 책임 원칙
+- OCP(Open-Closed Principle) : 개방-폐쇄 원칙
+- LSP(Liskov Subsitution Principle) : 리스코프 치환 원칙
+-- 서브타입(하위클 래스)은 언제나 자신의 기반타입(상위 클래스)으로 교체할 수 있어야함
+- ISP(Interface Segregation Principle) : 인터페이스 분리 원칙
+-- 자신이 사용하지 않는 인터페이스는 구현하지 않아야 함
+- DIP(Dependency Inversion Principle) : 변화하기 어려운 것에 의존
+
+21) 디자인 패턴 구성요소
+- 패턴의 이름과 구분 : 패턴 이름과 유형
+- 문제 및 배경 : 분야, 배경, 해결하는 문제
+- 솔루션 : 요소, 관계, 협동(Collaboration) 과정
+- 사례 : 간단한 적용 사례
+- 결과 : 이점이나 영향
+- 샘플코드 : Source Code
+
+22) DBC(Design by Contract) : 계약에 의한 설계
+- 책임을 문서화하는데 초점
+- 가져야 하는 기능만큼만 동작
+- 문서화하고 검증
+
+23) CASE(Computer-Aided Software Engineering) 도구
+- 자동화하기 위한 도구
+- 자동화 기능 제공
+- 작업자 간의 커뮤니케이션 증대
+- 주요 기능 : S/W  라이프 사이클 전 단계의 연결, 그래픽 지원, 다양한 소프트웨어 개발 모형 지원
+
