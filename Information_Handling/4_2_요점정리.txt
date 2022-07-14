@@ -1,0 +1,547 @@
+
+
+운영체제의 개념
+1) 정의
+자원 관리, 환경 제공
+
+2) 목적
+처리 능력(Thoughput) : 시스템이 처리하는 일의 양
+반환 시간(Turn Around Time) : 작업을 의뢰한 시간부터 처리가 완료될 때 까지 걸린 시간
+사용 가능도(Availability) : 즉시 사용 가능한 정도
+신뢰도(Reliability) : 정확하게 해결하는 정도
+
+3) 기능
+자원 관리
+스케줄링 기능
+인터페이스 제공, 입출력 장치와 사용자 프로그램 제어
+데이터 및 자원의 공유 기능 제공
+시슽메의 오류 검사 및 복구, 자원 보호 기능 제공
+입, 출력 보조 기능 제공
+
+4) 주요 자원 관리
+프로세스 관리 : 프로세스 스케줄링 및 동기화 관리
+기억장치 관리 : 메모리 할당 및 회수 관리
+주변장치 관리 : 입, 출력장치 스케줄링 및 전반적인 관리
+파일 관리 : 파일의 생성과 삭제, 변경, 유지 등의 관리
+
+5) 종류
+- Windows
+Microsoft사가 개발
+인터페이스 : GUI
+
+- UNIX
+AT&T 벨 연구소, MIT, Generic Electric 공동 개발
+인터페이스 : CLI
+
+- LINUX
+Linus Torvalds 개발
+UNIX와 호환 가능한 Kernel
+누구나 제한 없이 활용 및 재배포 가능한 오픈 소스
+인터페이스 : CLI
+
+- MacOS
+Apple사가 UNIX를 기반으로 개발
+인터페이스 : GUI
+
+- MS-DOS
+Windows 이전에 사용되던 운영체제
+인터페이스 : CLI
+
+6) Windows의 주요 특징
+- GUI
+
+- 선점형 멀티태스킹(Preemptive Multi-Tasking)
+동시에 여러개의 프로그램 실행 -> 각 작업의 CPU 이용 시간 제어 -> 문제 발생 시 해당 프로그램 강제 종료 -> 시스템 자웡반환
+=> 프로그램의 CPU 독점 방지 가능 == 시스템 다운 현상 없이 안정적인 작업 수행 가능
+
+- PnP(Plug and Play, 자동 감지 기능)
+필요한 시스템 환경을 OS가 자동으로 구성
+=> 하드웨어 규격 자동 인식(별도 환경 설정 필요 없음), 하드웨어와 소프트웨어 모두 PnP 지원해야 함
+
+-  OLE(Object Linking and Embedding)
+Object를 현재 작성중인 문서에 자유롭게 연결하거나 삽입하여 편집할 수 있게 하는 기능
+=> OLE로 연결된 이미지를 원본 프로그램에서 수정하거나 편집하면 내용이 그대로 문서에 반영
+
+- VFAT(Virtual File Allocation Table)
+최대 255자의 파일 이름 지정 가능
+한글은 127자
+
+- Single-User 시스템
+컴퓨터 한 대를 한 사람만이 독점
+
+7) UNIX의 개요 및 특징
+Open System
+시분할 시스템(Time Sharing System)을 위해 설계된 대화식 운영체제
+Multi-Tasking 지원
+대부분 C언어 == 이식성 높음, 호환성 높음
+계층 구조(트리 구조)의 파일 시스템
+
+- Kernel
+UNIX의 가장 핵심적인 부분
+프로그램과 하드웨어 간의 인터페이스 역할 담당
+프로세스 관리, 기억장치 관리, 파일 관리, 입출력 관리
+
+- Shell
+명령어 해석기
+시스템과 사용자 간의 인터페이스 역할
+파이프라인 기능
+여러 종류의 쉘
+
+8) UNIX에서의 프로세스 간 통신
+Signal, Pipe, Socket 사용
+Signal : 간단한 메시지로 통신
+Pipe : 한 프로세스의 출력이 다른 프로세스의 입력으로 사용 됨 == 단방향
+Socket : 프로세스 끼리의 대화 == 쌍방향 통신
+
+9) LINUX의 개요 및 특징
+UNIX와 완벽하게 호환
+소스 코드 무료 공개
+
+10) MacOS의 개요 및 특징
+애플 사의 생산 제품에서만 사용 가능
+드라이버 설치 및 uninstall, install 과정이 단순
+
+
+
+
+기억장치 관리
+1) 기억장치의 관리 전략 개요
+반입(Fetch), 배치(Placement), 할당(Allocation), 교체(Replacement)
+
+2) Fetch 전략
+언제 주기억장치로 적재할 것인지를 결정하는 전략
+- 요구 반입(Demand Fetch) : 참조를 요구할 떄 적재하는 방법
+- 예상 반입(Anticipatory Fetch) : 데이터를 미리 예상하여 적재하는 방법
+
+3) Placement 전략
+프로그램이나 데이터를 어디에 위치시킬 것인지를 결정
+- 최초 적합(First Fit) : 빈 영역 중에서 첫번째 분할 영역에 배치
+- 최적 적합(Best Fit) : 단편화를 가정 작게 남기는 분할 영역에 배치
+- 최악 적합(Worst Fit) : 단편화를 가장 많이 남기는 분할 영역에 배치
+
+4) Replacement 전략
+어느 영역을 교체할지 결정
+ex) FIFO, LRU, LFU, NUR, OPT, SCR
+
+5) Allocation 개념
+어떻게 할당할지 결정
+- 연속 할당 : 프로그램을 주기억장치에 연속으로 할당
+단일 분할 할당 : 오버레이, 스와핑
+다중 분할 할당 : 고정(정적) 분할, 가변(동적) 분할
+- 분산 할당 : 프로그램을 특정 단위 조각으로 나누어 할당
+페이징 / 세그먼테이션
+
+6) 가상기억장치의 개요
+주기억장치를 마치 큰 용량을 가진 것처럼 사용하는 기법
+주기억장치의 이용률과 다중 프로그래밍 효율 높일 수 있음
+주소 변환 작업 필요
+연속 할당 방식의 단편화 해결 가능
+
+7) Paging 기법
+동일한 크기로 나눈 후, 페이지 프레임에 적재하여 실행
+일정한 크기로 나눈 페이지(Page)
+페이지 프레임(Page Frame)
+내부 단편화 발생
+Page Map Table 필요
+
+8) Segmentation 기법
+다양한 크기의 논리적 단위로 나눈 후 기억 공간을 절약하기 위해서 사용
+논리적인 크기로 나눈 다누이
+각각 고유한 이름과 크기를 가짐
+사용자 관점을 보존
+Sagment Map Table : 주소 변환을 위해서 필요
+
+9) Page Replacement Algorithm
+- FIFO = FCFS(First Come First Serve)
+가장 먼저 들어와서 가장 오래 있었던 페이지 교체
+
+- LRU(Least Recently Used)
+최근에 가장 오랫동안 사용하지 않은 페이지 교체
+가장 오래 전에 사용된 페이지 교체
+
+- LFU(Least Frequently Used)
+사용 빈도가 가장 적은 페이지 교체
+
+- OPT(OPTimal replacement, 최적 교체)
+앞으로 가장 오랫동안 사용하지 않을 페이지 교체
+Belady 제안, 가장 효율적인 알고리즘
+
+- NUR(Not Used Recently)
+LRU와 비슷한 알고리즘, 최근에 사용하지 않은 페이지를 교체하는 기법
+각 페이지마다 두개의 비트 (참조 + 변형)
+
+- SCR(Second Chance Replacement, 2차 기회 교체)
+자주 사용되는 페이지의 교체 방지, FIFO 단점 보완
+
+10) 페이지의 크기
+- 크기가 작을 경우
+단편화 감소, 주기억장치로 이동하는 시간이 줄어듬
+효율적인 워킹 셋 유지
+기억장치 효율 높아짐
+패이지 맵(사상) 테이블의 크기가 커짐
+매핑 속도가 늦어짐
+전체적인 입출력시간 늘어남
+
+- 크기가 클 경우
+페이지 단편화 증가
+주기억장치로 이동하는 시간 길어짐
+페이지 맵 테이블 크기 작아짐
+매핑 속도 빨라짐
+전체적인 입, 출력 효율성 증가됨
+
+11) Locality(지역성, 구역성)
+일부 페이지만 집중적으로 참조하는 성질
+Thrashing을 방지하기 위한 워킹 셋 이론의 기반
+Denning 교수에 의해 개념 증명
+캐시 메모리 시스템의 이론적 근거
+
+- 종류
+Temporal Locality : 한번 참조한 페이지는 가까운 시간 내에 계속 참조할 가능성이 높음
+ex) Loop, Stack, Subroutine, Counting, Totaling
+Spatial Locality : 그 근처의 페이지를 계속 참조
+ex) Array, Sequential Code
+
+12) Working Set
+자주 참조하는 페이지들의 집합
+페이지 부재 및 페이지 교체 현상이 줄어들어 프로세스의 기억장치 사용이 안정됨
+워킹 셋은 시간에 따라 변경
+
+13) PFF(Page Fault Frequency)
+페이지 부재율을 적정 수준으로 유지
+페이지 부재 빈도는 페이지 부재가 일어나는 횟수
+
+14) Prepaging
+필요할 것 같은 모든 페이지를 미리 한꺼번에 페이지 프레임에 적재
+-> 사용되지 않는 페이지가 많을 수도 있음
+
+15) Thrashing
+페이지 교체에 소요되는 시간이 더 많아지는 현상
+다중 프로그래밍의 정도가 더욱 커지면 스래싱이 나타나고, CPU의 이용률은 급격히 감소됨
+
+- 방지 방법
+다중 프로그래밍의 정도를 적정 수준으로 유지
+Page Fault Frequency를 조절해 사용
+Working Set 유지
+부족한 자원 증설, 일부 프로세스 중단
+
+
+
+
+프로세스 및 스케줄링
+1) 프로세스의 정의
+실행중인 프로그램 == 작업, 태스크
+프로시저가 활동중인 것
+비동기적 행위를 일으키는 주체
+운영체제가 관리하는 실행 단위
+실행중인 프로그램
+PCB(Process Control Block)을 가진 프로그램
+실기억장치에 저장된 프로그램
+프로세서가 할당되는 실체, 디스패치가 가능한 단위
+
+2) PCB
+프로세서 고유 식별자 : 프로세스를 구분할 수 있는 고유의 번호
+프로세서 현재 상태 : 준비, 대기, 실행 등의 프로세스 상태
+프로그램 카운터 : 실행 될 명령어의 주소를 가지고 있는 레지스터
+CPU 레지스터 정보 : 누산기, 인덱스 레지스터, 범용 레지스터 등에 대한 정보
+스케줄링 및 프로세스의 우선순위 : 스케줄링 정보 및 프로세스가 실행 될 우선 순위
+계정 정보 : CPU 사용 시간, 실제 사용 시간, 한정된 시간
+입, 출력 상태 정보 : 입출력 장치, 페이지 테이블에 대한 정보
+매모리장치 관리 정보 : 기준 레지스터, 페이지 테이블에 대한 정보
+포인터 : 프로세스가 위치한 메모리 및 할당한 자원에 대한 포인터
+
+3) 프로세스 상태 전이
+생성 -> 준비 -> 실행 -> 종료
+                <- 대기 <-
+
+4) 프로세스 상태 전이 관련 용어
+디스패치 : 준비 상태인 프로세스가 실행상태로 전이되는 과정 (Ready -> Run)
+WakeUp : 대기상태에서 준비 상태로 전이되는 과정 (Wait -> Ready)
+Spooling : 디스크에 저장하는 과정
+
+5) Thread
+프로세스 내에서의 작업 단위
+- 단일 스레드 : 하나의 스레드가 존재
+- 다중 스레드 : 하나 이상의 스레드가 존재
+경량 프로세스
+독립적인 다중 수행 가능
+병행성 증진, 성능과 처리율 향상
+응답시간 단축, 기억장소의 낭비가 줄어들고 통신 향상
+
+6) Scheduling
+장기 스케줄링 (작업 스케줄링, 상위 스케줄링) : 프로세스 선정 후 준비상태 큐로 전송, 작업 스케줄러에 의해 수행
+중기 스케줄링 : 어떤 프로세스들이 CPU를 할당 받을 것인지를 결정하는 작업
+단기 스케줄링 (프로세서 스케줄링, 하위 스케줄링) : CPU를 할당받는 시기와 특정 프로세스를 지정하는 작업, 문맥 교환은 프로세서 스케줄러에 의해 수행
+- 문맥 교환(Context Switching) : 하나의 프로세스에서 다른 프로세스로 CPU가 할당되는 과정에서 발생됨
+
+7) Scheduling의 목적
+공정성 : 모든 프로세스에 공정하게 할당
+처리량 증가 : 단위 시간당 프로세스 처리량 증가
+CPU 이용률 증가 : CPU 낭비 시간 줄이고, 사용되는 시간 비율 증가
+우선순위 제도 : 우선순위가 높은 프로세스 먼저 실행
+오버헤드 최소화
+응답시간 최소화 : 작업 지시 및 반응 시작 시간 최소화
+반환시간 최소화 : 제출한 시간부터 실행 완료 시간 최소화
+대기시간 최소화 : 준비상태 큐에서 대기하는 시간 최소화
+균형 있는 자원의 사용 : 메모리, 입출력장치 등의 자원을 균형있게 사용
+무한 연기 회피 : 자원을 사용하기 위해 무한정 연기되는 상태 회피
+-> CPU 이용률, 처리율, 반환 시간, 대기 시간, 응답 시간
+
+8) 프로세스 스케줄링 기법
+- 선점(Preemptive) 스케줄링 : CPU를 강제로 빼앗아 선점
+대화식 시분할 시스템에 사용
+많은 오버헤드
+인터럽트용 타이머 클록 필요
+ex) Round Robin, SRT(Shortest Remaining Time), MLQ(Multi-Level Queue), MFQ
+
+- 비선점(Non-Preemptive) 스케줄링 : 이미 할당된  CPU 강제로 빼앗을 수 없음
+공정하게 처리 가능
+응답 시간의 예측 용이
+일괄 처리 방식에 적합
+가뭄 현상 발생 (중요하고 짧은 작업이 중요하지 않은 긴 작업을 기다리는 경우)
+
+- HRN(Highest Response-ratio Next)
+SJF 기법의 가뭄 현상을 보완하기 위한 방식
+우선순위 계산식 높은 순부터 낮은순으로 배치
+-> 우선순위 계산식 : (대기시간 + 서비스시간) / 서비스시간
+
+
+
+인터넷 및 OSI 참조 모델
+1) IP 주소 (Internet Protocol Address)
+고유 주소
+- 클래스
+A Class : 국가나 대형 통신망 (0 ~ 127) / 250.0.0.0
+B Class : 중대형 통신망에 사용 (128 ~ 191) / 255.255.0.0
+C Class : 소규모 통신망에 사용 (192 ~ 223) / 255.255.255.0
+D Class : 멀티캐스트용으로 사용 (224 ~ 239) / 255.255.255.255
+E Class : 실험적 주소, 공용되지 않음 (240 ~ 255)
+
+2) 서브네팅(Subnetting)
+여러 개의 작은 네트워크로 나누어 사용
+== 서브넷 마스크(Subnet Mask)
+
+3) IPv6(Internet Protocol version 6)
+128 비트
+인증성, 기밀성, 데이터 무결성의 지원, 보안 문제 해결 가능
+네트워크 기능 확장 용이
+품질 보장(QoS; Quality of Service) 용이
+ex) Unicast, Multicase, Anycast
+
+4) Damain Name
+문자 형태로 표현한 것
+IP 주소로 변환하는 역할 == DNS(Domain Name System)
+이러한 역할을 하는 서버 == DNS Server
+
+5) OSI(Open System Interconnection) 참조 모델
+- Application Layer, 7
+사용자와 네트워크 간
+ex) HTTP, FTP, TELNET, SMTP / SNTP, DNS
+
+- Presentation Layer, 6
+코드 변환, 암/복호화
+ex) JPEG, MPEG
+
+- Session Layer, 5
+연결 접속(유지), 동기점(대화)
+ex) SSH, TLS
+
+- Transport Layer, 4
+종단간(End to End) 신뢰성
+ex) TCP / UDP, RTCP -> Segment
+
+- Network Layer, 3
+경로(라우팅) 제공
+ex) IP, ICMP, IGMP, ARP, RARP, RIP, OSPF -> Packet
+
+- Data Link Layer, 2
+인접 시스템 간 물리적 연결 이용
+ex) HDLC, PPP, LLC, MAC -> Frame
+
+- Physical Layer, 1
+전기적, 기능적, 절차적
+ex) RS-232C, X.21
+
+
+
+
+네트워크 관련 장비 및 프로토콜
+1) 장비
+Gateway : 전 계층의 프로토콜 구조가 다른 네트워크의 연결 수행
+Router : 데이터 전송의 최적 경로를 선택할 수 있는 기능 추가
+Switch : Bridge 확장, 훨씬 더 큰 LAN을 만드는 장치, 하드웨어 기반 == 전송 속도 빠름
+Bridge : LAN과 LAN 연결하거나 LAN 안에서의 컴퓨터 그룹을 연결하는 기능 수행 == MAC Bridge
+Repeater : 신호가 왜곡되거나 약해질 경우 원래의 신호 형태로 재생하여 다시 전송
+Hub : 한 사무실이나 가까운 거리의 컴퓨터들을 연결하는 장치
+
+2) Protocol의 정의
+데이터 교환을 원할하게 수행하기 위한 표준화시켜 높은 통신 규약
+
+3) Protocol 기본 요소
+Syntax : 전송하고자 하는 데이터 형식, 부호화, 신호 레벨 등을 규정
+Semantics(의미) : 두 기기 간의 효율적이고 정확한 정보 전송을 위한 협조 사항과 오류 관리를 위한 제어 정보 규정
+Timimg : 두 기기 간의 통신 속도, 메시지의 순서 제어 등을 규정
+
+
+
+TCP/IP
+1) 개요
+- TCP
+OSI 7 계층의 전송 계층(4 계층)에 해당
+신뢰성 있는 연결형 서비스 제공
+패킷의 다중화, 순서 제어, 오류 제어, 흐름 제어 기능 제공
+스트림 전송 기능 제공
+
+- IP
+OSI 7 계층의 네트워크 계층(3 계층)에 해당
+데이터 그램을 기반으로 하는 비연결형 서비스 제공
+패킷의 분해/조립, 주소 지정, 경로 선택 기능(Routing) 제공
+
+2) 구조
+-- OSI
+- 응용 계층(A), 표현 계층(P), 세션 계층(S)
+TCP/IP : 응용 계층
+기능 : 데이터 송수신 제공
+
+- 전송 계층(T)
+TCP/IP : 전송 계층
+기능 : 신뢰성 있는 통신 제공
+
+- 네트워크 계층(Ne)
+TCP/IP : 인터넷 계층
+기능 : 경로 설정 제공
+
+- 데이터 링크 계층(Da), 물리 계층(Phy)
+TCP/IP : 네트워크 액세스 계층
+기능 : 실제 데이터(프레임)
+
+3) 응용 계층의 주요 프로토콜
+HTTP(Hypertext Transfer Protocol) : HTML 문서를 송수신하기 위한 표준 프로토콜
+FTP(File Transfer Protocol) : 파일을 주고 받을 수 있는 원격 파일 전송 프로토콜
+TELNET : 원격 접속하여 자신의 컴퓨터처럼 사용할 수 있도록 해주는 서비스 -> 가상의 터미널 기능 수행
+SMTP(Simple Mail Transfer Protocol) : 전자 우편을 교환하는 서비스
+SNTP(Simple Network Management Protocol) : 네트워크 관리
+DNS(Domain Name System) : 도메인을 IP로 Mapping하는 시스템
+
+4) 전송 계층의 주요 프로토콜
+- TCP(Transmission Control Protocol)
+신뢰성 있는 연결형 서비스
+Stream 전송 기능
+Full Duplex Connection(양방향 연결)
+가상 회선 연결 형태
+
+- UDP(User Datagram Protocol)
+신뢰성보다 속도가 중시되는 네트워크에서 사용
+실시간 전송에 유리
+비연결형 서비스
+오버헤드 적음
+
+- RTCP(Real-Time Control Protocol) 
+제어 프로토콜
+주기적으로 제어 정보 전송
+Multiplexing(다중화) 제공
+
+5) 인터넷 계층의 주요 프로토콜
+IP(Internet Protocol) : 경로 설정 기능, 비연결형인 데이터그램 방식 -> 신뢰성 보장 X
+ICMP(Internet Control Message Protocol) : 제어 메시지 관리
+IGMP(Internet Group Management Protocol) : 멀티캐스트 그룹 유지
+ARP(Address Resolution Protocol) : IP를 MAC Address로 바꿈
+RARP(Reverse Address Resolution Protocol) : MAC Address를 IP로 변환
+
+6) 네트워크 액세스 계층의 주요 프로토콜
+Ethernet(IEEE 802.3) : CSMA/CD 방식의 LAN
+IEEE 802 : LAN을 위한 표준 프로토콜
+HDLC : 데이터 링크 제어 프로토콜
+X.25 : 패킷 교환망
+RS-232C : 공중 전화 교환망(PSTN)
+
+
+
+추가 정리
+1) 형상 관리 절차
+- 형상 식별 : 계층 구조로 구분하여 수정 및 추적 용이
+- 형상 통제(변경 관리) : 식별된 형상 항목에 대한 변경 요구 검토
+- 형상 감사 : 기준선의 무결성 평가
+- 형상 기록(상태 보고) : 작업의 결과를 기록, 관리하고 보고서를 작성
+
+2) 모듈화
+- 정보 은닉(Information Hiding) : 은폐
+- 분할과 정복(Divide & Conquer) : 분해, 해결
+- 데이터 추상화(Data Abstraction) : 함수내에 자료 구조의 표현 내역 은폐
+- 모듈 독립성(Module Inpendency) : 낮은 결합도와 높은 응집도
+
+3) 예외 처리 구성
+- throw
+정상적으로 실행될 수 없는 상태에서 예외 던짐
+강제로 예외를 발생시킬 때 사용
+
+- try
+예외 가능성 있는 코드 저장
+예외 발생 시, throw 명령으로 예외 던짐
+
+- catch
+if-else문처럼 try-catch문으로 한쌍
+catch블록을 Exception Handler라고 부름
+
+4) Prototype
+복제, 생성하는 작업
+클래스를 명확히 정의하지 않아도 됨
+
+5) 라우팅 Network, 3계층
+- RIP(Routiong Information Protocol)
+== 거리 벡터 프로토콜
+IGP(Interior Gateway Protocol)
+Bellman-Ford 알고리즘
+소규모 프로토콜
+최대 Hop == 15
+
+- OSPF(Open Shortest Path First)
+IGP(Interior Gateway Protocol)
+RIP 단점 개선
+daijkstra 알고리즘 + Link Static 기반
+대규모 프로토콜
+
+- BGP(Border Gateway Protocol)
+EGP(Exterior Gateway Protocol)
+라우팅 테이블 교환
+
+6) Banker's Algorithm
+Avoidance(회피) 사용
+
+7) 교착 상태 발생의 필요 충분 조건
+상호 배제(Mutual Exclusion)
+점유와 대기(Hold and Wait)
+환형 대기(Circular Wait)
+비선점(Not-Preemption)
+
+8) IEEE 802.11e
+MAC 지원 기능을 채택
+
+9) Java 언어의 접근제한자
+public, protected, default, private
+
+10) UNIX 명령어
+- cat : 파일 내용 화면 표시
+- chdir : 현재 디렉터리 위치 변경
+- chmod : 파일 사용 허가 지정, 파일 속성 변경
+- chown : 소유자 변경
+- cp : 복사
+- rm : 삭제
+- exec : 프로세스 수행
+- find : 찾기
+- fork : 프로세스 생성, 복제
+- fsck : 파일 검사 및 보수
+- ls : 파일 목록 확인
+- mount/unmount : 마운팅/마운팅 해제
+
+11) C언어 데이터 처리
+- 열거체 : 서로 연관된 정수형 상수들의 집합
+- 구조체 : 각 변수가 다른 메모리에 할당
+- 공용체 : 모든 멤버 변수가 하나의 메모리 공간 공유
+
+12) PHP 연산자
+@ : 오류메시지 표시 안함
+<> : 값이 서로 다를 때 (!=)
+= : 값을 지정할 때 사용
+== : 값이 같은지 확인
+=== : 값 + 형식 확인
+:: : new로 class를 미리 객체화 시켜놓지 않고 사용될 때 객체 생성 후 지정된 method가 실행되도록 하는 접근자
