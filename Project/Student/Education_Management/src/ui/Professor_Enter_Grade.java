@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JButton;
@@ -14,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import daovo.ProfessorDao;
 import daovo.ProfessorVo;
 
 public class Professor_Enter_Grade extends JFrame {
@@ -26,19 +26,6 @@ public class Professor_Enter_Grade extends JFrame {
 	Color c4 = new Color(208,201,192);	// dark meal
 	private JTable table;
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Professor_Enter_Grade frame = new Professor_Enter_Grade();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public Professor_Enter_Grade(ProfessorVo vo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
@@ -48,7 +35,7 @@ public class Professor_Enter_Grade extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_header = new JLabel("성적 입력");
+		JLabel fixed_header = new JLabel("성적입력");
 		fixed_header.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_header.setBounds(245, 28, 475, 41);
 		fixed_header.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
@@ -63,9 +50,7 @@ public class Professor_Enter_Grade extends JFrame {
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null},
-			},
+			new ProfessorDao().inquiryLectureForGrade(vo.getName()),
 			new String[] {
 				"\uD559\uC218\uBC88\uD638", "\uD559\uBC88", "\uD559\uC0DD\uBA85", "\uC131\uC801\uC785\uB825"
 			}
@@ -81,7 +66,7 @@ public class Professor_Enter_Grade extends JFrame {
 		table.getColumnModel().getColumn(3).setPreferredWidth(30);
 		scrollPane.setViewportView(table);
 		
-		JButton enter_btn = new JButton("등록");
+		JButton enter_btn = new JButton("입력");
 		enter_btn.setBounds(440, 499, 97, 36);
 		enter_btn.setForeground(c1);
 		enter_btn.setBackground(c3);

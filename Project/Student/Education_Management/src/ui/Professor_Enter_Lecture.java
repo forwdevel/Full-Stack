@@ -86,7 +86,7 @@ public class Professor_Enter_Lecture extends JFrame {
 		back_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		contentPane.add(back_btn);
 		
-		JLabel fixed_head = new JLabel("과목 등록");
+		JLabel fixed_head = new JLabel("과목등록");
 		fixed_head.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_head.setBounds(236, 22, 498, 63);
 		fixed_head.setForeground(c3);
@@ -95,6 +95,7 @@ public class Professor_Enter_Lecture extends JFrame {
 		
 		name = new JTextField();
 		name.setHorizontalAlignment(SwingConstants.CENTER);
+		name.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		name.setBounds(417, 152, 196, 35);
 		name.setColumns(10);
 		name.setBackground(c2);
@@ -177,7 +178,7 @@ public class Professor_Enter_Lecture extends JFrame {
 		fixed_limit.setForeground(c3);
 		contentPane.add(fixed_limit);
 		
-		JLabel fixed_notice = new JLabel("※ 공란으로 두실경우 인원제한없이, 수강신청을 받습니다.");
+		JLabel fixed_notice = new JLabel("공란 시, 인원제한없이 수강신청을 받습니다.");
 		fixed_notice.setBounds(416, 413, 474, 15);
 		fixed_notice.setForeground(Color.white);
 		fixed_notice.setFont(new Font("휴먼엑스포", Font.PLAIN, 10));

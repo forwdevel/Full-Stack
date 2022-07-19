@@ -20,7 +20,7 @@ public class MemberDao {
 			connDB();
 			
 			String query = "SELECT * FROM MEMBER ";
-			query += "where id = " + p.getId() + " and pw = '" + p.getPw() + "'";
+			query += "where id = '" + p.getId() + "' and pw = '" + p.getPw() + "'";
 			System.out.println("SQL : " + query);
 			rs = stmt.executeQuery(query);
 			rs.last();
@@ -33,7 +33,7 @@ public class MemberDao {
 				if(roll.equalsIgnoreCase("교직원")) {
 					//staff
 					// 'LogIn' to 'Staff_Main'
-					System.out.println("roll : 교직원");
+					System.out.println("roll :교직원");
 					return 1;
 				} else if(roll.equalsIgnoreCase("학생")) {
 					//student

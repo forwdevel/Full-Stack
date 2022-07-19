@@ -1,5 +1,9 @@
 package daovo;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class StudentVo {
 	private String id;
 	private String name;
@@ -50,5 +54,9 @@ public class StudentVo {
 
 	public int getCredit() {
 		return credit;
+	}
+	
+	public void setCredit(int credit) {
+		this.credit = credit;
 	}
 }

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import daovo.StudentDao;
 
 //
-//	테이블 값 수정
+//	�뀒�씠釉� 媛� �닔�젙
 //
 
 public class Staff_Inquiry_Student extends JFrame {
@@ -42,7 +42,7 @@ public class Staff_Inquiry_Student extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("학생 조회");
+		JLabel fixed_1 = new JLabel("학생조회");
 		fixed_1.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setBounds(353, 32, 227, 33);
@@ -75,16 +75,18 @@ public class Staff_Inquiry_Student extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(15);
 		table.getColumnModel().getColumn(5).setPreferredWidth(50);
 		
-		back_btn = new JButton("뒤로가기");
-		back_btn.setBackground(c1);
-		back_btn.setForeground(c3);
+		back_btn = new JButton("뒤로");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				new Staff_Main(id);
 			}
 		});
-		back_btn.setBounds(421, 505, 97, 23);
+		back_btn.setBounds(421, 503, 97, 23);
+		back_btn.setBackground(c1);
+		back_btn.setForeground(c3);
+		back_btn.setBorder(null);
+		back_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
 		contentPane.add(back_btn);
 		
 		setVisible(true);

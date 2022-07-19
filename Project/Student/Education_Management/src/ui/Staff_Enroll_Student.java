@@ -74,7 +74,7 @@ public class Staff_Enroll_Student extends JFrame {
 
 		JLabel fixed_6 = new JLabel("전공");
 		fixed_6.setHorizontalAlignment(SwingConstants.RIGHT);
-		fixed_6.setFont(new Font("���� ���", Font.BOLD, 18));
+		fixed_6.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 		fixed_6.setForeground(c3);
 		fixed_6.setBounds(341, 358, 57, 23);
 		contentPane.add(fixed_6);
@@ -274,7 +274,11 @@ public class Staff_Enroll_Student extends JFrame {
 				}
 			}
 		});
-		enter_btn.setBounds(386, 451, 65, 23);
+		enter_btn.setBounds(353, 440, 98, 37);
+		enter_btn.setBorder(null);
+		enter_btn.setBackground(c3);
+		enter_btn.setForeground(c1);
+		enter_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 14));
 		contentPane.add(enter_btn);
 
 		JButton cancel_btn = new JButton("취소");
@@ -284,7 +288,11 @@ public class Staff_Enroll_Student extends JFrame {
 				new Staff_Main(id);
 			}
 		});
-		cancel_btn.setBounds(495, 451, 65, 23);
+		cancel_btn.setBounds(495, 440, 94, 37);
+		cancel_btn.setBackground(c1);
+		cancel_btn.setBorder(null);
+		cancel_btn.setForeground(c3);
+		cancel_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 14));
 		contentPane.add(cancel_btn);
 		
 		enroll = new JTextField();

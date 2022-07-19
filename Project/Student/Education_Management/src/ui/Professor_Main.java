@@ -73,7 +73,7 @@ public class Professor_Main extends JFrame {
 		fixed_5.setBounds(27, 265, 87, 27);
 		contentPane.add(fixed_5);
 		
-		JButton enter_grade_btn = new JButton("성적 입력");
+		JButton enter_grade_btn = new JButton("성적입력");
 		enter_grade_btn.setForeground(c3);
 		enter_grade_btn.setBackground(c1);
 		enter_grade_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
@@ -87,7 +87,7 @@ public class Professor_Main extends JFrame {
 		enter_grade_btn.setBounds(164, 394, 124, 43);
 		contentPane.add(enter_grade_btn);
 		
-		JButton enter_lecture_btn = new JButton("강의 등록");
+		JButton enter_lecture_btn = new JButton("과목등록");
 		enter_lecture_btn.setBackground(c1);
 		enter_lecture_btn.setForeground(c3);
 		enter_lecture_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
@@ -148,9 +148,9 @@ public class Professor_Main extends JFrame {
 		
 		JLabel enterNoticeLabel = new JLabel("New label");
 		if(enter) {
-			enterNoticeLabel.setText("수강신청 기간입니다.");
+			enterNoticeLabel.setText("수강신청기간입니다.");
 		} else {
-			enterNoticeLabel.setText("수강신청 기간이 아닙니다.");
+			enterNoticeLabel.setText("수강신청기간이 아닙니다.");
 		}
 		enterNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		enterNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -159,16 +159,16 @@ public class Professor_Main extends JFrame {
 		
 		JLabel inquiryNoticeLabel = new JLabel("New label");
 		if(inquiry) {
-			inquiryNoticeLabel.setText("수강조회 기간입니다.");
+			inquiryNoticeLabel.setText("성적조회기간입니다.");
 		} else {
-			inquiryNoticeLabel.setText("수강조회 기간이 아닙니다.");
+			inquiryNoticeLabel.setText("성적조회기간이 아닙니다.");
 		}
 		inquiryNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		inquiryNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		inquiryNoticeLabel.setBounds(595, 117, 286, 26);
 		contentPane.add(inquiryNoticeLabel);
 		
-		JLabel Notice_1 = new JLabel("주기적으로 비밀번호를 변경해주세요.");
+		JLabel Notice_1 = new JLabel("비밀번호를 주기적으로 변경해주세요.");
 		Notice_1.setHorizontalAlignment(SwingConstants.CENTER);
 		Notice_1.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		Notice_1.setBounds(595, 343, 286, 26);

@@ -1,0 +1,18 @@
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}
+
+class Student {
+	private double kor;
+	private double eng;
+	private int avg;
+	
+	Student(double kor, double eng) {
+		this.kor = kor;
+		this.eng = eng;
+		this.avg = (int)(kor + eng) / 2;
+	}
+}

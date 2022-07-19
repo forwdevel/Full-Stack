@@ -1,0 +1,40 @@
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}
+
+class Student {
+	private String name;
+	private double kor;
+	private double eng;
+	private int avg;
+	
+	public Student(String name, double kor, double eng) {
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.avg = (int)(kor + eng) / 2;
+	}
+	
+	public void printAvg() {
+		
+	}
+	
+	public void setName() {
+		
+	}
+	
+	public void setKor() {
+		
+	}
+	
+	public void setEng() {
+		
+	}
+	
+	public void setAvg() {
+		avg = (int)(kor + eng) / 2;
+	}
+}

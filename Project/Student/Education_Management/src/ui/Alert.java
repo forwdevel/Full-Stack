@@ -45,7 +45,7 @@ public class Alert extends JFrame {
 			}
 		});
 		confirm_btn.setBackground(c3);
-		confirm_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 16));
+		confirm_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		confirm_btn.setForeground(c1);
 		confirm_btn.setBounds(169, 136, 97, 41);
 		confirm_btn.setBorder(null);

@@ -70,7 +70,7 @@ public class StudentDao {
 			} else if ((rs.getRow() + 1) < 1000) {
 				id += (rs.getRow() + 1);
 			} else {
-				new Alert("전공당 999명까지 입력이 가능합니다.");
+				new Alert("�쟾怨듬떦 999紐낃퉴吏� �엯�젰�씠 媛��뒫�빀�땲�떎.");
 				return false;
 			}
 			
@@ -81,14 +81,14 @@ public class StudentDao {
 			rs = stmt.executeQuery(query);
 			
 			query = "insert into member values ("
-					+ id + ", '" + name + "', '학생', '1234')";
+					+ id + ", '" + name + "', '�븰�깮', '1234')";
 
 			System.out.println("Query : " + query);
 			rs = stmt.executeQuery(query);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			new Alert("해당 학번의 학생이 이미 존재합니다.");
+			new Alert("�빐�떦 �븰踰덉쓽 �븰�깮�씠 �씠誘� 議댁옱�빀�땲�떎.");
 			return false;
 		}
 		

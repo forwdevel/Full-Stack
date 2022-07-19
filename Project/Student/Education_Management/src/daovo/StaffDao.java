@@ -15,7 +15,7 @@ public class StaffDao {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public StaffVo stf(int id_txt, String pw_txt) {
+	public StaffVo stf(String id_txt, String pw_txt) {
 		try {
 			connDB();
 			
@@ -29,7 +29,7 @@ public class StaffDao {
 			if(rs.getRow() == 0) {
 				System.out.println("0 row selected......");
 			} else {
-				int id = rs.getInt("id");
+				String id = rs.getString("id");
 				String name = rs.getString("name");
 				int enroll = rs.getInt("enroll");
 				

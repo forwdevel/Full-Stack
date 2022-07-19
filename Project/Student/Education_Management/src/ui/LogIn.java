@@ -85,10 +85,10 @@ public class LogIn extends JFrame {
 					MemberDao dao = new MemberDao();
 					if (id.getText().equals("")) {
 						// Null Id
-						new Alert("아이디를 입력해주세요.");
+						new Alert("아이디를입력해주세요.");
 					} else if (pw.getText().equals("")) {
 						// Null pw
-						new Alert("비밀번호를 입력해주세요.");
+						new Alert("비밀번호를입력해주세요.");
 					} else {
 						// System Log
 						System.out.println(pw.getText());
@@ -101,7 +101,7 @@ public class LogIn extends JFrame {
 						// Close window
 						if (b == 0) {
 							System.out.println("b==0");
-							new Alert("존재하지 않는 정보입니다.");
+							new Alert("존재하지않는정보입니다.");
 						}
 						// Open new window
 						else if (b == 1) {

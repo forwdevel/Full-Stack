@@ -34,67 +34,53 @@ public class Student_Enroll_Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("일정");
+		JLabel fixed_1 = new JLabel("�씪�젙");
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_1.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
+		fixed_1.setFont(new Font("�쑕癒쇱뿊�뒪�룷", Font.BOLD, 20));
 		fixed_1.setForeground(c1);
 		fixed_1.setBounds(126, 40, 84, 33);
 		contentPane.add(fixed_1);
 		
-		JLabel fixed_2 = new JLabel("수강신청 시스템");
+		JLabel fixed_2 = new JLabel("�닔媛뺤떊泥� �떆�뒪�뀥");
 		fixed_2.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_2.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
+		fixed_2.setFont(new Font("�쑕癒쇱뿊�뒪�룷", Font.BOLD, 30));
 		fixed_2.setForeground(c1);
 		fixed_2.setBounds(517, 63, 237, 64);
 		contentPane.add(fixed_2);
 		
-		JLabel fixed_3 = new JLabel("공지사항");
+		JLabel fixed_3 = new JLabel("怨듭��궗�빆");
 		fixed_3.setHorizontalAlignment(SwingConstants.CENTER);
-		fixed_3.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
+		fixed_3.setFont(new Font("�쑕癒쇱뿊�뒪�룷", Font.BOLD, 20));
 		fixed_3.setForeground(c1);
 		fixed_3.setBounds(109, 311, 114, 33);
 		contentPane.add(fixed_3);
 		
-		JButton enroll_btn = new JButton("수강신청 조회 및 등록");
+		JButton enroll_btn = new JButton("�닔媛뺤떊泥� 議고쉶 諛� �벑濡�");
 		enroll_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Student_Enroll_Register(vo);
+				new Student_Enroll_register(vo);
 			}
 		});
-		enroll_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
+		enroll_btn.setFont(new Font("�쑕癒쇱뿊�뒪�룷", Font.BOLD, 16));
 		enroll_btn.setBounds(645, 210, 252, 47);
 		enroll_btn.setBackground(c1);
 		enroll_btn.setForeground(c3);
 		enroll_btn.setBorder(null);
 		contentPane.add(enroll_btn);
 		
-		JButton interest_btn = new JButton("관심과목 조회 및 등록");
-		interest_btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new Student_Enroll_Interest(vo);
-			}
-		});
-		interest_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
-		interest_btn.setBounds(645, 348, 252, 47);
-		interest_btn.setBackground(c1);
-		interest_btn.setForeground(c3);
-		interest_btn.setBorder(null);
-		contentPane.add(interest_btn);
-		
-		JButton back_btn = new JButton("뒤로가기");
+		JButton back_btn = new JButton("�뮘濡쒓�湲�");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Student_Main(vo.getId(), vo.getPw());
+				new Student_Main(vo);
 			}
 		});
 		back_btn.setBounds(426, 485, 97, 23);
 		back_btn.setBackground(c1);
 		back_btn.setForeground(c3);
 		back_btn.setBorder(null);
-		back_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		back_btn.setFont(new Font("�쑕癒쇱뿊�뒪�룷", Font.PLAIN, 12));
 		contentPane.add(back_btn);
 		
 		setVisible(true);

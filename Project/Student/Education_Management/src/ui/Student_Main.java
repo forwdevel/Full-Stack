@@ -32,8 +32,8 @@ public class Student_Main extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(c3);
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setContentPane(contentPane);
 		
 		JLabel fixed_1 = new JLabel("학생,");
 		fixed_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -72,13 +72,13 @@ public class Student_Main extends JFrame {
 		fixed_10.setForeground(c1);
 		contentPane.add(fixed_10);
 		
-		JLabel fixed_11 = new JLabel("수강신청 학점");
+		JLabel fixed_11 = new JLabel("현재수강학점");
 		fixed_11.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
 		fixed_11.setBounds(26, 312, 154, 43);
 		fixed_11.setForeground(c1);
 		contentPane.add(fixed_11);
 		
-		JLabel fixed_2 = new JLabel("신청가능 학점");
+		JLabel fixed_2 = new JLabel("최대수강학점");
 		fixed_2.setFont(new Font("휴먼엑스포", Font.BOLD, 20));
 		fixed_2.setBounds(26, 353, 154, 43);
 		fixed_2.setForeground(c1);
@@ -118,10 +118,10 @@ public class Student_Main extends JFrame {
 				boolean b = new EtcDao().getEnter();
 				if(b) {
 					setVisible(false);
-					new Student_Enroll_Register(vo);
+					new Student_Enroll_register(vo);
 					return;
 				}
-				new Alert("수강신청기간이 아닙니다.");
+				new Alert("수강신청기간이아닙니다.");
 			}
 		});
 		lecture_register.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
@@ -143,7 +143,7 @@ public class Student_Main extends JFrame {
 					new Student_grade(vo);		
 					return;
 				}
-				new Alert("수강조회기간이 아닙니다.");
+				new Alert("성적조회기간이 아닙니다.");
 			}
 			
 		});
@@ -198,7 +198,7 @@ public class Student_Main extends JFrame {
 		credit.setForeground(c2);
 		contentPane.add(credit);
 		
-		JButton change_pw_btn = new JButton("비밀번호 변경");
+		JButton change_pw_btn = new JButton("비밀번호변경");
 		change_pw_btn.setForeground(Color.WHITE);
 		change_pw_btn.setFont(new Font("휴먼엑스포", Font.BOLD, 16));
 		change_pw_btn.setBorder(null);
@@ -217,9 +217,9 @@ public class Student_Main extends JFrame {
 		
 		JLabel enterNoticeLabel = new JLabel("New label");
 		if(enter) {
-			enterNoticeLabel.setText("수강신청 기간입니다.");
+			enterNoticeLabel.setText("수강신청기간입니다.");
 		} else {
-			enterNoticeLabel.setText("수강신청 기간이 아닙니다.");
+			enterNoticeLabel.setText("수강신청기간이 아닙니다");
 		}
 		enterNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		enterNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -228,16 +228,16 @@ public class Student_Main extends JFrame {
 		
 		JLabel inquiryNoticeLabel = new JLabel("New label");
 		if(inquiry) {
-			inquiryNoticeLabel.setText("수강조회 기간입니다.");
+			inquiryNoticeLabel.setText("수강조회기간입니다.");
 		} else {
-			inquiryNoticeLabel.setText("수강조회 기간이 아닙니다.");
+			inquiryNoticeLabel.setText("수강조회기간이 아닙니다.");
 		}
 		inquiryNoticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		inquiryNoticeLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		inquiryNoticeLabel.setBounds(595, 117, 286, 26);
 		contentPane.add(inquiryNoticeLabel);
 		
-		JLabel Notice_1 = new JLabel("주기적으로 비밀번호를 변경해주세요.");
+		JLabel Notice_1 = new JLabel("수시로 비밀번호를 변경해주세요.");
 		Notice_1.setHorizontalAlignment(SwingConstants.CENTER);
 		Notice_1.setFont(new Font("휴먼엑스포", Font.PLAIN, 16));
 		Notice_1.setBounds(595, 343, 286, 26);

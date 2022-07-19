@@ -72,7 +72,7 @@ public class ProfessorDao {
 			} else if (rs.getRow() < 100) {
 				id += (rs.getRow() + 1);
 			} else {
-				new Alert("전공당 99명까지 입력이 가능합니다.");
+				new Alert("100명까지 등록 가능합니다.");
 				return false;
 			}
 
@@ -88,7 +88,7 @@ public class ProfessorDao {
 			System.out.println("Insert Into Member SQL : " + query);
 
 		} catch (Exception e) {
-			new Alert("해당 교번의 교수가 이미 존재합니다.");
+			new Alert("등록에 실패하였습니다(SQL).");
 			e.printStackTrace();
 			return false;
 		}
@@ -138,22 +138,22 @@ public class ProfessorDao {
 		int month = cal.get(Calendar.MONTH);
 		String semester = "";
 
-		// 1월 == 0 / 12월 == 11
+		// 1�썡 == 0 / 12�썡 == 11
 		if (month < 3) {
 			// 1, 2, 3
-			// 1학기 과목 등록기간
+			// 1�븰湲� 怨쇰ぉ �벑濡앷린媛�
 			semester = "1";
 		} else if (month >= 3 && month < 6) {
 			// 4, 5, 6
-			// 여름계절 과목 등록기간
+			// �뿬由꾧퀎�젅 怨쇰ぉ �벑濡앷린媛�
 			semester = "여름계절";
 		} else if (month >= 6 && month <= 8) {
 			// 7, 8, 9
-			// 2학기 과목 등록기간
+			// 2�븰湲� 怨쇰ぉ �벑濡앷린媛�
 			semester = "2";
 		} else {
 			// 10, 11, 12
-			// 겨울계절 과목 등록기간
+			// 寃⑥슱怨꾩젅 怨쇰ぉ �벑濡앷린媛�
 			semester = "겨울계절";
 		}
 
@@ -170,21 +170,21 @@ public class ProfessorDao {
 		try {
 			connDB();
 
-			// 학수번호 작업
+			// �븰�닔踰덊샇 �옉�뾽
 
-			// 1. 교수의 전공과 major 테이블의 전공이 일치하는 코드를 찾기
-			// 교수의 전공
+			// 1. 援먯닔�쓽 �쟾怨듦낵 major �뀒�씠釉붿쓽 �쟾怨듭씠 �씪移섑븯�뒗 肄붾뱶瑜� 李얘린
+			// 援먯닔�쓽 �쟾怨�
 			String major = vo.getMajor();
 			String query = "select * from major where major = '" + major + "'";
 			System.out.println("SQL for finding major : " + query);
 			rs = stmt.executeQuery(query);
 			rs.last();
 
-			// 학수번호 코드
+			// �븰�닔踰덊샇 肄붾뱶
 			String code = rs.getString("code");
 			System.out.println("Major Code : " + code);
 
-			// 2. 과목이름과 코드가 같으면 동일 과목이 이미 존재한다는 오류문 반환 및 return
+			// 2. 怨쇰ぉ�씠由꾧낵 肄붾뱶媛� 媛숈쑝硫� �룞�씪 怨쇰ぉ�씠 �씠誘� 議댁옱�븳�떎�뒗 �삤瑜섎Ц 諛섑솚 諛� return
 			// + year and semester
 			query = "select * from lecture where major = '" + major + "' and name = '" + name + "' and year = '" + year
 					+ "' and semester = '" + semester + "'";
@@ -197,7 +197,7 @@ public class ProfessorDao {
 				return;
 			}
 
-			// 3. 순서대로 번호부여 000~999
+			// 3. �닚�꽌��濡� 踰덊샇遺��뿬 000~999
 			query = "select * from lecture where major = '" + major + "'";
 			System.out.println("SQL for find all major lecture : " + query);
 			rs = stmt.executeQuery(query);
@@ -212,14 +212,16 @@ public class ProfessorDao {
 			} else {
 				// out of range
 				System.out.println("out of range");
-				new Alert("더 이상 과목을 추가할 수 없습니다.");
+				new Alert("과목은 1000개만 입력 가능합니다.");
 				return;
 			}
-			
+
 			System.out.println("final code : " + code);
-			
-			query = "insert into lecture values ( '" + code + "', '" + com + "', '"+ name +"', "+credit+", '" + room +"', "+year +", '" + semester + "', '" + vo.getCollege() + "', '" + major +"', '" + vo.getName() +"', '"+ limit + "', " + current +")";
-			System.out.println("SQL for insert Lecture : " +query);
+
+			query = "insert into lecture values ( '" + code + "', '" + com + "', '" + name + "', " + credit + ", '"
+					+ room + "', " + year + ", '" + semester + "', '" + vo.getCollege() + "', '" + major + "', '"
+					+ vo.getName() + "', '" + limit + "', " + current + ")";
+			System.out.println("SQL for insert Lecture : " + query);
 			rs = stmt.executeQuery(query);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,51 +233,52 @@ public class ProfessorDao {
 
 	}
 
-	public Object[][] inquiryLecture(String pro_name) {
+	public Object[][] inquiryLectureForGrade(String pro_name) {
 		try {
 			connDB();
-			
+
 			String query = "select * from lecture where professor = '" + pro_name + "'";
 			System.out.println("SQL for get lectures : " + query);
-			
+
 			rs = stmt.executeQuery(query);
-			
+
 			query = "select * from register where";
-			
-			while(rs.next()) {
-				query += " lec = '" + rs.getString("id") +"' or";
+
+			while (rs.next()) {
+				query += " lecid = '" + rs.getString("id") + "' or";
 			}
-			
+
 			query = query.substring(0, query.length() - 2);
 			System.out.println("SQL for get all student : " + query);
-			
+
 			rs = stmt.executeQuery(query);
 			rs.last();
-			
+
 			int n = rs.getRow();
 			int i = 0;
-			
+
 			Object[][] object = new Object[n][4];
 			rs = stmt.executeQuery(query);
-			ResultSet rs2;
-			
-			String query2 = "select ";
-			
-			while(rs.last()) {
-				//// 테이블수정
-				// register에 과목명이랑 학생명 같이 넣기
-				// 다른 register 접속 다오도 같이 수정하기
-				object[i][0] = rs.getString("lec");
+
+			while (rs.last()) {
+				//// �뀒�씠釉붿닔�젙
+				// register�뿉 怨쇰ぉ紐낆씠�옉 �븰�깮紐� 媛숈씠 �꽔湲�
+				// �떎瑜� register �젒�냽 �떎�삤�룄 媛숈씠 �닔�젙�븯湲�
+				object[i][0] = rs.getString("lecid");
+				object[i][1] = rs.getString("stuid");
+				object[i][3] = rs.getString("stuname");
+				object[i][4] = rs.getString("grade");
+				i++;
 			}
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		Object[][] temp = {};
 		return temp;
 	}
-	
+
 	public void connDB() {
 		try {
 			Class.forName(driver);

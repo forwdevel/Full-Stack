@@ -141,7 +141,7 @@ public class Staff_Enroll_Professor extends JFrame {
 
 						if (b) {
 							setVisible(false);
-							new Alert("등록하였습니다.");
+							new Alert("등록되었습니다.");
 							new Staff_Main(id_login);
 						}
 					}
@@ -183,12 +183,12 @@ public class Staff_Enroll_Professor extends JFrame {
 							id = Integer.parseInt(pro_enroll.getText());
 						} catch (NumberFormatException e1) {
 							System.out.println(pro_enroll.getText());
-							new Alert("임용년도는 숫자만 입력 가능합니다.");
+							new Alert("임용년도는 숫자만 입력가능합니다.");
 							return;
 						}
 						// 2. check length
 						if (pro_enroll.getText().length() != 4) {
-							new Alert("임용년도는 4자리입니다.");
+							new Alert("임용년도는 4자리만 가능합니다.");
 							return;
 						}
 
@@ -249,7 +249,7 @@ public class Staff_Enroll_Professor extends JFrame {
 							id = Integer.parseInt(pro_enroll.getText());
 						} catch (NumberFormatException e1) {
 							System.out.println(pro_enroll.getText());
-							new Alert("임용년도는 숫자만 입력 가능합니다.");
+							new Alert("임용년도는 숫자만 입력가능합니다.");
 							return;
 						}
 						// 2. check length
@@ -315,7 +315,7 @@ public class Staff_Enroll_Professor extends JFrame {
 							id = Integer.parseInt(pro_enroll.getText());
 						} catch (NumberFormatException e1) {
 							System.out.println(pro_enroll.getText());
-							new Alert("임용년도는 숫자만 입력 가능합니다.");
+							new Alert("임용년도는 숫자만 입력가능합니다.");
 							return;
 						}
 						// 2. check length
@@ -352,19 +352,20 @@ public class Staff_Enroll_Professor extends JFrame {
 		JButton enter_btn = new JButton("등록");
 		enter_btn.setBackground(c3);
 		enter_btn.setForeground(c1);
-		enter_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		enter_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 14));
+		enter_btn.setBorder(null);
 		enter_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = 0;
 				int enroll = 0;
 				if (pro_enroll.getText().length() == 0) {
-					new Alert("임용년도를 입력해주세요.");
+					new Alert("�엫�슜�뀈�룄瑜� �엯�젰�빐二쇱꽭�슂.");
 				} else if (pro_name.getText().length() == 0) {
-					new Alert("교수명을 입력해주세요.");
+					new Alert("援먯닔紐낆쓣 �엯�젰�빐二쇱꽭�슂.");
 				} else if (college.getText().length() == 0) {
-					new Alert("단과를 입력해주세요.");
+					new Alert("�떒怨쇰�� �엯�젰�빐二쇱꽭�슂.");
 				} else if (major.getText().length() == 0) {
-					new Alert("전공을 입력해주세요.");
+					new Alert("�쟾怨듭쓣 �엯�젰�빐二쇱꽭�슂.");
 				} else {
 					// not null
 
@@ -374,12 +375,12 @@ public class Staff_Enroll_Professor extends JFrame {
 						id = Integer.parseInt(pro_enroll.getText());
 					} catch (NumberFormatException e1) {
 						System.out.println(pro_enroll.getText());
-						new Alert("임용년도는 숫자만 입력 가능합니다.");
+						new Alert("�엫�슜�뀈�룄�뒗 �닽�옄留� �엯�젰 媛��뒫�빀�땲�떎.");
 						return;
 					}
 					// 2. check length
 					if (pro_enroll.getText().length() != 4) {
-						new Alert("임용년도는 4자리입니다.");
+						new Alert("�엫�슜�뀈�룄�뒗 4�옄由ъ엯�땲�떎.");
 						return;
 					}
 
@@ -398,7 +399,7 @@ public class Staff_Enroll_Professor extends JFrame {
 
 					if (b) {
 						setVisible(false);
-						new Alert("등록하였습니다.");
+						new Alert("�벑濡앺븯���뒿�땲�떎.");
 						new Staff_Main(id_login);
 					}
 				}
@@ -410,7 +411,7 @@ public class Staff_Enroll_Professor extends JFrame {
 		JButton back_btn = new JButton("취소");
 		back_btn.setBackground(c1);
 		back_btn.setForeground(c3);
-		back_btn.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
+		back_btn.setFont(new Font("휴먼엑스포", Font.PLAIN, 14));
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -418,6 +419,9 @@ public class Staff_Enroll_Professor extends JFrame {
 			}
 		});
 		back_btn.setBounds(495, 440, 94, 37);
+		back_btn.setBackground(c1);
+		back_btn.setBorder(null);
+		back_btn.setForeground(c3);
 		contentPane.add(back_btn);
 		
 		setVisible(true);

@@ -133,18 +133,18 @@ public class Staff_Main extends JFrame {
 		
 		
 		boolean enterB = new EtcDao().getEnter();
-		JButton canGradeEnter_btn = new JButton("수강신청 허용하기");
+		JButton canGradeEnter_btn = new JButton("");
 		canGradeEnter_btn.setBounds(805, 40, 135, 23);
 		canGradeEnter_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = new EtcDao().getEnter();
 				if(!b) {
-					canGradeEnter_btn.setText("수강신청 금지하기");
+					canGradeEnter_btn.setText("수강신청 비허용");
 					canGradeEnter_btn.setBackground(c4);
 					canGradeEnter_btn.setForeground(c1);
 					new EtcDao().setEnter(true);
 				} else {
-					canGradeEnter_btn.setText("수강신청 허용하기");
+					canGradeEnter_btn.setText("수강신청 허용");
 					canGradeEnter_btn.setBackground(c1);
 					canGradeEnter_btn.setForeground(c4);
 					new EtcDao().setEnter(false);
@@ -152,11 +152,11 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		if(enterB) {
-			canGradeEnter_btn.setText("수강신청 금지하기");
+			canGradeEnter_btn.setText("수강신청 비허용");
 			canGradeEnter_btn.setBackground(c4);
 			canGradeEnter_btn.setForeground(c1);
 		} else {
-			canGradeEnter_btn.setText("수강신청 허용하기");
+			canGradeEnter_btn.setText("수강신청 허용");
 			canGradeEnter_btn.setBackground(c1);
 			canGradeEnter_btn.setForeground(c4);
 		}
@@ -164,19 +164,19 @@ public class Staff_Main extends JFrame {
 		contentPane.add(canGradeEnter_btn);
 		
 		boolean inquiryB = new EtcDao().getInquiry();
-		JButton canGradeInquiry_btn = new JButton("수강조회 허용하기");
+		JButton canGradeInquiry_btn = new JButton("");
 		canGradeInquiry_btn.setBounds(805, 75, 135, 23);
 		canGradeInquiry_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = new EtcDao().getInquiry();
 				System.out.println("inner b : " + b);
 				if(!b) {
-					canGradeInquiry_btn.setText("수강조회 금지하기");
+					canGradeInquiry_btn.setText("성적조회 비허용");
 					canGradeInquiry_btn.setBackground(c4);
 					canGradeInquiry_btn.setForeground(c1);
 					new EtcDao().setInquiry(true);
 				} else {
-					canGradeInquiry_btn.setText("수강조회 허용하기");
+					canGradeInquiry_btn.setText("성적조회 허용");
 					canGradeInquiry_btn.setBackground(c1);
 					canGradeInquiry_btn.setForeground(c4);
 					new EtcDao().setInquiry(false);
@@ -184,11 +184,11 @@ public class Staff_Main extends JFrame {
 			}
 		});
 		if(inquiryB) {
-			canGradeInquiry_btn.setText("수강조회 금지하기");
+			canGradeInquiry_btn.setText("성적조회 비허용");
 			canGradeInquiry_btn.setBackground(c4);
 			canGradeInquiry_btn.setForeground(c1);
 		} else {
-			canGradeInquiry_btn.setText("수강조회 허용하기");
+			canGradeInquiry_btn.setText("성적조회 허용");
 			canGradeInquiry_btn.setBackground(c1);
 			canGradeInquiry_btn.setForeground(c4);
 		}

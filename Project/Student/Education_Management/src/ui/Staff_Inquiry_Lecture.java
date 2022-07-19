@@ -17,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
 
 import daovo.EtcDao;
 
-//
-//	테이블 값 수정
-//
-
 public class Staff_Inquiry_Lecture extends JFrame {
 
 	private JPanel contentPane;
@@ -41,7 +37,7 @@ public class Staff_Inquiry_Lecture extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fixed_1 = new JLabel("과목 조회");
+		JLabel fixed_1 = new JLabel("과목조회");
 		fixed_1.setFont(new Font("휴먼엑스포", Font.BOLD, 24));
 		fixed_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fixed_1.setForeground(c3);
@@ -86,7 +82,7 @@ public class Staff_Inquiry_Lecture extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(150);
 		table.getColumnModel().getColumn(5).setResizable(false);
 		
-		back_btn = new JButton("뒤로가기");
+		back_btn = new JButton("뒤로");
 		back_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

@@ -109,46 +109,76 @@ public class EtcDao {
 		return temp;
 	}
 	
-	// regist selected lecture to interest
-	public void registerInterest(String stu_id, String lec_id) {
+	// register selected lecture to interest
+	public int registerInterest(String stu_id, String lec_id) {
 		try {
 			connDB();
 			
-			String query = "select * from \"REGISTER\" where id = '" + stu_id + "' and lec = '" + lec_id + "'";
+			// add credits of student
+			// 1. find student
+			String query = "select * from student where id = '" + stu_id + "'";
 			rs = stmt.executeQuery(query);
-			System.out.println("inquiry : " + query);
 			rs.last();
 			
-			if(rs.getRow() != 0) {
-				System.out.println("rs.row() == " + rs.getRow());
-				new Alert("이미 존재하는 과목입니다.");
-				return;
-			}
+			int stu_credit = rs.getInt("credit");
+			String stu_name = rs.getString("name");
 			
+			// 2. find lecture credit
 			query = "select * from lecture where id = '" + lec_id + "'";
 			rs = stmt.executeQuery(query);
 			rs.last();
-			System.out.println("sql : " + query);
 			
-			if(rs.getString("\"limit\"") != null && rs.getString("\"limit\"").equals(rs.getInt("\"current\""))) {
-				new Alert("수강인원이 다 찼습니다.");
+			String lec_name = rs.getString("name");
+			stu_credit += rs.getInt("credit");
+			System.out.println("Credit : " + stu_credit);
+			
+			if(stu_credit > 18) {
+				new Alert("최대 학점을 초과하였습니다.");
 			} else {
-				query = "update lecture set \"CURRENT\" = " + (rs.getInt("\"CURRENT\"") + 1) + " where id = '" + lec_id + "'";
-				System.out.println("increase : " + query);
+				query = "update student set credit = " + stu_credit;
 				rs = stmt.executeQuery(query);
 				
-				
-				query = "insert into \"REGISTER\" values ('"+stu_id+"','"+lec_id+"', '')";
-				System.out.println("insert : " + query);
+				query = "select * from \"REGISTER\" where stuid = '" + stu_id + "' and lecid = '" + lec_id + "'";
 				rs = stmt.executeQuery(query);
+				System.out.println("inquiry : " + query);
+				rs.last();
+				
+				if(rs.getRow() != 0) {
+					System.out.println("rs.row() == " + rs.getRow());
+					new Alert("이미 존재하는 과목입니다.");
+					query = "select * from lecture where id = '" + lec_id + "'";
+					rs = stmt.executeQuery(query);
+					stu_credit -= rs.getInt("credit");
+					return stu_credit;
+				}
+				
+				query = "select * from lecture where id = '" + lec_id + "'";
+				rs = stmt.executeQuery(query);
+				rs.last();
+				System.out.println("sql : " + query);
+				
+				if(rs.getString("\"limit\"") != null && rs.getString("\"limit\"").equals(rs.getInt("\"current\""))) {
+					new Alert("수강인원이 다 찼습니다.");
+				} else {
+					query = "update lecture set \"CURRENT\" = " + (rs.getInt("\"CURRENT\"") + 1) + " where id = '" + lec_id + "'";
+					System.out.println("increase : " + query);
+					rs = stmt.executeQuery(query);
+					
+					query = "insert into \"REGISTER\" values ('"+stu_id+"','"+lec_id+ "', '" + stu_name +"', '" + lec_name + "', '')";
+					System.out.println("insert : " + query);
+					rs = stmt.executeQuery(query);
+				}
+				
+				new Alert("등록 하였습니다.");
+				return stu_credit;
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return;
+			return 0;
 		}
 		System.out.println("success");
+		return 0;
 	}
 	
 	// return all inserest lecture list
@@ -156,13 +186,13 @@ public class EtcDao {
 		try {
 			connDB();
 			
-			String query = "select lec from register where id = '" + stu_id + "'";
+			String query = "select lecid from register where stuid = '" + stu_id + "'";
 			rs = stmt.executeQuery(query);
 			
 			List<String> lecIdTemp = new ArrayList<String>();
 			
 			while(rs.next()) {
-				lecIdTemp.add(rs.getString("lec"));
+				lecIdTemp.add(rs.getString("lecid"));
 			}
 			
 			Object[][] object = new Object[lecIdTemp.size()][8];
@@ -190,26 +220,49 @@ public class EtcDao {
 	}
 	
 	// remove selected lecture at "RESISTER"
-	public void removeInterest(String stu_id, String lec_id) {
+	public int removeInterest(String stu_id, String lec_id) {
 		try {
 			connDB();
 			
-			String query = "delete from register where id = '" + stu_id + "' and lec = '" + lec_id + "'";
+			String query = "delete from register where stuid = '" + stu_id + "' and lecid = '" + lec_id + "'";
 			rs = stmt.executeQuery(query);
 			System.out.println("removeInterest query 1 : " + query);
+			
+			// find student credit
+			query = "select * from student where id = '" + stu_id + "'";
+			rs = stmt.executeQuery(query);
+			rs.last();
+			
+			int stu_credit = rs.getInt("credit");
 			
 			query = "select * from lecture where id = '" + lec_id + "'";
 			rs = stmt.executeQuery(query);
 			System.out.println("removeInterest query 2 : " + query);
 			rs.last();
 			
+			stu_credit -= rs.getInt("credit");
+			System.out.println(stu_credit);
+			
+			query = "update student set credit = " + stu_credit + " where id = '" + stu_id + "'";
+			System.out.println("credit change SQL : " + query);
+			rs = stmt.executeQuery(query);
+			
+			query = "select * from lecture where id = '" + lec_id + "'";
+			rs = stmt.executeQuery(query);
+			rs.last();
+			
 			query = "update lecture set \"CURRENT\" = " + (rs.getInt("\"CURRENT\"") - 1) + " where id = '" + lec_id + "'";
 			System.out.println("removeInterest query 3 : " + query);
 			rs = stmt.executeQuery(query);
 			
+			query = "update student set credit = " + stu_credit;
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			return stu_credit;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return;
+			return 0;
 		}
 	}
 	
@@ -217,7 +270,9 @@ public class EtcDao {
 	// have to implement
 	public Object[][] returnGrade(String stu_id) {
 		try {
-			String query = "select * from reigster where id = '" + stu_id + "'";
+			connDB();
+			
+			String query = "select * from register where stuid = '" + stu_id + "'";
 			System.out.println(query);
 			rs = stmt.executeQuery(query);
 			rs.last();
@@ -229,7 +284,7 @@ public class EtcDao {
 			rs = stmt.executeQuery(query);
 			
 			while(rs.next()) {
-				object[i][0] = rs.getString("lec");
+				object[i][0] = rs.getString("lecid");
 				object[i][1] = rs.getString("lecname");
 				object[i][2] = rs.getString("grade");
 				i++;

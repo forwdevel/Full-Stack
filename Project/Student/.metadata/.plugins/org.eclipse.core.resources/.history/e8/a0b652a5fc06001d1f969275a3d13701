@@ -1,0 +1,56 @@
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}
+
+class Student {
+	private String name;
+	private double kor;
+	private double eng;
+	private int avg;
+	
+	public Student(String name, double kor, double eng) {
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.avg = (int)(kor + eng) / 2;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setKor(double kor) {
+		this.kor = kor;
+	}
+	
+	public void setEng(double eng) {
+		this.eng = eng;
+	}
+	
+	public void setAvg() {
+		avg = (int)(kor + eng) / 2;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public double getKor() {
+		return kor;
+	}
+	
+	public double getEng() {
+		return eng;
+	}
+	
+	public int getAvg() {
+		return avg;
+	}
+	
+	public void printAvg(Student a, Student b) {
+		System.out.println("avg " + a.avg + " " + b.avg);
+	}
+}
