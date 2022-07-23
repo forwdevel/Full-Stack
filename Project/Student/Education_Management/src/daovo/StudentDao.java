@@ -9,9 +9,9 @@ import ui.Alert;
 
 public class StudentDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@112.154.60.127:1521/xe";
+	String url = "jdbc:oracle:thin:@localhost:1521/xe";
 	String user = "c##user";
-	String password = "oma0731";
+	String password = "user1234";
 	
 	private Connection con;
 	private Statement stmt;
@@ -70,7 +70,7 @@ public class StudentDao {
 			} else if ((rs.getRow() + 1) < 1000) {
 				id += (rs.getRow() + 1);
 			} else {
-				new Alert("�쟾怨듬떦 999紐낃퉴吏� �엯�젰�씠 媛��뒫�빀�땲�떎.");
+				new Alert("학생은 999명까지 입력이 가능합니다.");
 				return false;
 			}
 			
@@ -81,14 +81,14 @@ public class StudentDao {
 			rs = stmt.executeQuery(query);
 			
 			query = "insert into member values ("
-					+ id + ", '" + name + "', '�븰�깮', '1234')";
+					+ id + ", '" + name + "', ' 학생', '1234')";
 
 			System.out.println("Query : " + query);
 			rs = stmt.executeQuery(query);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			new Alert("�빐�떦 �븰踰덉쓽 �븰�깮�씠 �씠誘� 議댁옱�빀�땲�떎.");
+			new Alert("학생 등록을 실패하였습니다.");
 			return false;
 		}
 		

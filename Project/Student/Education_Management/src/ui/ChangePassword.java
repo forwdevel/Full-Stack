@@ -67,17 +67,21 @@ public class ChangePassword extends JFrame {
 		LabelPwConfirm.setForeground(c3);
 		contentPane.add(LabelPwConfirm);
 		
-		JButton confirm_btn = new JButton("변경하기");
+		JButton confirm_btn = new JButton("변경");
 		confirm_btn.setBounds(163, 193, 97, 32);
 		confirm_btn.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
+				if(pw.getText().length() == 0 || pwConfirm.getText().length() == 0) {
+					new Alert("비밀번호를 입력해주세요.");
+					return;
+				}
 				if(pw.getText().equals(pwConfirm.getText())) {
 					new EtcDao().changePassword(id, pw.getText());
 					new Alert("비밀번호를 변경하였습니다.");
 					setVisible(false);
 				} else {
-					new Alert("비밀번호가 일치하지 않습니다.");
+					new Alert("비밀번호가 일치하지않습니다.");
 					pw.setText("");
 					pwConfirm.setText("");
 				}

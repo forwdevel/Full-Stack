@@ -13,9 +13,9 @@ import ui.Professor_Main;
 
 public class ProfessorDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@112.154.60.127:1521/xe";
+	String url = "jdbc:oracle:thin:@localhost:1521/xe";
 	String user = "c##user";
-	String password = "oma0731";
+	String password = "user1234";
 
 	private Connection con;
 	private Statement stmt;
@@ -256,20 +256,21 @@ public class ProfessorDao {
 
 			int n = rs.getRow();
 			int i = 0;
+			
+			System.out.println("getRow : " + n);
 
 			Object[][] object = new Object[n][4];
 			rs = stmt.executeQuery(query);
 
-			while (rs.last()) {
-				//// �뀒�씠釉붿닔�젙
-				// register�뿉 怨쇰ぉ紐낆씠�옉 �븰�깮紐� 媛숈씠 �꽔湲�
-				// �떎瑜� register �젒�냽 �떎�삤�룄 媛숈씠 �닔�젙�븯湲�
+			while (rs.next()) {
 				object[i][0] = rs.getString("lecid");
 				object[i][1] = rs.getString("stuid");
-				object[i][3] = rs.getString("stuname");
-				object[i][4] = rs.getString("grade");
+				object[i][2] = rs.getString("stuname");
+				object[i][3] = rs.getString("grade");
 				i++;
 			}
+			
+			return object;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -279,6 +280,19 @@ public class ProfessorDao {
 		return temp;
 	}
 
+	public void enterGrade(String lecid, String stuid, String stuname, String grade) {
+		try {
+			connDB();
+			
+				String query = "update register set grade = '" + grade + "' where lecid = '" + lecid + "' and stuid = '" + stuid + "' and stuname = '" + stuname + "'";
+				System.out.println("SQL : " +query);
+				rs = stmt.executeQuery(query);
+				
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void connDB() {
 		try {
 			Class.forName(driver);

@@ -63,6 +63,7 @@ public class Professor_Enter_Lecture extends JFrame {
 				}
 				
 				new ProfessorDao().enterLecture(vo, name.getText(), com.getText(), credit.getText(), room.getText(), limit.getText(), "0");
+				setVisible(false);
 			}
 		});
 		enter_btn.setBounds(346, 491, 97, 35);

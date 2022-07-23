@@ -305,7 +305,7 @@ public class Student_Enroll_register extends JFrame {
 		interest_table.setModel(new DefaultTableModel(
 			new EtcDao().interestInquiry(vo.getId()),
 			new String[] {
-				"\uD559\uC218\uBC88\uD638", "\uC774\uC218\uAD6C\uBD84", "\uACFC\uBAA9\uBA85", "\uAD50\uC218\uBA85", "\uD559\uC810", "\uAC15\uC758\uC2E4"
+				"\uD559\uC218\uBC88\uD638", "\uC774\uC218\uAD6C\uBD84", "\uACFC\uBAA9\uBA85", "\uAD50\uC218\uBA85"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
@@ -320,10 +320,6 @@ public class Student_Enroll_register extends JFrame {
 		interest_table.getColumnModel().getColumn(2).setResizable(false);
 		interest_table.getColumnModel().getColumn(2).setPreferredWidth(150);
 		interest_table.getColumnModel().getColumn(3).setResizable(false);
-		interest_table.getColumnModel().getColumn(4).setResizable(false);
-		interest_table.getColumnModel().getColumn(4).setPreferredWidth(15);
-		interest_table.getColumnModel().getColumn(5).setResizable(false);
-		interest_table.getColumnModel().getColumn(5).setPreferredWidth(120);
 		interest_table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		interest_table_pane.setViewportView(interest_table);
 
@@ -398,6 +394,23 @@ public class Student_Enroll_register extends JFrame {
 				});
 				interest_table.repaint();
 				System.out.println("repainted");
+				
+
+				inquiry_table.setModel(new DefaultTableModel(
+					new EtcDao().registerLecInquery(firstQuery),
+					new String[] {
+						"\uD559\uC218\uBC88\uD638", "\uC774\uC218\uAD6C\uBD84", "\uACFC\uBAA9\uBA85", "\uAD50\uC218\uBA85", "\uD559\uC810", "\uAC15\uC758\uC2E4", "\uC778\uC6D0\uC81C\uD55C", "\uD604\uC7AC\uC778\uC6D0"
+					}
+				) {
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, Integer.class
+					};
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+				});
+
+				inquiry_table.repaint();
 			}
 		});
 		remove_btn.setBounds(453, 517, 97, 23);
@@ -443,6 +456,23 @@ public class Student_Enroll_register extends JFrame {
 				});
 				interest_table.repaint();
 				System.out.println("repainted");
+				
+
+				inquiry_table.setModel(new DefaultTableModel(
+					new EtcDao().registerLecInquery(firstQuery),
+					new String[] {
+						"\uD559\uC218\uBC88\uD638", "\uC774\uC218\uAD6C\uBD84", "\uACFC\uBAA9\uBA85", "\uAD50\uC218\uBA85", "\uD559\uC810", "\uAC15\uC758\uC2E4", "\uC778\uC6D0\uC81C\uD55C", "\uD604\uC7AC\uC778\uC6D0"
+					}
+				) {
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, Integer.class
+					};
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+				});
+
+				inquiry_table.repaint();
 			}
 		});
 		enter_btn.setBounds(260, 517, 97, 23);

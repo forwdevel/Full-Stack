@@ -10,9 +10,9 @@ import ui.Alert;
 
 public class EtcDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@112.154.60.127:1521/xe";
+	String url = "jdbc:oracle:thin:@localhost:1521/xe";
 	String user = "c##user";
-	String password = "oma0731";
+	String password = "user1234";
 	
 	private Connection con;
 	private Statement stmt;
