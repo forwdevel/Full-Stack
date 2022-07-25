@@ -1,2 +1,0 @@
-CIDR to Subnet mask
-https://www.bogotobogo.com/DevOps/AWS/aws-VPC-Virtual-Private-Cloud-1-netmast-subnet-default-gateway-CIDR.php
